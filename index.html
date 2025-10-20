@@ -11,45 +11,47 @@
 </head>
 <body>
   <!-- ===== HEADER / YOUR ORIGINAL TABS ===== -->
-  <header class="site-header">
+  <header class="site-header theme-purple">
     <div class="header-inner">
-      <a href="/" class="brand">Women for Wolves</a>
-      <nav class="site-nav">
-        <details class="menu">
-          <summary>About Us</summary>
+      <a href="/" class="brand">
+        <img class="logo" alt="Women for Wolves">
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <div class="menu">
+          <button class="menu-button" type="button">About Us</button>
           <div class="submenu">
             <a href="about/index.html">About Us</a>
             <a href="about/contact.html">Contact</a>
           </div>
-        </details>
+        </div>
 
-        <details class="menu">
-          <summary>Sanctuary & Rescue</summary>
+        <div class="menu">
+          <button class="menu-button" type="button">Sanctuary & Rescue</button>
           <div class="submenu">
             <a href="sanctuary/wolves.html">Meet Our Wolves</a>
             <a href="sanctuary/adoptable-dogs.html">Adoptable Dogs</a>
           </div>
-        </details>
+        </div>
 
         <a href="programs.html">Programs</a>
 
-        <details class="menu">
-          <summary>Support</summary>
+        <div class="menu">
+          <button class="menu-button" type="button">Support</button>
           <div class="submenu">
             <a href="support/membership.html">Become a Member</a>
             <a href="support/sponsor.html">Sponsor a Wolf</a>
             <a href="support/volunteer.html">Volunteer</a>
             <a href="support/donate.html">Donate</a>
           </div>
-        </details>
+        </div>
 
-        <details class="menu">
-          <summary>Events</summary>
+        <div class="menu">
+          <button class="menu-button" type="button">Events</button>
           <div class="submenu">
             <a href="events/upcoming.html">Upcoming Events</a>
             <a href="events/past.html">Past Events</a>
           </div>
-        </details>
+        </div>
 
         <a href="news.html">News</a>
         <a href="education.html">Educational Resources</a>
@@ -59,7 +61,7 @@
   </header>
 
     <!-- ===== HERO ===== -->
-  <section class="hero hero--overlay">
+  <section class="hero hero--overlay hero--purple">
     <div class="hero-bg" style="--hero:url('images/hero-wolf.jpg')"></div>
     <div class="hero-inner container">
       <a class="pill" href="support/donate.html">Donate</a>
@@ -146,6 +148,15 @@
     </div>
   </section>
 
+   <!-- ===== COLORED BAND ===== -->
+  <section class="bg-green theme-green">
+    <div class="container" style="padding:40px 0;">
+      <img class="logo" alt="Women for Wolves">
+      <h2>Sanctuary & Rescue</h2>
+      <p>Our sanctuary rescues wolf-dogs and provides lifelong care and education.</p>
+    </div>
+  </section>
+
   <!-- ===== PARTNERS ===== -->
   <section class="partners">
     <div class="container logos">
@@ -159,5 +170,11 @@
     </div>
     <div class="copyright-line">Women For Wolves · ©2025 · 501(c)3 · EIN: 46-5594240</div>
   </section>
+  <script>
+    // Close a menu after you click the button (so it doesn't stick open)
+    document.querySelectorAll('.menu-button').forEach(btn => {
+      btn.addEventListener('click', () => btn.blur());
+    });
+  </script>
 </body>
 </html>
