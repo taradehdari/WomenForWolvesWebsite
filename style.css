@@ -339,25 +339,15 @@ p, .hero-sub {
 /* gradient fades on edges (optional but makes it look polished) */
 .marquee::before,
 .marquee::after {
-  content: "";
-  position: absolute;
-  top: 0; bottom: 0;
-  width: 10vw;
-  pointer-events: none;
-}
-.marquee::before {
-  left: 0;
-  background: linear-gradient(to right, rgba(0,0,0,.45), transparent);
-}
-.marquee::after {
-  right: 0;
-  background: linear-gradient(to left, rgba(0,0,0,.45), transparent);
+  content: none;
 }
 
 .marquee-track {
-  display: inline-block;
+  display: inline-block;          /* required for transform to work as expected */
+  padding-left: 100%;             /* start off-screen to the right */
   will-change: transform;
-  animation: marqueeSlide 20s linear infinite; 
+  animation: marqueeSlide 18s linear infinite;
+  white-space: nowrap;
 }
 
 .marquee-track span {
@@ -367,7 +357,7 @@ p, .hero-sub {
 
 @keyframes marqueeSlide {
   from { transform: translateX(0); }
-  to   { transform: translateX(-50%); } 
+  to   { transform: translateX(-100%); } 
 } 
 
 /* ====== CONTENT SECTIONS ====== */
