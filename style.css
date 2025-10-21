@@ -410,6 +410,13 @@ p, .hero-sub {
   display: block;
 }
 
+/* ===== GREEN BAR UNDER HERO ===== */
+.hero-divider {
+  height: 20px;
+  background: var(--sage); /* uses your brand sage green */
+  width: 100%;
+}
+
 /* ======= RESPONSIVE TYPOGRAPHY & BRAND SCALING ======= */
 
 /* Medium screens (tablets & small laptops)  */
