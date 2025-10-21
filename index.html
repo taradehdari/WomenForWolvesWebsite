@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <!-- optional font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- ===== HEADER / YOUR ORIGINAL TABS ===== -->
@@ -61,77 +61,52 @@
   </div>
 
   <!-- Mobile nav panel -->
-  <nav id="mobile-nav" class="mobile-nav" hidden aria-label="Mobile">
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile">
     <details>
       <summary>About Us</summary>
-      <a href="about/team.html">Team</a>
-      <a href="about/our-story.html">Our Story</a>
+      <div class="details-content">
+        <a href="about/team.html">Team</a>
+        <a href="about/our-story.html">Our Story</a>
+      </div>
     </details>
+
 
     <a href="impact.html">Our Impact</a>
 
     <details>
       <summary>Programs</summary>
-      <a href="programs/sanctuary-rescue.html">Sanctuary & Rescue</a>
-      <a href="programs/wolf-conservation.html">Wolf Conservation</a>
-      <a href="programs/community-empowerment.html">Community Empowerment</a>
-      <a href="programs/wildlife-education.html">Wildlife Education</a>
+      <div class="details-content">
+        <a href="programs/sanctuary-rescue.html">Sanctuary & Rescue</a>
+        <a href="programs/wolf-conservation.html">Wolf Conservation</a>
+        <a href="programs/community-empowerment.html">Community Empowerment</a>
+        <a href="programs/wildlife-education.html">Wildlife Education</a>
+      </div>  
     </details>
 
     <details>
       <summary>Get Involved</summary>
-      <a href="get-involved/events.html">Events</a>
-      <a href="get-involved/volunteer.html">Volunteer / Intern</a>
-      <a href="get-involved/donate.html">Donate</a>
-      <a href="get-involved/membership.html">Become a Member</a>
+      <div class="details-content">
+        <a href="get-involved/events.html">Events</a>
+        <a href="get-involved/volunteer.html">Volunteer / Intern</a>
+        <a href="get-involved/donate.html">Donate</a>
+        <a href="get-involved/membership.html">Become a Member</a>
+      </div>
     </details>
 
     <a href="contact.html">Contact Us</a>
   </nav>
 </header>
 
-<script>
-    // Close desktop submenu after click (prevents "stuck open")
-    document.querySelectorAll('.menu-button').forEach(btn => {
-      btn.addEventListener('click', () => btn.blur());
-    });
-
-    // Mobile: toggle panel
-    const toggle = document.querySelector('.nav-toggle');
-    const mobile = document.getElementById('mobile-nav');
-    if (toggle && mobile) {
-      toggle.addEventListener('click', () => {
-        const expanded = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!expanded));
-        if (mobile.hasAttribute('hidden')) mobile.removeAttribute('hidden');
-        else mobile.setAttribute('hidden', '');
-      });
-    }
-  </script>
-
-    <!-- ===== HERO ===== -->
-  <!-- <section class="hero hero--overlay hero--purple">
-    <div class="hero-bg" style="--hero:url('images/hero-wolf.jpg')"></div>
-    <div class="hero-inner container">
-      <a class="pill" href="support/donate.html">Donate</a>
-      <h1>Wolves need our help.</h1>
-      <p class="hero-sub">Defend the wild. Fight for wolves.</p>
-    </div>
-  </section> -->
-
   <!-- ===== VIDEO HERO SECTION ===== -->
 <section class="hero hero--video">
   <div class="video-background">
-    <iframe 
-      src="https://www.youtube.com/embed/x1LiSijUwsA?autoplay=1&mute=1&loop=1&playlist=x1LiSijUwsA&controls=0&showinfo=0&modestbranding=1&start=0&end=30"
-      title="Wolves in the Wild"
-      frameborder="0"
-      allow="autoplay; fullscreen"
-      allowfullscreen>
-    </iframe>
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="images/hero-fallback.jpg">
+      <source src="video/chaosbellavideo.mp4" type="video/mp4">
+      <source src="video/chaosbellavideo.mov">  <!-- optional fallback -->
+      Your browser does not support the video tag.
+    </video>
   </div>
 
-  <div class="hero-overlay"></div>
 
   <div class="hero-content">
     <h1>Wolves need our help.</h1>
@@ -139,9 +114,12 @@
     <a href="support/donate.html" class="pill">Donate</a>
   </div>
 
-  <div class="marquee">
-    <span>🐺 Help the wolves. Protect the wild. Stand for conservation. 🐾</span>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>🐺 Help the wolves. Protect the wild. Stand for conservation. 🐾 </span>
+    </div>
   </div>
+
 </section>
 
   <!-- ===== MISSION / INTRO (left text, right image) ===== -->
@@ -248,6 +226,49 @@
     // Close a menu after you click the button (so it doesn't stick open)
     document.querySelectorAll('.menu-button').forEach(btn => {
       btn.addEventListener('click', () => btn.blur());
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.querySelector('.nav-toggle');
+      const mobile = document.getElementById('mobile-nav');
+
+      if (!toggle || !mobile) return;
+
+      const closeDetails = () => {
+        mobile.querySelectorAll('details[open]').forEach(d => { d.open = false; });
+      };
+
+      // Toggle mobile panel
+      toggle.addEventListener('click', () => {
+        const opening = !mobile.classList.contains('show');
+        mobile.classList.toggle('show');
+        toggle.setAttribute('aria-expanded', String(opening));
+
+        // If we're closing the panel, also collapse any open <details>
+        if (!opening) closeDetails();
+      });
+
+      // When a link inside mobile menu is clicked, close menu and collapse all
+      mobile.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          mobile.classList.remove('show');
+          toggle.setAttribute('aria-expanded', 'false');
+          closeDetails();
+        });
+      });
+
+      // If user resizes to desktop, ensure mobile menu + details are reset
+      const mq = window.matchMedia('(min-width: 901px)');
+      const handleResize = () => {
+        if (mq.matches) {
+          mobile.classList.remove('show');
+          toggle.setAttribute('aria-expanded', 'false');
+          closeDetails();
+        }
+      };
+      mq.addEventListener?.('change', handleResize);
+      window.addEventListener('resize', handleResize);
     });
   </script>
 </body>
