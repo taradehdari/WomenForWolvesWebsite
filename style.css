@@ -360,20 +360,6 @@ p, .hero-sub {
   to   { transform: translateX(-100%); } 
 } 
 
-/* ====== CONTENT SECTIONS ====== */
-.program {
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 28px;
-  align-items: center;
-  margin: 60px auto;
-}
-.program h2 { margin: 0 0 12px; }
-
-@media (max-width: 860px) {
-  .program { grid-template-columns: 1fr; }
-}
-
 /* ========= PARTNERS & FOOTER ========== */
 .partners {
   border-top: 1px solid #eee;
@@ -401,14 +387,6 @@ p, .hero-sub {
   padding: 12px 0 22px;
 }
 
-/* Placeholder image styling */
-.program-media img {
-  aspect-ratio: 4/3;
-  width: 100%;
-  border-radius: 12px;
-  background: #e8d7f8;
-  display: block;
-}
 
 /* ===== GREEN BAR UNDER HERO ===== */
 .hero-divider {
@@ -460,9 +438,120 @@ p, .hero-sub {
 
 .mission-text p {
   font-family: 'Big Shoulders Display', sans-serif;
-  font-size: 2rem;
+  font-size: 1.7rem;
   line-height: 1.7;
   margin-bottom: 18px;
+}
+
+/* ===== STATS HERO  ===== */
+.stats-hero {
+  position: relative;
+  width: 100%;
+  min-height: clamp(420px, 55vh, 620px);
+  background-image: var(--bg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+.stats-hero__overlay {
+  position: absolute;
+  inset: 0;
+  /* darken the photo for legibility; tweak 0.45–0.65 to taste */
+  background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.55),
+      rgba(0,0,0,0.55)
+  );
+  z-index: 0;
+}
+
+.stats-hero__inner {
+  position: relative;
+  z-index: 1;
+  padding: clamp(28px, 5vw, 60px) 16px;
+  text-align: center;
+}
+
+.stats-hero__title {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 800;
+  text-transform: none;            /* nicer for sentence case */
+  letter-spacing: 0.5px;
+  margin: 0 0 1rem;
+  font-size: clamp(28px, 4.5vw, 48px);
+  text-shadow: 0 2px 10px rgba(0,0,0,.5);
+}
+
+.stats-hero__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 2vw, 28px) clamp(20px, 3vw, 40px);
+  margin: clamp(16px, 2vw, 24px) auto 0;
+  max-width: 1100px;
+  list-style: none;
+  padding: 0;
+  justify-items: center;
+}
+
+.stats-hero__grid li {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  justify-items: center;
+  padding: clamp(8px, 1vw, 12px);
+}
+
+.stats-hero .num {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 900;
+  font-size: clamp(34px, 6vw, 64px);
+  line-height: 1;
+  color: var(--magenta);         
+  text-shadow: 0 2px 12px rgba(0,0,0,.35);
+  position: relative;
+}
+
+/* subtle underline accent under the numbers */
+.stats-hero .num::after {
+  content: "";
+  display: block;
+  width: 64px;
+  max-width: 50%;
+  border-bottom: 4px solid currentColor;
+  border-radius: 999px;
+  margin: 8px auto 0;
+  opacity: 0.95;
+}
+
+.stats-hero .label {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(14px, 1.6vw, 20px);
+  line-height: 1.5;
+  color: #fff;
+  text-shadow: 0 1px 8px rgba(0,0,0,.35);
+}
+
+/* two neat centered rows: top row = 4 items, bottom row = 2 centered items */
+.stats-hero__grid li:nth-child(n+5) {
+  grid-column: span 2;
+  justify-self: center;
+}
+
+/* Adjust background crop to show more of the wolves */
+.stats-hero {
+  background-position: center 55%; /* move background slightly down */
+}
+
+/* responsive: 3 columns on tablets, 2 on phones */
+@media (max-width: 1000px) {
+  .stats-hero__grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 640px) {
+  .stats-hero__grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ======= RESPONSIVE TYPOGRAPHY & BRAND SCALING ======= */
