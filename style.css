@@ -395,7 +395,7 @@ p, .hero-sub {
   width: 100%;
 }
 
-/* ===== MISSION SECTION ===== */
+/* ===== MISSION SECTION =====
 .mission {
   background: var(--beige);
   color: #1b1b1b;
@@ -418,7 +418,7 @@ p, .hero-sub {
 
 .mission-quote span {
   color: var(--magenta); /* highlight 'relational by nature' */
-}
+/* }
 
 .mission-quote cite {
   display: block;
@@ -441,7 +441,99 @@ p, .hero-sub {
   font-size: 1.7rem;
   line-height: 1.7;
   margin-bottom: 18px;
+} */
+
+/* ===== MISSION SECTION ===== */
+.mission {
+  background: var(--beige);
+  color: #1b1b1b;
+  padding: 80px 0;
+  text-align: center;
 }
+.mission .container { max-width: 900px; }
+
+/* Quote */
+.mission-quote {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-size: clamp(22px, 3vw, 35px);
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 50px;
+}
+.mission-quote span { color: var(--magenta); }
+.mission-quote cite {
+  display: block;
+  margin-top: 15px;
+  font-size: 0.9em;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+/* Title flanked by wolves */
+.mission-text {
+  display: grid;
+  grid-template-columns: auto 1fr auto;  /* left wolf | title | right wolf */
+  align-items: center;
+  justify-items: center;
+  gap: 12px 16px;
+}
+
+/* first wolf image (left) */
+.mission-text > .wolf-img:nth-of-type(1) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* title in the middle */
+.mission-text > h2 {
+  grid-column: 2;
+  grid-row: 1;
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 800;
+  margin: 0 0 10px 0; /* small bottom space before paragraphs */
+  text-transform: uppercase;
+}
+
+/* second wolf image (right) — mirrored */
+.mission-text > .wolf-img:nth-of-type(2) {
+  grid-column: 3;
+  grid-row: 1;
+  transform: scaleX(-1);
+}
+
+/* wolf image sizing + optional sage tint */
+.wolf-img {
+  width: 70px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+/* paragraphs span full width beneath the title row */
+.mission-text p {
+  grid-column: 1 / -1;
+  font-family: 'Big Shoulders Display', sans-serif; /* your choice */
+  font-size: 1.7rem;
+  line-height: 1.7;
+  margin: 10px 0 18px;
+}
+
+/* mobile: stack nicely */
+@media (max-width: 700px) {
+  .mission-text {
+    grid-template-columns: 1fr;
+  }
+  .mission-text > .wolf-img:nth-of-type(1),
+  .mission-text > h2,
+  .mission-text > .wolf-img:nth-of-type(2) {
+    grid-column: 1;
+  }
+  .mission-text > .wolf-img:nth-of-type(2) {
+    transform: none; /* no mirror on stacked layout */
+  }
+  .wolf-img { width: 60px; }
+}
+
 
 /* ===== STATS HERO  ===== */
 .stats-hero {
