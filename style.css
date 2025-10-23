@@ -364,7 +364,7 @@ p, .hero-sub {
 .partners {
   border-top: 1px solid #eee;
   margin-top: 40px;
-  background: #fff;
+  background: var(--beige);
 }
 .logos {
   display: grid;
