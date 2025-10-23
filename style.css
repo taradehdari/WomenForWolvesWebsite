@@ -387,61 +387,12 @@ p, .hero-sub {
   padding: 12px 0 22px;
 }
 
-
 /* ===== GREEN BAR UNDER HERO ===== */
 .hero-divider {
   height: 20px;
   background: var(--sage); /* uses your brand sage green */
   width: 100%;
 }
-
-/* ===== MISSION SECTION =====
-.mission {
-  background: var(--beige);
-  color: #1b1b1b;
-  padding: 80px 0;
-  text-align: center;
-}
-
-.mission .container {
-  max-width: 900px;
-}
-
-.mission-quote {
-  font-family: 'Big Shoulders Display', sans-serif;
-  font-size: clamp(22px, 3vw, 35px);
-  font-weight: 700;
-  line-height: 1.4;
-  margin-bottom: 50px;
-  position: relative;
-}
-
-.mission-quote span {
-  color: var(--magenta); /* highlight 'relational by nature' */
-/* }
-
-.mission-quote cite {
-  display: block;
-  margin-top: 15px;
-  font-size: 0.9em;
-  font-weight: 500;
-  opacity: 0.8;
-}
-
-.mission-text h2 {
-  font-family: 'Big Shoulders Display', sans-serif;
-  font-size: clamp(28px, 4vw, 38px);
-  font-weight: 800;
-  margin-bottom: 24px;
-  text-transform: uppercase;
-}
-
-.mission-text p {
-  font-family: 'Big Shoulders Display', sans-serif;
-  font-size: 1.7rem;
-  line-height: 1.7;
-  margin-bottom: 18px;
-} */
 
 /* ===== MISSION SECTION ===== */
 .mission {
@@ -637,6 +588,120 @@ p, .hero-sub {
 .stats-hero {
   background-position: center 55%; /* move background slightly down */
 }
+
+/* ===== WOLVES / COMMUNITIES / TOLERANCE SECTION ===== */
+.values-section {
+  background: var(--sage);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 60px 0 140px;
+}
+
+/* Transparent wolf paw overlay on lower right side */
+.values-section::before,
+.values-section::after {
+  content: "";
+  position: absolute;
+  bottom: -50px; /* lower under the images */
+  right: 0;      /* aligns it to the right */
+  width: 50%;
+  height: 60%;
+  background: url('images/wolfpaw.png') no-repeat bottom right;
+  background-size: contain;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Right paw (original) */
+.values-section::after {
+  right: 0;
+}
+
+/* Left paw (mirrored) */
+.values-section::before {
+  left: 0;
+  transform: scaleX(-1); /* flips it horizontally */
+  background-position: bottom left;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  min-height: 400px;
+}
+
+.value-card {
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  position: relative;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.value-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 0;
+  transition: background 0.3s ease;
+}
+
+.value-card:hover {
+  transform: scale(1.03);
+  filter: brightness(1.05);
+}
+
+.value-card:hover::before {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.value-card h2 {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 800;
+  font-size: clamp(26px, 3vw, 40px);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.value-card p {
+  font-size: 1.1rem;
+  max-width: 320px;
+  margin: 0 auto;
+  z-index: 1;
+  position: relative;
+  opacity: 0.95;
+}
+
+.values-bottom {
+  background: var(--sage);
+  padding: 40px 20px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Responsive grid for smaller screens */
+@media (max-width: 900px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+  .value-card {
+    min-height: 350px;
+  }
+}
+
 
 /* responsive: 3 columns on tablets, 2 on phones */
 @media (max-width: 1000px) {
