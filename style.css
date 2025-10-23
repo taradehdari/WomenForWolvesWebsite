@@ -594,37 +594,31 @@ p, .hero-sub {
   background: var(--sage);
   color: #fff;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   text-align: center;
   padding: 60px 0 140px;
 }
 
-/* Transparent wolf paw overlay on lower right side */
-.values-section::before,
+/* Paw tiles only in the lower portion */
 .values-section::after {
   content: "";
   position: absolute;
-  bottom: -50px; /* lower under the images */
-  right: 0;      /* aligns it to the right */
-  width: 50%;
-  height: 60%;
-  background: url('images/wolfpaw.png') no-repeat bottom right;
-  background-size: contain;
-  opacity: 0.08;
+  left: 0; right: 0; bottom: 0;
+  height: 68%;                  /* how tall the paw area is */
+  background-image: url('images/wolfpaw.png');
+  background-repeat: space;    /* tile the paw */
+  background-size: 380px auto;   /* tile size */
+  background-position: center bottom;
+  opacity: 0.08;                /* transparency */
   pointer-events: none;
   z-index: 0;
 }
 
-/* Right paw (original) */
-.values-section::after {
-  right: 0;
-}
-
-/* Left paw (mirrored) */
-.values-section::before {
-  left: 0;
-  transform: scaleX(-1); /* flips it horizontally */
-  background-position: bottom left;
+/* keep the cards/text above the pattern */
+.values-section .values-grid,
+.values-section .values-bottom {
+  position: relative;
+  z-index: 1;
 }
 
 .values-grid {
@@ -684,12 +678,31 @@ p, .hero-sub {
 }
 
 .values-bottom {
-  background: var(--sage);
+  background: transparent;
   padding: 40px 20px;
   font-size: 1.3rem;
   font-weight: 600;
   max-width: 900px;
   margin: 0 auto;
+}
+
+.values-bottom p{
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 800;
+  letter-spacing: .5px;
+  font-size: clamp(20px, 2.2vw, 28px);
+  color: #fff;                   
+  margin: 0 auto;
+  max-width: 1000px;
+  text-transform: none;          /* keep sentence case */
+}
+
+/* make the paw size responsive so it doesn’t dominate on phones */
+@media (max-width: 900px) {
+  .values-section::before { width: 65%; height: 55%; opacity: 0.08; }
+}
+@media (max-width: 600px) {
+  .values-section::before { left: -80px; width: 75%; height: 50%; }
 }
 
 /* Responsive grid for smaller screens */
