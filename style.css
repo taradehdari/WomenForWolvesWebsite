@@ -15,7 +15,7 @@
 html, body { margin: 0; padding: 0; }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Big Shoulders Display', system-ui, sans-serif;
   color: #1b1b1b;
   background: var(--beige);
   line-height: 1.5;
@@ -30,8 +30,15 @@ a:hover { text-decoration: underline; }
   padding: 0 16px;
 }
 
-/* ====== TYPOGRAPHY ======== */
 
+/* ====== TYPOGRAPHY ======== */
+/* logos */
+.logo {
+  height: 90px;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Big Shoulders Display', sans-serif;
@@ -43,7 +50,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Paragraphs / subtext */
 p, .hero-sub {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Big Shoulders Display', sans-serif;
   font-weight: 400;
   text-transform: none;
   line-height: 1.6;
@@ -79,7 +86,7 @@ p, .hero-sub {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 32px;
+  padding: 0.1px 32px;
   width: 100%;
 }
 
@@ -93,7 +100,8 @@ p, .hero-sub {
 }
 
 .brand .logo {
-  height: 55px;
+  height: 90px;
+  width: auto;
   display: block;
 }
 
