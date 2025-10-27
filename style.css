@@ -837,6 +837,11 @@ p, .hero-sub {
   .stats-hero__grid { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* ===== NEWS SECTION ===== */
+.news .container {
+  background: var(--beige);             
+} 
+
 /* ======= RESPONSIVE TYPOGRAPHY & BRAND SCALING ======= */
 
 /* Medium screens (tablets & small laptops)  */
