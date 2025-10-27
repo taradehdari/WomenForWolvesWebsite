@@ -382,8 +382,10 @@ p, .hero-sub {
 }
 .copyright-line {
   text-align: center;
+  font-family: 'Big Shoulders Display';
+  font-weight: bold;
   color: #666;
-  font-size: 0.9rem;
+  font-size: 1.3rem;
   padding: 12px 0 22px;
 }
 
@@ -596,22 +598,7 @@ p, .hero-sub {
   position: relative;
   overflow: visible;
   text-align: center;
-  padding: 60px 0 140px;
-}
-
-/* Paw tiles only in the lower portion */
-.values-section::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 68%;                  /* how tall the paw area is */
-  background-image: url('images/wolfpaw.png');
-  background-repeat: space;    /* tile the paw */
-  background-size: 380px auto;   /* tile size */
-  background-position: center bottom;
-  opacity: 0.08;                /* transparency */
-  pointer-events: none;
-  z-index: 0;
+  padding: 60px 0 60px;
 }
 
 /* keep the cards/text above the pattern */
@@ -697,13 +684,7 @@ p, .hero-sub {
   text-transform: none;          /* keep sentence case */
 }
 
-/* make the paw size responsive so it doesn’t dominate on phones */
-@media (max-width: 900px) {
-  .values-section::before { width: 65%; height: 55%; opacity: 0.08; }
-}
-@media (max-width: 600px) {
-  .values-section::before { left: -80px; width: 75%; height: 50%; }
-}
+
 
 /* Responsive grid for smaller screens */
 @media (max-width: 900px) {
