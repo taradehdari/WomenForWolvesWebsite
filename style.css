@@ -59,9 +59,10 @@ p, .hero-sub {
 
 /* Hero subtext */
 .hero-content p {
-  font-size: clamp(18px, 2vw, 22px);
+  font-size: clamp(20px, 2vw, 24spx);
   letter-spacing: 0.5px;
   opacity: 0.95;
+  font-weight: bold;
 }
 
 /* Buttons */
@@ -250,6 +251,98 @@ p, .hero-sub {
     display: block;                     /* only show when JS adds .show */
   }
 }
+/* ===== PETITION BANNER ===== */
+.petition-banner {
+  position: fixed;        
+  left: 0;
+  right: 0;
+  top: 80px;              /* place it visually under the header */
+  z-index: 150;           /* higher than the hero video so it's on top */
+
+  background: rgba(56, 8, 53, 0.7);      /* translucent purple tint */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+
+  color: #fff;
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: clamp(20px, 1.2vw, 18px);
+  line-height: 1.4;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+
+  padding: 6px 48px 6px 16px; /* make room for the X button on the right */
+  box-sizing: border-box;
+}
+
+/* scrolling text like your hero marquee */
+.petition-track {
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  display: block;
+}
+
+.petition-marquee {
+  display: inline-block;
+  padding-left: 100%;
+  white-space: nowrap;
+  animation: petitionSlide 50s linear infinite;
+}
+
+.petition-marquee span {
+  display: inline-block;
+  padding-right: 2rem;
+}
+
+@keyframes petitionSlide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+/* close button */
+.petition-close {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 4px 6px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.petition-close:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+@media (max-width: 600px) {
+  .petition-banner {
+    top: 60px;              /* header might be taller on mobile, so nudge down */
+    font-size: 12px;
+    min-height: 40px;
+    padding-right: 44px;
+  }
+  .petition-close {
+    right: 10px;
+  }
+}
+
 
 /* ======== HERO VIDEO SECTION ======== */
 .hero--video {
