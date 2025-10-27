@@ -504,12 +504,17 @@ p, .hero-sub {
   padding: 80px 0;
   text-align: center;
 }
-.mission .container { max-width: 900px; }
+
+.mission .container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
 
 /* Quote */
 .mission-quote {
   font-family: 'Big Shoulders Display', sans-serif;
-  font-size: clamp(22px, 3vw, 35px);
+  font-size: clamp(24px, 3.2vw, 38px);
   font-weight: 700;
   line-height: 1.4;
   margin-bottom: 50px;
@@ -518,74 +523,91 @@ p, .hero-sub {
 .mission-quote cite {
   display: block;
   margin-top: 15px;
-  font-size: 0.9em;
+  font-size: 1em;
   font-weight: 500;
   opacity: 0.8;
 }
 
-/* Title flanked by wolves */
+/* ===== Centered Title with Wolves ===== */
 .mission-text {
-  display: grid;
-  grid-template-columns: auto 1fr auto;  /* left wolf | title | right wolf */
-  align-items: center;
-  justify-items: center;
-  gap: 12px 16px;
-}
-
-/* first wolf image (left) */
-.mission-text > .wolf-img:nth-of-type(1) {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-/* title in the middle */
-.mission-text > h2 {
-  grid-column: 2;
-  grid-row: 1;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px 60px;
+  text-align: center;
   font-family: 'Big Shoulders Display', sans-serif;
-  font-size: clamp(28px, 4vw, 38px);
-  font-weight: 800;
-  margin: 0 0 10px 0; /* small bottom space before paragraphs */
+}
+
+/* Row: wolf | OUR MISSION | wolf */
+.mission-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  margin: 20px 0 40px;
+  flex-wrap: nowrap;
+}
+
+/* Title text */
+.mission-heading h2 {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 900;
+  font-size: clamp(40px, 5vw, 60px);
+  line-height: 1.1;
+  letter-spacing: 1px;
   text-transform: uppercase;
+  color: #1b1b1b;
+  margin: 0;
+  white-space: nowrap;
 }
 
-/* second wolf image (right) — mirrored */
-.mission-text > .wolf-img:nth-of-type(2) {
-  grid-column: 3;
-  grid-row: 1;
-  transform: scaleX(-1);
-}
-
-/* wolf image sizing + optional sage tint */
-.wolf-img {
-  width: 70px;
+/* Wolf logos */
+.mission-heading .wolf-img {
+  width: 150px;
   height: auto;
   flex-shrink: 0;
 }
 
-/* paragraphs span full width beneath the title row */
-.mission-text p {
-  grid-column: 1 / -1;
-  font-family: 'Big Shoulders Display', sans-serif; /* your choice */
-  font-size: 1.7rem;
-  line-height: 1.7;
-  margin: 10px 0 18px;
+.mission-heading .right {
+  transform: scaleX(-1);
 }
 
-/* mobile: stack nicely */
+/* Paragraphs below */
+.mission-text p {
+  max-width: 1100px;
+  margin: 0 auto 24px;
+  font-size: clamp(20px, 1.1vw, 24px);
+  line-height: 1.7;
+  color: #1b1b1b;
+}
+
+/* ===== Responsive Adjustments ===== */
 @media (max-width: 700px) {
-  .mission-text {
-    grid-template-columns: 1fr;
+  .mission .container {
+    max-width: 100%;
+    padding: 0 20px;
   }
-  .mission-text > .wolf-img:nth-of-type(1),
-  .mission-text > h2,
-  .mission-text > .wolf-img:nth-of-type(2) {
-    grid-column: 1;
+
+  /* keep row layout even on mobile */
+  .mission-heading {
+    flex-wrap: nowrap;         /* don't wrap under the title */
+    flex-direction: row;       /* stay in a row */
+    gap: 12px;                 /* tighter gap so it fits */
   }
-  .mission-text > .wolf-img:nth-of-type(2) {
-    transform: none; /* no mirror on stacked layout */
+
+  .mission-heading .wolf-img {
+    width: 90px;               /* smaller wolves for phones */
   }
-  .wolf-img { width: 60px; }
+
+  .mission-heading h2 {
+    font-size: clamp(28px, 6vw, 32px);
+    white-space: nowrap;       /* don't let the title break in half */
+    text-align: center;
+  }
+
+  .mission-text p {
+    font-size: clamp(18px, 1.5vw, 20px);
+    line-height: 1.6;
+  }
 }
 
 
