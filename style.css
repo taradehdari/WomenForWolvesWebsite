@@ -467,20 +467,26 @@ p, .hero-sub {
   margin-top: 40px;
   background: var(--beige);
 }
+
 .logos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 22px;
-  align-items: center;
-  justify-items: center;
-  padding: 28px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* horizontally centers everything */
+  align-items: center;     /* vertically aligns them */
+  gap: 40px;               /* space between logos */
+  padding: 40px 20px;
 }
+
 .logos img {
-  width: 100px;
-  height: 40px;
-  border-radius: 6px;
-  background: #eee;
+  max-width: 160px;     /* let them be bigger */
+  max-height: 80px;     /* limit the tall ones */
+  width: auto;
+  height: auto;
+  object-fit: contain;  /* keep aspect ratio */
+  background: transparent;
+  border-radius: 0;
 }
+
 .copyright-line {
   text-align: center;
   font-family: 'Big Shoulders Display', sans-serif;
