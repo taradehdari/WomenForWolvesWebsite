@@ -1,50 +1,51 @@
 /* ===== WOMEN FOR WOLVES TEAM PAGE THEME ===== */
 
 :root {
-  --sage: #5D7467;
-  --magenta: #976583;
-  /* --black: #000000; */
-  --beige: #f5f1eb;
-  /* --card-bg: #f5f1eb; */
-  --card-bg: #fffdfb;
+  --lime: #CAFC00;     /* neon lime */
+  --magenta: #CB6BE6;  /* magenta */
+  --black: #000000;
+  --white: #ffffff;
+  --card-bg: #0d0d0d;  /* dark charcoal for cards */
 }
 
 /* ===== BASE ===== */
 body {
-  background-color: var(--beige);
-  color: #2b2b2b;
+  background-color: var(--black);
+  color: var(--white);
   font-family: "Big Shoulders Display", sans-serif;
   font-weight: 400;
-  letter-spacing: 0.02em;
-  line-height: 1.4;
+  letter-spacing: 0.03em;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  text-align: center;
 }
 
 /* ===== INTRO SECTION ===== */
 .team-intro-wrap {
-  background-color: var(--beige);
-  padding: 3rem 1rem 2rem;
-  border-top: 6px solid var(--magenta); /* thin magenta band across top of whole page */
+  background-color: var(--black);
+  padding: 4rem 1rem 3rem;
+  border-top: 8px solid var(--lime); /* bright lime band across top */
 }
 
 .team-intro-inner {
   max-width: 1400px;
   margin: 0 auto;
-  text-align: center;
 }
 
 .meet-headline {
-  font-size: clamp(2.5rem, 1vw + 2rem, 3.5rem);
-  font-weight: 800;
-  color: var(--sage);
+  font-size: clamp(3.5rem, 5vw, 6rem);   /* way bigger title */
+  font-weight: 900;
+  color: var(--lime);
   text-transform: uppercase;
+  letter-spacing: 2px;
   margin: 0;
+  text-shadow: 0 0 20px rgba(202,252,0,0.5);
 }
 
 /* ===== BIOS GRID SECTION ===== */
 .team-bios-wrap {
-  background-color: var(--beige);
-  padding: 2rem 1rem 4rem;
+  background-color: var(--black);
+  padding: 4rem 1rem 6rem;
 }
 
 .team-bios-grid {
@@ -52,7 +53,7 @@ body {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 /* ===== INDIVIDUAL CARD ===== */
@@ -61,13 +62,13 @@ body {
   flex-direction: column;
   background-color: var(--card-bg);
   border-radius: 1rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-  padding: 1.5rem 1.5rem 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  padding: 2rem 2rem 3rem;
   position: relative;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 2px solid rgba(203,107,230,0.3); /* subtle magenta border */
 }
 
-/* magenta accent bar at top of each card */
 .bio-col::before {
   content: "";
   position: absolute;
@@ -81,70 +82,97 @@ body {
 }
 
 .bio-col:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 0 35px rgba(202,252,0,0.4);
+  border-color: var(--lime);
 }
 
 /* image at top of card */
 .bio-img--top {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   width: 100%;
+  height: 350px;
   border-radius: 0.75rem;
   object-fit: cover;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
 }
 
-/* text blocks inside card */
+/* ===== TEXT INSIDE CARD ===== */
 .bio-name {
-  font-size: 1.4rem;
-  font-weight: 800;
-  color: var(--magenta);
+  font-size: clamp(1.8rem, 2.5vw, 2.5rem);  /* larger name */
+  font-weight: 900;
+  color: var(--lime);
   text-transform: uppercase;
   margin: 0 0 0.4rem;
   line-height: 1.2;
+  letter-spacing: 1px;
 }
 
 .bio-role {
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  color: var(--sage);
+  color: var(--magenta);
   text-transform: uppercase;
-  letter-spacing: 0.07em;
-  margin-bottom: 1rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 1.2rem;
   line-height: 1.3;
 }
 
 .bio-text {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 500;
-  color: #222;
-  line-height: 1.5;
+  color: var(--white);
+  line-height: 1.7;
   margin: 0;
+  opacity: 0.9;
 }
 
 /* ===== LINKS ===== */
 a {
-  color: var(--magenta);
+  color: var(--lime);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
+  transition: color .2s ease, text-shadow .2s ease;
 }
 
 a:hover {
-  color: var(--sage);
-  text-decoration: underline;
+  color: var(--magenta);
+  text-shadow: 0 0 8px rgba(203,107,230,0.6);
 }
 
 /* ===== RESPONSIVE GRID ===== */
 @media (min-width: 700px) {
   .team-bios-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    gap: 2.5rem;
   }
 }
 
 @media (min-width: 1100px) {
   .team-bios-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem 2rem;
+    gap: 3rem 3rem;
   }
+}
+
+/* ===== BUTTON (OPTIONAL if you have any links/buttons) ===== */
+.button {
+  display: inline-block;
+  background: var(--lime);
+  color: var(--black);
+  padding: 1rem 2.5rem;
+  border-radius: 999px;
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-top: 2rem;
+  box-shadow: 0 0 25px rgba(202,252,0,0.6);
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.button:hover {
+  background: var(--magenta);
+  color: var(--white);
+  transform: scale(1.08);
+  box-shadow: 0 0 35px rgba(203,107,230,0.6);
 }
