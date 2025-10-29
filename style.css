@@ -400,7 +400,7 @@ p,
 
 @media (max-width: 600px) {
   .petition-banner {
-    top: 60px;              /* header might be taller on mobile */
+    top: 110px;             
     font-size: 12px;
     min-height: 40px;
     padding-right: 44px;
