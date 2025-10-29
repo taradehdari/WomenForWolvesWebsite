@@ -816,141 +816,151 @@ p,
 }
 @media (max-width: 640px) {
   .stats-hero__grid { grid-template-columns: repeat(2, 1fr); }
+
 }
 
 
-/* ===== WOLVES / COMMUNITIES / TOLERANCE SECTION ===== */
-.values-section {
-  position: relative;
+
+/* ===== VALUES SECTION FULL-WIDTH ROW (PHOTO CARD + NOTE CARD) ===== */
+/* SECTION WRAPPER */
+.values-section2 {
+  background: var(--black);
+  padding: 60px 0;        /* no giant left/right padding, just top/bottom */
   color: var(--white);
-  text-align: center;
-  padding: 0;                    /* remove big padding at parent */
-  background: var(--black);      /* outer stays black like page */
-  border-top: 8px solid var(--lime);    /* lime bar on top */
-  border-bottom: 8px solid var(--lime); /* lime bar on bottom */
+  font-family: 'Big Shoulders Display', sans-serif;
 }
 
-/* inner wrapper that sits between the lime bars */
-.values-inner {
-  max-width: 1400px;
-  margin: 0 auto;
-  background: var(--black);      /* keep inside black */
-  padding: 60px 0 60px;
-  position: relative;
-  border-left: 8px solid var(--lime);   /* lime bar on the left */
-  border-right: 8px solid var(--lime);  /* lime bar on the right */
-  box-sizing: border-box;
-  z-index: 1;
-}
-
-/* keep the cards/text above any overlays */
-.values-inner .values-grid,
-.values-inner .values-bottom {
-  position: relative;
-  z-index: 1;
-  color: var(--white);
-}
-
-.values-grid {
+/* THE ROW OF 3 CARDS */
+.values-grid2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  min-height: 400px;
+  /* this makes them stretch across wide screens */
+  max-width: 3000px;
+  width: 100%;
+  margin: 0 auto;
+  gap: 10px;
+  /* kill the side padding so they can breathe out horizontally */
+  padding: 0 10px;
+  align-items: start;
 }
 
-.value-card {
-  background-size: cover;
-  background-position: center;
+/* EACH CARD CONTAINER */
+.values-item {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   align-items: center;
-  text-align: center;
-  padding: 40px 20px;
-  position: relative;
-  transition: transform 0.3s ease, filter 0.3s ease;
-  color: var(--white);
+  /* let them fill column width instead of capping them narrow */
+  width: 100%;
+  max-width: 100%,
 }
 
-.value-card::before {
-  content: "";
+/* PHOTO CARD */
+.values-photo {
+  width: 100%;
+  min-height: 600px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border: 4px solid var(--lime);
+  border-radius: 16px;
+  overflow: hidden;
+
+  box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 24px 16px;
+}
+
+.values-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0,0,0,0.45);
   z-index: 0;
-  transition: background 0.3s ease;
 }
 
-.value-card:hover {
-  transform: scale(1.03);
-  filter: brightness(1.05);
-}
-
-.value-card:hover::before {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.value-card h2 {
-  font-family: 'Big Shoulders Display', sans-serif;
-  font-weight: 800;
-  font-size: clamp(26px, 3vw, 40px);
+.values-headline {
+  position: relative;
+  z-index: 3;
+  color: var(--lime);
   text-transform: uppercase;
-  margin-bottom: 10px;
-  position: relative;
-  z-index: 1;
-  color: var(--lime); /* neon lime titles */
-}
-
-.value-card p {
-  font-size: 1.1rem;
-  max-width: 320px;
-  margin: 0 auto;
-  z-index: 1;
-  position: relative;
-  opacity: 0.95;
-  color: var(--white);
-}
-
-.values-bottom {
-  background: transparent;
-  padding: 40px 20px;
-  font-size: 1.3rem;
-  font-weight: 600;
-  max-width: 900px;
-  margin: 0 auto;
-  color: var(--white);
-}
-
-.values-bottom p {
-  font-family: 'Big Shoulders Display', sans-serif;
   font-weight: 800;
-  letter-spacing: .5px;
-  font-size: clamp(20px, 2.2vw, 28px);
-  color: var(--white);
-  margin: 0 auto;
-  max-width: 1000px;
-  text-transform: none;
+  font-size: clamp(32px, 1.4vw, 40px);
+  line-height: 1.15;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.8);
+  margin-bottom: 100px; /* places headline above note box */
+  align-self: center; /* ensures center alignment */
+  text-align: center;
+  /* max-width: 90%; */
 }
 
-/* Responsive grid for smaller screens */
-@media (max-width: 900px) {
-  .values-grid {
+/* NOTE CARD */
+.values-note {
+  position: relative;
+  background: #0d0d0d;           /* charcoal */
+  border-radius: 12px;
+  border: 3px solid var(--magenta);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.9);
+  margin-top: -100px;
+  padding: 16px 14px;
+  width: 400px;
+  height: 250px;
+  box-sizing: border-box;
+  max-width: 480px;
+  text-align: center;
+  z-index: 2;
+  color: var(--white);
+  font-family: 'Big Shoulders Display', sans-serif;
+}
+
+.values-note p {
+  margin: 0;
+  font-size: clamp(14px, 0.9vw, 15px);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--white);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+  letter-spacing: 0.4px;
+}
+
+/* TABLET: go 2 across so it doesn't squish */
+@media (max-width: 1000px) {
+  .values-grid2 {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 1000px;
+    gap: 32px;
+    padding: 0 10px;  /* margin from the edge of screen */
+  }
+}
+
+/* PHONE: stack all 3 vertically and center */
+@media (max-width: 650px) {
+  .values-grid2 {
     grid-template-columns: 1fr;
-  }
-  .value-card {
-    min-height: 350px;
-  }
-
-  /* on mobile the thick left/right borders can feel too heavy,
-     so we can slim them or drop them */
-  .values-inner {
-    border-left: 4px solid var(--lime);
-    border-right: 4px solid var(--lime);
-    padding: 40px 0 40px;
+    max-width: 500px;
+    padding: 0 16px;
   }
 
-  .values-section {
-    border-top-width: 4px;
-    border-bottom-width: 4px;
+  .values-photo {
+    min-height: 300px;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .values-headline {
+    text-align: center;
+  }
+
+  .values-note {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
