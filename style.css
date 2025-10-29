@@ -86,7 +86,7 @@ p,
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 300;
   background: var(--black);   /* black bar */
   color: var(--white);
   border-bottom: 0;
@@ -241,6 +241,8 @@ p,
   color: var(--white);
   padding: 8px 16px 16px;
   border-top: 1px solid var(--lime);
+  position: relative;
+  z-index: 400;
 }
 
 .mobile-nav a,
