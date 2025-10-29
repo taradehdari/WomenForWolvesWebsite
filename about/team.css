@@ -3,7 +3,9 @@
 :root {
   --sage: #5D7467;
   --magenta: #976583;
+  /* --black: #000000; */
   --beige: #f5f1eb;
+  /* --card-bg: #f5f1eb; */
   --card-bg: #fffdfb;
 }
 
