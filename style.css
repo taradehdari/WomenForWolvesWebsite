@@ -141,6 +141,31 @@ p, .hero-sub {
   appearance: none;
 }
 
+/* top-level nav hover: text turns sage green */
+.site-nav a:hover,
+.menu-button:hover {
+  color: var(--purple);
+  text-decoration: none;
+  background: none;
+  font-size: 2rem;
+}
+.site-nav a,
+.menu-button {
+  transition: color 0.2s ease;
+}
+/* brand hover: text turns sage green */
+.brand:hover .brand-text {
+  color: var(--purple);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-size: 2rem;
+}
+
+/* keep logo image unaffected */
+.brand:hover .logo {
+  filter: none;
+}
+
 /* Dropdown Menus */
 .menu { 
   position: relative; 
