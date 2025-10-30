@@ -369,7 +369,6 @@ body.has-banner .site-header {
 
 .petition-marquee {
   display: inline-block;
-  /* padding-left: 100%; */
   white-space: nowrap;
   animation: petitionSlide 80s linear infinite;
   transform: translateX(50%); 
@@ -604,9 +603,6 @@ body.has-banner .site-header {
   object-fit: contain;
   background: transparent;
   border-radius: 0;
-  /* optional: apply filter if logos are dark and you want them white-ish
-     filter: brightness(0) invert(1);
-  */
 }
 
 .copyright-line {
@@ -620,122 +616,113 @@ body.has-banner .site-header {
 
 
 /* ===== MISSION SECTION ===== */
-.mission {
+.mission-aka {
   background: var(--black);
   color: var(--white);
-  padding: 80px 0;
-  text-align: center;
+  padding: clamp(72px, 9vw, 140px) 0;
+  border-top: 4px solid var(--lime);
+  border-bottom: 4px solid var(--lime);
 }
 
-.mission .container {
-  max-width: 1300px;
+/* narrow, left-aligned reading column centered on page */
+.mission-aka__wrap {
+  width: min(980px, 92vw);     /* similar readable column width */
   margin: 0 auto;
-  padding: 0 40px;
-}
-
-/* Quote */
-.mission-quote {
+  /* left-aligned content like the white reference */
+  text-align: left;
   font-family: 'Big Shoulders Display', sans-serif;
-  font-size: clamp(24px, 3.2vw, 38px);
-  font-weight: 700;
-  line-height: 1.4;
-  margin-bottom: 50px;
-  color: var(--white);
-}
-.mission-quote span { 
-  color: var(--magenta);   /* highlight magenta */
-}
-.mission-quote cite {
-  display: block;
-  margin-top: 15px;
-  font-size: 1em;
-  font-weight: 500;
-  opacity: 0.8;
-  color: var(--white);
 }
 
-/* Centered Title with Wolves */
-.mission-text {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0 40px 60px;
-  text-align: center;
-  font-family: 'Big Shoulders Display', sans-serif;
-  color: var(--white);
-}
 
-/* Row: wolf | OUR MISSION | wolf */
-.mission-heading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-  margin: 20px 0 40px;
-  flex-wrap: nowrap;
-}
-
-/* Title text */
-.mission-heading h2 {
-  font-family: 'Big Shoulders Display', sans-serif;
-  font-weight: 900;
-  font-size: clamp(40px, 5vw, 60px);
-  line-height: 1.1;
-  letter-spacing: 1px;
+.mission-aka__kicker {
+  color: var(--magenta);
   text-transform: uppercase;
-  color: var(--lime);   /* lime title */
+  font-weight: 900;
+  letter-spacing: 1px;
+  font-size: clamp(46px, 2.2vw, 48px);
+  margin: 0 0 10px;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+/* big left-aligned title */
+.mission-aka__headline {
   margin: 0;
-  white-space: nowrap;
-}
-
-/* Wolf logos */
-.mission-heading .wolf-img {
-  width: 150px;
-  height: auto;
-  flex-shrink: 0;
-  /* if want them lime-tinted: */
-  /* filter: brightness(0) saturate(100%) invert(83%) sepia(47%) saturate(676%) hue-rotate(35deg) brightness(110%) contrast(101%);
-  */
-}
-.mission-heading .right {
-  transform: scaleX(-1);
-}
-
-/* Paragraphs below */
-.mission-text p {
-  max-width: 1100px;
-  margin: 0 auto 24px;
-  font-size: clamp(20px, 1.1vw, 24px);
-  line-height: 1.7;
   color: var(--white);
+  font-weight: 800;
+  line-height: 1.15;
+  font-size: clamp(36px, 2.2vw, 38px);
+  text-shadow: 0 2px 10px rgba(0,0,0,.55);
 }
 
-/* ===== Responsive Adjustments for Mission ===== */
+/* divider */
+.mission-aka__rule{
+  border: 0;
+  height: 8px;
+  margin: clamp(18px, 2.2vw, 28px) 0 clamp(26px, 3vw, 38px);
+  background: linear-gradient(90deg, var(--magenta), var(--lime));
+  opacity: .6;
+}
+
+/* body copy */
+.mission-aka__body p {
+  margin: 0 0 18px;
+  color: rgba(255,255,255,.92);
+  font-weight: 500;
+  letter-spacing: .2px;
+  line-height: 1.65;
+  font-size: clamp(24px, 1.6vw, 28px);
+  text-shadow: 0 1px 6px rgba(0,0,0,.4);
+}
+
+/* subhead above bullets */
+.mission-aka__subhead {
+  margin: 0 0 10px;
+  color: var(--white);
+  font-weight: 800;
+  font-size: clamp(30px, 2.2vw, 32px);
+}
+
+/* list like reference (no default bullets; custom dots) */
+.mission-aka__list {
+  list-style: none;
+  margin: 0 0 18px 0;
+  padding: 0;
+  font-size: clamp(24px, 1.6vw, 28px);
+  color: rgba(255,255,255,.92);
+}
+.mission-aka__list li {
+  position: relative;
+  padding-left: 28px;
+  margin: 0 0 10px;
+  line-height: 1.6;
+}
+.mission-aka__list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: .68em;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--magenta);
+  box-shadow: 0 0 8px rgba(202,252,0,.6);
+}
+
+/* agenda line (accent) */
+.mission-aka__agenda {
+  margin-top: 8px;
+  font-weight: 800;
+  color: var(--magenta);
+  font-size: clamp(24px, 1.6vw, 28px);
+}
+
+/* inline emphasis helpers */
+.txt-lime { color: var(--lime); }
+.txt-magenta { color: var(--magenta); }
+
+/* small-screen polish */
 @media (max-width: 700px) {
-  .mission .container {
-    max-width: 100%;
-    padding: 0 20px;
-  }
-
-  .mission-heading {
-    flex-wrap: nowrap;
-    flex-direction: row;
-    gap: 12px;
-  }
-
-  .mission-heading .wolf-img {
-    width: 90px;
-  }
-
-  .mission-heading h2 {
-    font-size: clamp(28px, 6vw, 32px);
-    white-space: nowrap;
-    text-align: center;
-  }
-
-  .mission-text p {
-    font-size: clamp(18px, 1.5vw, 20px);
-    line-height: 1.6;
-  }
+  .mission-aka__wrap { width: min(680px, 92vw); }
+  .mission-aka__headline { font-size: clamp(26px, 7vw, 36px); }
 }
 
 
