@@ -455,6 +455,65 @@
       }
     });
   </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const nums = Array.from(document.querySelectorAll('.stats-hero .num'));
+    if (!nums.length) return;
+
+    // Prep: read target number & suffix (e.g., "+"), then reset display to 0
+    nums.forEach(el => {
+      const m = el.textContent.trim().match(/(\d[\d,]*)(.*)/);
+      const end = m ? parseInt(m[1].replace(/,/g, ''), 10) : 0;
+      const suf = m && m[2] ? m[2] : '';
+      el.dataset.end = String(end);
+      el.dataset.suffix = suf;
+      el.dataset.played = '0';
+      el.textContent = '0' + suf;
+    });
+
+    const fmt = new Intl.NumberFormat('en-US');
+    const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+
+    function animate(el) {
+      if (el.dataset.played === '1') return;
+      el.dataset.played = '1';
+
+      const end = +el.dataset.end;
+      const suffix = el.dataset.suffix || '';
+      const duration = 1400; // ms
+      const startTime = performance.now();
+
+      function tick(now) {
+        const t = Math.min(1, (now - startTime) / duration);
+        const value = Math.round(end * easeOutCubic(t));
+        el.textContent = fmt.format(value) + suffix;
+        if (t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    function inViewport(el) {
+      const r = el.getBoundingClientRect();
+      // Trigger when top enters lower 75% of viewport and element isn’t off-screen
+      return r.top < window.innerHeight * 0.75 && r.bottom > 0;
+    }
+
+    function check() {
+      nums.forEach(el => { if (inViewport(el)) animate(el); });
+      // Remove listeners when all done
+      if (nums.every(el => el.dataset.played === '1')) {
+        window.removeEventListener('scroll', check);
+        window.removeEventListener('resize', check);
+      }
+    }
+
+    window.addEventListener('scroll', check, { passive: true });
+    window.addEventListener('resize', check);
+    check(); // run once on load in case it's already visible
+  });
+  </script>
+
+
 
 </body>
 </html>
