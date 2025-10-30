@@ -323,7 +323,7 @@ p,
   position: fixed;        
   left: 0;
   right: 0;
-  top: 80px;              /* visually under the header */
+  top: 0px;              /* visually under the header */
   z-index: 150;
 
   background: rgba(203,107,230,0.60);  /* translucent magenta tint */
@@ -335,6 +335,7 @@ p,
   align-items: center;
   overflow: hidden;
   border-bottom: 1px solid var(--lime);
+  border-top: 1px solid var(--lime);
 
   color: var(--white);
   font-family: 'Big Shoulders Display', sans-serif;
@@ -347,6 +348,11 @@ p,
 
   padding: 6px 48px 6px 16px; /* space for the X button on the right */
   box-sizing: border-box;
+}
+
+/* Push header down only when banner exists */
+body.has-banner .site-header {
+  margin-top: 65px;           /* same height as banner */
 }
 
 /* scrolling text like marquee */
@@ -400,13 +406,15 @@ p,
 
 @media (max-width: 600px) {
   .petition-banner {
-    top: 110px;             
     font-size: 12px;
     min-height: 40px;
     padding-right: 44px;
   }
   .petition-close {
     right: 10px;
+  }
+  body.has-banner .site-header {
+    margin-top: 40px;
   }
 }
 

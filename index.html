@@ -11,6 +11,25 @@
 </head>
 <body>
 
+  <!-- ===== PETITION BANNER ===== -->
+  <section class="petition-banner" id="actionBanner">
+    <a href="https://www.google.com/" target="_blank" class="petition-track" aria-label="Sign the petition">
+      <div class="petition-marquee">
+        <span>END WILDLIFE TRAPPING — CLICK HERE TO SIGN THE PETITION </span>
+        <span>END WILDLIFE TRAPPING — CLICK HERE TO SIGN THE PETITION </span>
+        <span>END WILDLIFE TRAPPING — CLICK HERE TO SIGN THE PETITION </span>
+        <span>END WILDLIFE TRAPPING — CLICK HERE TO SIGN THE PETITION </span>
+        <span>END WILDLIFE TRAPPING — CLICK HERE TO SIGN THE PETITION </span>
+        <span>END WILDLIFE TRAPPING — CLICK HERE TO SIGN THE PETITION </span>
+        <span>END WILDLIFE TRAPPING — CLICK HERE TO SIGN THE PETITION </span>
+        <span>END WILDLIFE TRAPPING — CLICK HERE TO SIGN THE PETITION </span>
+        <span>END WILDLIFE TRAPPING — CLICK HERE TO SIGN THE PETITION </span>
+        <span>END WILDLIFE TRAPPING — CLICK HERE TO SIGN THE PETITION </span>
+      </div>
+    </a>
+    <button class="petition-close" aria-label="Close banner" id="bannerClose">✕</button>
+  </section>
+
   <!-- ===== HEADER / YOUR ORIGINAL TABS ===== -->
   <header class="site-header">
   <div class="header-inner">
@@ -98,24 +117,6 @@
   </nav>
 </header>
 
-<!-- ===== PETITION BANNER ===== -->
-<section class="petition-banner" id="actionBanner">
-  <a href="https://www.google.com/" target="_blank" class="petition-track" aria-label="Sign the petition">
-    <div class="petition-marquee">
-      <span>🚫 END WILDLIFE TRAPPING — CLICK HERE TO SIGN THE PETITION </span>
-      <span>🚫 END WILDLIFE TRAPPING — CLICK HERE TO SIGN THE PETITION </span>
-      <span>🚫 END WILDLIFE TRAPPING — CLICK HERE TO SIGN THE PETITION </span>
-      <span>🚫 END WILDLIFE TRAPPING — CLICK HERE TO SIGN THE PETITION </span>
-      <span>🚫 END WILDLIFE TRAPPING — CLICK HERE TO SIGN THE PETITION </span>
-      <span>🚫 END WILDLIFE TRAPPING — CLICK HERE TO SIGN THE PETITION </span>
-      <span>🚫 END WILDLIFE TRAPPING — CLICK HERE TO SIGN THE PETITION </span>
-      <span>🚫 END WILDLIFE TRAPPING — CLICK HERE TO SIGN THE PETITION </span>
-      <span>🚫 END WILDLIFE TRAPPING — CLICK HERE TO SIGN THE PETITION </span>
-      <span>🚫 END WILDLIFE TRAPPING — CLICK HERE TO SIGN THE PETITION </span>
-    </div>
-  </a>
-  <button class="petition-close" aria-label="Close banner" id="bannerClose">✕</button>
-</section>
 
 <!-- ===== VIDEO HERO SECTION ===== -->
 <section class="hero hero--video">
@@ -383,9 +384,14 @@
       const banner = document.getElementById('actionBanner');
       const closeBtn = document.getElementById('bannerClose');
 
+      // Mark that the banner is present so CSS pushes header down
+      document.body.classList.add('has-banner');
+
       if (banner && closeBtn) {
         closeBtn.addEventListener('click', () => {
+          // Hide the banner and remove the offset class
           banner.style.display = 'none';
+          document.body.classList.remove('has-banner');
         });
       }
     });
