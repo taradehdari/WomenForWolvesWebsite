@@ -909,7 +909,7 @@ body.has-banner .site-header { margin-top: 65px; }
 /* PHOTO CARD */
 .values-photo {
   width: 100%;
-  min-height: 600px;
+  min-height: 520px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -955,19 +955,21 @@ body.has-banner .site-header { margin-top: 65px; }
   box-shadow: 0 16px 40px rgba(0,0,0,0.9);
   margin-top: -100px;
   padding: 16px 14px;
-  width: 400px;
-  height: 250px;
+  width: 250px;
+  height: 240px;
   box-sizing: border-box;
-  max-width: 480px;
+  max-width: 88%;
+  min-height: 92px;
   text-align: center;
-  z-index: 2;
+  z-index: 3;
+  bottom: 20px;
   color: var(--white);
   font-family: 'Big Shoulders Display', sans-serif;
 }
 
 .values-note p {
   margin: 0;
-  font-size: clamp(14px, 0.9vw, 15px);
+  font-size: clamp(20px, 0.9vw, 21px);
   font-weight: 600;
   line-height: 1.4;
   color: var(--white);
@@ -985,30 +987,47 @@ body.has-banner .site-header { margin-top: 65px; }
   }
 }
 
-/* PHONE: stack all 3 vertically and center */
+/* PHONE: stack all 3 vertically and keep boxes compact (proportionally scaled) */
 @media (max-width: 650px) {
   .values-grid2 {
     grid-template-columns: 1fr;
-    max-width: 500px;
-    padding: 0 16px;
+    max-width: 480px;
+    padding: 0 12px;
   }
 
   .values-photo {
-    min-height: 300px;
+    min-height: 340px; /* slightly shorter to match box ratio */
     justify-content: center;
     align-items: flex-end;
   }
 
-  .values-headline { text-align: center; }
+  .values-headline {
+    text-align: center;
+    margin-bottom: 24px;
+  }
 
   .values-note {
-    width: 100%;
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    transform: none;
+
+    /* proportions scaled ~0.7× from desktop values */
+    margin: -70px auto 16px;     /* was -100px, scaled down */
+    width: 70%;                  /* keeps it narrower like desktop */
+    max-width: 225px;            /* proportional to 250px desktop */
+    height: 170px;               /* proportional to 240px desktop */
+    padding: 12px 10px;          /* scaled down padding */
+    border-radius: 10px;         /* slightly smaller curve */
+    box-shadow: 0 10px 28px rgba(0,0,0,0.9);
+  }
+
+  .values-note p {
+    font-size: 17px;             /* scale text slightly smaller */
+    line-height: 1.3;
   }
 }
-
 
 /* ===== NEWS SECTION ===== */
 .news .container {
