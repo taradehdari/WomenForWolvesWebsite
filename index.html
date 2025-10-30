@@ -272,40 +272,34 @@
   </div>
 </section>
 
-  <!-- ===== NEWS ROW ===== -->
-  <section class="news container">
-    <h2>Wolf News</h2>
-
-    <div class="news-row">
-      <article class="news-card">
-        <img src="images/news1.jpg" alt="">
-        <h3><a href="news.html">How to Start Your Own Wolf-Dog Sanctuary Webinar</a></h3>
-        <a class="read" href="news.html">Read More →</a>
-        <time>Sep 23, 2025</time>
-      </article>
-
-      <article class="news-card">
-        <img src="images/news2.jpg" alt="">
-        <h3><a href="news.html">HR 4754 Threatens to Permanently Delist Wolves</a></h3>
-        <a class="read" href="news.html">Read More →</a>
-        <time>Sep 11, 2025</time>
-      </article>
-
-      <article class="news-card">
-        <img src="images/news3.jpg" alt="">
-        <h3><a href="news.html">A Victory for Wolves</a></h3>
-        <a class="read" href="news.html">Read More →</a>
-        <time>Aug 15, 2025</time>
-      </article>
-
-      <article class="news-card">
-        <img src="images/news4.jpg" alt="">
-        <h3><a href="news.html">Don’t Let Montana’s Wolves Die: Act Now</a></h3>
-        <a class="read" href="news.html">Read More →</a>
-        <time>Jul 24, 2025</time>
-      </article>
+<!-- ===== WOLF TERRITORY MAP (BEFORE vs AFTER) ===== -->
+<section class="map-compare">
+  <div class="container container--full">
+    <div class="map-compare__intro">
+      <h2>WOLF TERRITORY: THEN VS. NOW</h2>
+      <p class="map-compare__sub">
+        Drag the handle to see how wolf range changed from <strong>before colonization</strong> to <strong>after colonization</strong>.
+      </p>
     </div>
-  </section>
+
+    <!-- Static SVG map (no pan/zoom) -->
+    <div class="map-wrap">
+      <svg id="wolfMap" class="wolf-svg" viewBox="0 0 1280 780" role="img" aria-label="US map of wolf territory"></svg>
+    </div>
+
+    <!-- Slider -->
+    <div class="map-fade-controls">
+      <span class="map-fade-label">Before Colonization</span>
+      <input id="wolfFade" type="range" min="0" max="100" value="0" aria-label="Before to After slider" />
+      <span class="map-fade-label">After Colonization</span>
+    </div>
+  </div>
+</section>
+
+<!-- D3 for static SVG projection + TopoJSON -->
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+
 
   <!-- ===== WOLVES / COMMUNITIES / TOLERANCE CARDS ROW ===== -->
   <section class="values-section2">
@@ -361,6 +355,41 @@
         </div>
       </div>
 
+    </div>
+  </section>
+ 
+  <!-- ===== NEWS ROW ===== -->
+  <section class="news container">
+    <h2>Wolf News</h2>
+
+    <div class="news-row">
+      <article class="news-card">
+        <img src="images/news1.jpg" alt="">
+        <h3><a href="news.html">How to Start Your Own Wolf-Dog Sanctuary Webinar</a></h3>
+        <a class="read" href="news.html">Read More →</a>
+        <time>Sep 23, 2025</time>
+      </article>
+
+      <article class="news-card">
+        <img src="images/news2.jpg" alt="">
+        <h3><a href="news.html">HR 4754 Threatens to Permanently Delist Wolves</a></h3>
+        <a class="read" href="news.html">Read More →</a>
+        <time>Sep 11, 2025</time>
+      </article>
+
+      <article class="news-card">
+        <img src="images/news3.jpg" alt="">
+        <h3><a href="news.html">A Victory for Wolves</a></h3>
+        <a class="read" href="news.html">Read More →</a>
+        <time>Aug 15, 2025</time>
+      </article>
+
+      <article class="news-card">
+        <img src="images/news4.jpg" alt="">
+        <h3><a href="news.html">Don’t Let Montana’s Wolves Die: Act Now</a></h3>
+        <a class="read" href="news.html">Read More →</a>
+        <time>Jul 24, 2025</time>
+      </article>
     </div>
   </section>
 
@@ -510,5 +539,96 @@
     check(); // run once on load in case it's already visible
   });
   </script>
+  <script>
+  (function(){
+    // Brand colors
+    const MAGENTA = getComputedStyle(document.documentElement).getPropertyValue('--magenta').trim() || '#CB6BE6';
+    const LIME    = getComputedStyle(document.documentElement).getPropertyValue('--lime').trim()    || '#CAFC00';
+
+    // States with established/active wolves "after"
+    const AFTER_STATES = new Set([
+      'Alaska','Arizona','California','Colorado','Idaho','Michigan','Minnesota',
+      'Montana','New Mexico','North Carolina','Oregon','Washington','Wisconsin','Wyoming'
+    ]);
+
+    // Historically no wolves before
+    const NO_BEFORE = new Set(['Hawaii']);
+
+    const svg = d3.select('#wolfMap');
+    const gBefore = svg.append('g').attr('class', 'layer-before');
+    const gAfter  = svg.append('g').attr('class', 'layer-after');
+    const gLines  = svg.append('g').attr('class', 'layer-lines');
+
+    // Responsive sizing via viewBox; we still compute fit for stroke scaling
+    const width  = 1280;
+    const height = 780;
+
+    // Projection: Albers USA (handles AK/HI insets by design)
+    const projection = d3.geoAlbersUsa().translate([width/2, height/2]).scale(1300);
+    const path = d3.geoPath(projection);
+
+    // Load TopoJSON of US states (includes properties.name)
+    const URL = 'https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json';
+
+    d3.json(URL).then(us => {
+      const states = topojson.feature(us, us.objects.states);
+      const nation = topojson.mesh(us, us.objects.nation);
+      const borders = topojson.mesh(us, us.objects.states, (a,b)=>a!==b);
+
+      // Autoscales nicely inside our viewBox
+      const fit = d3.geoPath().projection(projection.fitSize([width,height], states));
+
+      // BEFORE layer: magenta for all states except NO_BEFORE
+      gBefore.selectAll('path.state-before')
+        .data(states.features)
+        .join('path')
+        .attr('class','state-fill state-before')
+        .attr('d', fit)
+        .attr('fill', d => NO_BEFORE.has(d.properties.name) ? 'transparent' : MAGENTA)
+        .attr('opacity', 0.88);
+
+      // AFTER layer: magenta only for AFTER_STATES (start hidden)
+      gAfter.selectAll('path.state-after')
+        .data(states.features.filter(d => AFTER_STATES.has(d.properties.name)))
+        .join('path')
+        .attr('class','state-fill state-after')
+        .attr('d', fit)
+        .attr('fill', MAGENTA)
+        .attr('opacity', 0); // 0 at start (Before)
+
+      // White outlines (state borders + coastline)
+      gLines.append('path').attr('class','state-outline').attr('d', fit(nation));
+      gLines.append('path').attr('class','state-outline').attr('d', fit(borders));
+
+      // Slider fade logic
+      const slider = document.getElementById('wolfFade');
+
+      function setFade(){
+        const t = Number(slider.value)/100; // 0..1
+        const aAfter  = 0.88 * t;
+        const aBefore = 0.88 * (1 - t);
+
+        gBefore.selectAll('.state-before')
+          .attr('opacity', d => NO_BEFORE.has(d.properties.name) ? 0 : aBefore);
+
+        gAfter.selectAll('.state-after')
+          .attr('opacity', aAfter);
+
+        // Pretty track gradient: lime left → white right at handle position
+        const pct = (t*100).toFixed(1) + '%';
+        slider.style.background = `linear-gradient(to right, ${LIME} 0, ${LIME} ${pct}, #000000 ${pct}, #000000 100%)`;
+      }
+      slider.addEventListener('input', setFade);
+      setFade();
+    });
+  })();
+  </script>
+
+
+
+
+
+
+
 </body>
 </html>
