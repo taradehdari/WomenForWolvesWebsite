@@ -519,7 +519,7 @@ body.has-banner .site-header { margin-top: 65px; }
 
 
 /* ========= PARTNERS & FOOTER ========== */
-.partners {
+/* .partners {
   border-top: none;
   margin-top: 40px;
   background: var(--black);
@@ -542,7 +542,7 @@ body.has-banner .site-header { margin-top: 65px; }
   object-fit: contain;
   background: transparent;
   border-radius: 0;
-}
+} */
 
 .copyright-line {
   text-align: center;
