@@ -1238,78 +1238,91 @@ body.has-banner .site-header { margin-top: 65px; }
 .insta {
   background: var(--black);
   color: var(--white);
-  padding: clamp(48px, 8vw, 96px) 0;
+  padding: clamp(36px, 6vw, 80px) 0;
   border-bottom: 1px solid rgba(202,252,0,0.25);
   text-align: center;
 }
 
-.insta__title {
-  font-size: clamp(30px, 5vw, 56px);
-  margin: 0 0 10px;
+/* make the outer wrapper true full-width */
+.insta .container.container--full {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
 }
 
-.insta__sub {
-  font-size: clamp(16px, 2vw, 20px);
-  opacity: 0.9;
-  margin-bottom: clamp(24px, 4vw, 36px);
-}
-
+/* make the feed frame edge-to-edge */
 .insta__grid {
-  max-width: 1100px;
-  margin: 0 auto clamp(32px, 5vw, 60px);
-  border: 3px solid var(--magenta);
-  border-radius: 16px;
-  background: #000;
-  padding: 6px;
-  box-shadow: 0 0 25px rgba(203, 107, 230, 0.25);
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 clamp(28px, 5vw, 56px);
+  border: 0;                 
+  border-radius: 0;        
+  background: transparent;   
+  padding: 0;
+  box-shadow: none;
 }
 
-/* LightWidget iframe responsiveness */
+/* LightWidget iframe sizing */
 .lightwidget-widget {
+  display: block !important;
   width: 100% !important;
-  border: none !important;
+  border: 0 !important;
   overflow: hidden !important;
+
+  min-height: clamp(300px, 35vw, 520px);
 }
 
-/* CTA text + button */
+/* Tweak heights at extremes */
+@media (min-width: 1400px) {
+  .lightwidget-widget { min-height: 420px; }
+}
+@media (max-width: 480px) {
+  .lightwidget-widget { min-height: 520px; }
+}
+
+/* Titles */
+.insta__title { 
+  font-size: clamp(30px, 4vw, 48px); 
+  margin: 0 0 8px; 
+  color: var(--magenta);
+}
+.insta__sub   { 
+  font-size: clamp(20px, 2.2vw, 28px); 
+  margin: 0 0 clamp(18px, 4vw, 28px); 
+}
 .insta__cta-title {
   color: var(--magenta);
   font-size: clamp(28px, 4vw, 44px);
   margin: 8px 0 4px;
 }
-
 .insta__cta-sub {
-  margin: 0 0 14px;
-  font-size: clamp(16px, 2vw, 20px);
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 600;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto clamp(18px, 3vw, 32px);
+  color: rgba(255,255,255,.92);
 }
 
-.insta__handle {
-  color: var(--lime);
-  text-decoration: underline;
+/* CTA */
+.insta__buttons { 
+  display: flex; 
+  justify-content: center; 
+  flex-wrap: wrap; 
+  gap: 12px; 
 }
-.insta__handle:hover {
-  color: var(--white);
+.btn--lime { 
+  background: var(--lime); 
+  color: var(--black); 
+  border-radius: 999px; 
+  font-weight: 900; 
+  letter-spacing: 1px; 
+  padding: 12px 22px; 
+  transition: .3s; 
 }
-
-.insta__buttons {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.btn--lime {
-  background: var(--lime);
-  color: var(--black);
-  border-radius: 999px;
-  font-weight: 900;
-  letter-spacing: 1px;
-  padding: 12px 22px;
-  transition: 0.3s ease;
-}
-.btn--lime:hover {
-  background: var(--magenta);
-  color: var(--white);
+.btn--lime:hover { 
+  background: var(--magenta); 
+  color: var(--white); 
 }
 
 
