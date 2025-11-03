@@ -503,6 +503,41 @@
       </ul>
     </div>
   </section>
+
+  <!-- ===== NEWSLETTER SIGNUP ===== action item!!!!-->
+  <section class="signup" id="newsletter">
+    <div class="container signup__inner">
+      <h2 class="signup__title">Connect with our pack!</h2>
+      <p class="signup__sub">
+        Subscribe to our newsletter for the latest wolf news, updates on our sanctuary & more.
+      </p>
+
+      <!-- Replace `action` with email platform endpoint (Mailchimp) DONT FORGET-->
+      <form class="signup__form" method="post" action="#" novalidate>
+        <label class="visually-hidden" for="nl-first">First Name</label>
+        <input id="nl-first" name="first_name" type="text" placeholder="First Name" autocomplete="given-name" />
+
+        <label class="visually-hidden" for="nl-last">Last Name</label>
+        <input id="nl-last" name="last_name" type="text" placeholder="Last Name" autocomplete="family-name" />
+
+        <label class="visually-hidden" for="nl-email">Email Address</label>
+        <input id="nl-email" name="email" type="email" placeholder="Email Address" autocomplete="email" required />
+
+        <button class="signup__btn" type="submit" aria-label="Subscribe to Women for Wolves newsletter">
+          Subscribe
+        </button>
+      </form>
+
+      <p class="signup__fineprint">
+        We respect your privacy. By subscribing you agree to our <a href="/privacy.html">Privacy Policy</a>.
+      </p>
+
+      <!-- Lightweight success/error message -->
+      <div class="signup__msg" role="status" aria-live="polite" hidden></div>
+    </div>
+  </section>
+
+
   <!-- ===== PARTNERS ===== -->
   <!-- <section class="partners">
     <div class="container logos">
