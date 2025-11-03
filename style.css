@@ -4,6 +4,9 @@
   --magenta: #CB6BE6;  /* magenta */
   --black: #000000;    /* black */
   --white: #ffffff;    /* white */
+
+  /* how much the pull-quote overlaps the section above */
+  --pq-overlap: clamp(48px, 6vw, 96px);
 }
 
 /* utility backgrounds if you want them later */
@@ -628,6 +631,7 @@ body.has-banner .site-header { margin-top: 65px; }
   margin: 0 0 18px 0;
   padding: 0;
   font-size: clamp(24px, 1.6vw, 28px);
+  font-weight: 500;
   color: rgba(255, 255, 255, 0.92);
 }
 .mission-aka__list li {
@@ -966,9 +970,24 @@ body.has-banner .site-header { margin-top: 65px; }
 /* SECTION WRAPPER */
 .values-section2 {
   background: var(--black);
-  padding: 250px 0;
+  padding: clamp(120px, 14vw, 250px) 0;
   color: var(--white);
   font-family: 'Big Shoulders Display', sans-serif;
+  position: relative;
+}
+.values-section2::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: clamp(60px, 10vw, 140px);
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.85) 40%,
+    rgba(0,0,0,0) 100%
+  );
+  z-index: 1;
 }
 
 /* THE ROW OF 3 CARDS */
@@ -1121,29 +1140,60 @@ body.has-banner .site-header { margin-top: 65px; }
 }
 
 
-/* ===== PULL-QUOTE with magenta marks on BOTH sides ===== */
+/* ===== PULL-QUOTE SECTION WITH PHOTO ===== */
 .pullquote {
-  background: transparent;
+  position: relative;
+  overflow: hidden;
+
+  /* background image  */
+  background: var(--black);
+  background-image: var(--bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   color: var(--white);
-  padding: clamp(20px, 4vw, 40px);
   text-align: center;
+
+  /* Seamless flow: pull image up under the previous section */
+  margin-top: calc(-1 * var(--pq-overlap));
+  padding-top: calc(clamp(100px, 18vw, 220px) + var(--pq-overlap));
+  padding-bottom: clamp(100px, 18vw, 220px);
 }
+
+/* dark overlay for readability */
+.pullquote::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: rgba(0, 0, 0, 0.45); /* 0.30 (brighter) ↔ 0.55 (darker) */
+  backdrop-filter: blur(2px);
+}
+
+/* content above overlay */
+.pullquote .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* blockquote & text */
 .pullquote blockquote {
   position: relative;
   margin: 0 auto;
   max-width: 980px;
-  padding: clamp(12px, 1.2vw, 16px) clamp(42px, 6vw, 72px);
+  padding: clamp(20px, 2vw, 40px);
 }
 .pullquote blockquote p {
-  margin: 6px 0 8px;
-  font-size: clamp(24px, 3.2vw, 40px);
+  margin: 10px 0;
+  font-size: clamp(26px, 3vw, 48px);
   font-weight: 800;
   letter-spacing: 0.5px;
+  color: var(--white);
 }
 
-/* Magenta quote marks left & right */
-.pullquote blockquote::before,
-.pullquote blockquote::after {
+/* single magenta opening quote mark */
+.pullquote blockquote::before {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -1152,16 +1202,55 @@ body.has-banner .site-header { margin-top: 65px; }
   color: var(--magenta);
   text-shadow: 0 0 18px rgba(203, 107, 230, 0.28);
   pointer-events: none;
-  opacity: 1;
-  content: "";
-}
-.pullquote blockquote::before {
   content: "“";
   left: clamp(10px, 1.5vw, 18px);
 }
 .pullquote blockquote::after {
   content: "”";
-  right: clamp(10px, 1.5vw, 18px);
+  position: absolute;
+  top: 50%;
+  right: clamp(14px, 1.5vw, 22px);   /* mirror the left */
+  transform: translateY(-50%);
+  font-size: clamp(42px, 6vw, 80px);
+  line-height: 1;
+  color: var(--magenta);
+  text-shadow: 0 0 18px rgba(203,107,230,.28);
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+/* Slight zoom pulse */
+@media (prefers-reduced-motion: no-preference) {
+  .pullquote {
+    animation: pq-zoom 18s ease-in-out infinite alternate;
+  }
+  @keyframes pq-zoom {
+    from { transform: scale(1); }
+    to   { transform: scale(1.06); }
+  }
+}
+
+/* Parallax feel (background sticks a bit while scrolling) */
+   .pullquote { background-attachment: fixed; }
+   @supports (-webkit-touch-callout: none) { .pullquote { background-attachment: scroll; } }
+
+/* Hover brighten (desktop only) */
+@media (hover:hover) and (pointer:fine) {
+  .pullquote:hover::before {
+    background: rgba(0, 0, 0, 0.35);
+    transition: background .35s ease;
+  }
+}
+
+/* Mobile tweaks */
+@media (max-width: 700px) {
+  .pullquote {
+    margin-top: calc(-1 * (var(--pq-overlap) * 0.6));
+    padding-top: calc(clamp(80px, 24vw, 160px) + (var(--pq-overlap) * 0.6));
+    padding-bottom: clamp(80px, 24vw, 160px);
+  }
+  .pullquote blockquote p { font-size: clamp(22px, 5.5vw, 34px); }
 }
 
 
@@ -1183,11 +1272,13 @@ body.has-banner .site-header { margin-top: 65px; }
 }
 .origin p {
   font-size: clamp(24px, 1.6vw, 28px);
+  font-weight: 500;
   line-height: 1.65;
   margin: 0 0 14px;
 }
 .origin__closer {
   font-weight: 800;
+  font-size: clamp(30px, 1.6vw, 34px);
   color: var(--magenta);
 }
 
@@ -1196,7 +1287,7 @@ body.has-banner .site-header { margin-top: 65px; }
 .where {
   background: var(--black);
   color: var(--white);
-  padding: clamp(48px, 7vw, 90px) 0;
+  padding: clamp(48px, 7vw, 80px) 0;
 }
 .where__title {
   text-align: center;
@@ -1204,34 +1295,65 @@ body.has-banner .site-header { margin-top: 65px; }
   margin: 0 0 clamp(20px, 3vw, 30px);
 }
 .where__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(16px, 2.2vw, 28px);
+  max-width: 1200px;                
+  margin: 0 auto;
+  grid-template-columns: 1fr;        /* single column of rows */
+  gap: clamp(18px, 2.5vw, 28px);
 }
 @media (max-width: 900px) {
   .where__grid { grid-template-columns: 1fr; }
 }
+/* make each card a horizontal flex row */
 .where__card {
-  border: 3px solid var(--magenta);
-  border-radius: 14px;
-  padding: clamp(16px, 2vw, 22px);
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(16px, 2vw, 28px);
+  padding: clamp(22px, 2.4vw, 32px);
+  border-radius: 16px;               
   background: #0d0d0d;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
-  min-height: 160px;
-  display: grid;
-  align-content: start;
-  gap: 8px;
+  border: 3px solid var(--magenta);
+  box-shadow: 0 16px 40px rgba(0,0,0,.6);
 }
+
+/* big title column on the left */
 .where__region {
+  flex: 0 0 clamp(260px, 28%, 360px); /* fixed-ish left column */
   margin: 0;
-  font-size: clamp(22px, 2.6vw, 30px);
+  font-size: clamp(28px, 3.4vw, 40px);
+  line-height: 1.1;
   color: var(--lime);
   text-transform: uppercase;
 }
 .where__desc {
+  flex: 1 1 auto;
   margin: 0;
-  font-size: clamp(18px, 1.6vw, 22px);
-  color: rgba(255, 255, 255, 0.95);
+  font-size: clamp(18px, 1.8vw, 24px);
+  line-height: 1.6;
+  color: rgba(255,255,255,.95);
+}
+/* accent bar on left edge */
+.where__card::before {
+  content: "";
+  align-self: stretch;
+  width: 6px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--lime), var(--magenta));
+  opacity: .9;
+  /* space between the bar and text */
+  margin-right: clamp(10px, 1.4vw, 16px);
+}
+
+/* ==== Responsive: on phones/tablets stack the text again ==== */
+@media (max-width: 700px) {
+  .where__card {
+    flex-direction: column;
+  }
+  .where__region {
+    flex: none;
+  }
+  .where__card::before {
+    display: none; /* cleaner on small screens */
+  }
 }
 
 /* ===== INSTAGRAM SECTION ===== */
