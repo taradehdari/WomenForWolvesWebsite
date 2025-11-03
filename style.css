@@ -1262,6 +1262,15 @@ body.has-banner .site-header { margin-top: 65px; }
   box-shadow: none;
 }
 
+.insta__grid iframe {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 1 / 1; /* 1:1 square feed */
+  display: block;
+}
+
+
 /* LightWidget iframe sizing */
 .lightwidget-widget {
   display: block !important;
@@ -1276,10 +1285,6 @@ body.has-banner .site-header { margin-top: 65px; }
 @media (min-width: 1400px) {
   .lightwidget-widget { min-height: 420px; }
 }
-@media (max-width: 480px) {
-  .lightwidget-widget { min-height: 520px; }
-}
-
 /* Titles */
 .insta__title { 
   font-size: clamp(30px, 4vw, 48px); 
