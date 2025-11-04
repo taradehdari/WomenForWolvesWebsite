@@ -17,11 +17,15 @@
   font-size: clamp(32px, 4vw, 52px);
 }
 
-
 .pullquote{
+  background-color: var(--black);
+  background-image: var(--bg, none);
+  background-size: cover;
+  background-position: center 54%;
+  background-repeat: no-repeat;
+
   background-attachment: scroll !important;
-  background-position: center 54%;   
-  animation: none !important;       
+  animation: none !important;
 }
 
 /* Body copy cadence */
