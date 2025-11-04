@@ -85,7 +85,6 @@ p,
 }
 
 /* ======= HEADER & NAVIGATION ======= */
-/* ======= HEADER & NAVIGATION (CENTER NAV) ======= */
 .site-header{
   position: sticky;
   top: 0;
@@ -131,8 +130,9 @@ p,
 .site-nav{
   display: flex;
   align-items: center;
-  justify-content: center;   /* ✅ center the tabs */
+  justify-content: center;   
   gap: 22px;
+  margin-left: -85px;
 }
 .site-nav a,
 .menu-button{
