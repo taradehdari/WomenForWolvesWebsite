@@ -137,3 +137,10 @@
 
 /* newsletter spacing  */
 .reuse-signup { border-top: 4px solid var(--lime); }
+
+/* Remove decorative magenta quotes just for this pullquote */
+.pullquote blockquote::before,
+.pullquote blockquote::after {
+  display: none !important;
+  content: none !important;
+}
