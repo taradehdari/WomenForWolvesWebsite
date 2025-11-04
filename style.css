@@ -204,6 +204,17 @@ p,
 /* ===== DROPDOWN MENUS (centered under tab) ===== */
 .menu{ position: relative; z-index: 1000; }
 
+.menu{ position: relative; }
+.menu::after{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  top:100%;
+  height:12px;           /* >= the visual gap you want */
+  background: transparent;
+  pointer-events:auto;   /* keeps :hover active while crossing */
+}
+
 .submenu{
   position: absolute;
   top: calc(100% + 8px);
