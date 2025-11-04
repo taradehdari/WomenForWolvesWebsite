@@ -11,14 +11,16 @@
 </head>
 <body>
 
-<!-- ===== HEADER  ===== -->
+<!-- ===== HEADER ===== -->
 <header class="site-header">
   <div class="header-inner">
-    <a href="../index.html" class="brand">
-      <img src="../images/logo.png" alt="Women for Wolves" class="logo">
+    <!-- Left: Brand -->
+    <a href="/" class="brand" aria-label="Women for Wolves home">
+      <img src="../images/logo.png" alt="Women for Wolves" class="logo" />
       <span class="brand-text">WOMEN FOR WOLVES</span>
     </a>
 
+    <!-- Center: Primary Nav (tabs are centered by CSS) -->
     <nav class="site-nav" aria-label="Primary">
       <div class="menu">
         <button class="menu-button" type="button" aria-haspopup="true" aria-expanded="false">About Us</button>
@@ -28,70 +30,86 @@
         </div>
       </div>
 
-      <a href="../impact.html">Our Impact</a>
+      <a href="impact.html">Our Impact</a>
 
       <div class="menu">
         <button class="menu-button" type="button" aria-haspopup="true" aria-expanded="false">Programs</button>
         <div class="submenu" role="menu">
-          <a href="../programs/sanctuary-rescue.html" role="menuitem">Sanctuary & Rescue</a>
-          <a href="../programs/wolf-conservation.html" role="menuitem">Wolf Conservation</a>
-          <a href="../programs/community-empowerment.html" role="menuitem">Community Empowerment</a>
-          <a href="../programs/wildlife-education.html" role="menuitem">Wildlife Education</a>
+          <a href="programs/sanctuary-rescue.html" role="menuitem">Sanctuary &amp; Rescue</a>
+          <a href="programs/wolf-conservation.html" role="menuitem">Wolf Conservation</a>
+          <a href="programs/community-empowerment.html" role="menuitem">Community Empowerment</a>
+          <a href="programs/wildlife-education.html" role="menuitem">Wildlife Education</a>
         </div>
       </div>
 
       <div class="menu">
         <button class="menu-button" type="button" aria-haspopup="true" aria-expanded="false">Get Involved</button>
         <div class="submenu" role="menu">
-          <a href="../get-involved/events.html" role="menuitem">Events</a>
-          <a href="../get-involved/volunteer.html" role="menuitem">Volunteer / Intern</a>
-          <a href="../get-involved/donate.html" role="menuitem">Donate</a>
-          <a href="../get-involved/membership.html" role="menuitem">Become a Member</a>
+          <a href="get-involved/events.html" role="menuitem">Events</a>
+          <a href="get-involved/volunteer.html" role="menuitem">Volunteer / Intern</a>
+          <a href="get-involved/donate.html" role="menuitem">Donate</a>
+          <a href="get-involved/membership.html" role="menuitem">Become a Member</a>
         </div>
       </div>
 
-      <a href="../contact.html">Contact Us</a>
+      <a href="contact.html">Contact Us</a>
     </nav>
 
+    <!-- Right: Actions -->
+    <div class="header-actions">
+      <a class="icon-btn" href="https://instagram.com/womenforwolves" target="_blank" aria-label="Instagram">
+        <!-- inline SVG so no extra request -->
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zM18 6.25a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 18 6.25z"/>
+        </svg>
+      </a>
+      <a class="login-btn" href="auth/login.html">Login</a>
+    </div>
+
+    <!-- Mobile hamburger (hidden on desktop by CSS) -->
     <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 
+  <!-- ===== Mobile Nav (shows under header on small screens) ===== -->
   <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile">
     <details>
       <summary>About Us</summary>
       <div class="details-content">
-        <a href="team.html">Team</a>
-        <a href="our-story.html">Our Story</a>
+        <a href="about/team.html">Team</a>
+        <a href="about/our-story.html">Our Story</a>
       </div>
     </details>
 
-    <a href="../impact.html">Our Impact</a>
+    <a href="impact.html">Our Impact</a>
 
     <details>
       <summary>Programs</summary>
       <div class="details-content">
-        <a href="../programs/sanctuary-rescue.html">Sanctuary & Rescue</a>
-        <a href="../programs/wolf-conservation.html">Wolf Conservation</a>
-        <a href="../programs/community-empowerment.html">Community Empowerment</a>
-        <a href="../programs/wildlife-education.html">Wildlife Education</a>
+        <a href="programs/sanctuary-rescue.html">Sanctuary &amp; Rescue</a>
+        <a href="programs/wolf-conservation.html">Wolf Conservation</a>
+        <a href="programs/community-empowerment.html">Community Empowerment</a>
+        <a href="programs/wildlife-education.html">Wildlife Education</a>
       </div>
     </details>
 
     <details>
       <summary>Get Involved</summary>
       <div class="details-content">
-        <a href="../get-involved/events.html">Events</a>
-        <a href="../get-involved/volunteer.html">Volunteer / Intern</a>
-        <a href="../get-involved/donate.html">Donate</a>
-        <a href="../get-involved/membership.html">Become a Member</a>
+        <a href="get-involved/events.html">Events</a>
+        <a href="get-involved/volunteer.html">Volunteer / Intern</a>
+        <a href="get-involved/donate.html">Donate</a>
+        <a href="get-involved/membership.html">Become a Member</a>
       </div>
     </details>
 
-    <a href="../contact.html">Contact Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="auth/login.html">Login</a>
+    <a href="https://instagram.com/womenforwolves" target="_blank">Instagram</a>
   </nav>
 </header>
+
 
 <!-- ===== PAGE INTRO ===== -->
 <section class="team-intro-wrap">
@@ -99,12 +117,185 @@
     <h1 class="meet-headline">OUR STORY</h1>
   </div>
 </section>
+<!-- ===== OUR STORY CONTENT ===== -->
+<main class="our-story">
 
-<footer class="site-footer">
-  <div class="copyright-line">
-    Women For Wolves · ©2025 · 501(c)3 · EIN: 46-5594240
-  </div>
-</footer>
+  <!-- Top narrative -->
+  <section class="story-section story-intro">
+    <div class="container">
+      <h2 class="kicker">Our Story</h2>
+      <p class="lead">
+        Women for Wolves was founded in 2013 by conservationist and animal activist
+        <strong>Anjali Ranadive</strong> as a grassroots movement to raise awareness for wolves
+        and restore the feminine connection to the natural world.
+      </p>
+      <p>
+        After struggling with depression and self-harm, Anjali found healing through rescuing and
+        caring for wolves and wolf-dogs — animals once discarded, misunderstood, and feared.
+        In saving them, she realized they had saved her. That bond became the foundation of a mission
+        to share this connection with others and give back to the very beings that helped her heal.
+      </p>
+      <p>
+        What began as a personal journey has evolved into a sanctuary for wolves and wolf-dogs,
+        a conservation initiative, and a haven for women to reconnect, learn, and grow.
+      </p>
+    </div>
+  </section>
+
+  <!-- Evolution / impact stats -->
+  <section class="story-section story-evolution">
+    <div class="container">
+      <h2>Our Evolution</h2>
+      <p>
+        Over the past decade, Women for Wolves has grown into a fierce advocacy group, solely run by women,
+        bringing educators, sanctuaries, scientists, artists, activists, and Indigenous leaders together to
+        advocate for wolves and reimagine coexistence between people and wildlife.
+      </p>
+
+      <div class="stat-grid" role="list">
+        <article class="stat" role="listitem">
+          <div class="stat-num">60+</div>
+          <div class="stat-label">Women empowered as leaders in conservation</div>
+        </article>
+        <article class="stat" role="listitem">
+          <div class="stat-num">40+</div>
+          <div class="stat-label">Youth programs on coexistence & stewardship</div>
+        </article>
+        <article class="stat" role="listitem">
+          <div class="stat-num">7M+</div>
+          <div class="stat-label">People reached through education & advocacy</div>
+        </article>
+        <article class="stat" role="listitem">
+          <div class="stat-num">300+</div>
+          <div class="stat-label">Animals rescued & rehabilitated</div>
+        </article>
+        <article class="stat" role="listitem">
+          <div class="stat-num">30+</div>
+          <div class="stat-label">Bills & causes advocated / lobbied</div>
+        </article>
+      </div>
+
+      <p class="mission">
+        Our mission works toward a future where wild wolves and wolf-dogs are safe, women are empowered,
+        and people live in harmony with the natural world. By uplifting women, centering Indigenous knowledge,
+        and protecting apex species like wolves, we are restoring balance to ecosystems — and to ourselves.
+      </p>
+    </div>
+  </section>
+
+  <!-- Program model -->
+  <section class="story-section story-model">
+    <div class="container">
+      <h2>Our Model</h2>
+      <p>
+        The Women for Wolves model centers on <strong>compassion-driven conservation</strong> — integrating
+        rescue, education, art, and policy to create tangible impact. Our programs include:
+      </p>
+
+      <ul class="model-list">
+        <li><strong>Wolf-Dog Rescue & Sanctuary Care</strong></li>
+        <li><strong>Wild Wolf Protection & Policy Advocacy</strong></li>
+        <li><strong>Indigenous Partnerships & Coexistence Programs</strong></li>
+        <li><strong>Youth & Women’s Empowerment Initiatives</strong></li>
+        <li><strong>Habitat Rewilding & Land Stewardship Projects</strong></li>
+      </ul>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="/get-involved/donate.html">Donate</a>
+        <a class="btn btn-outline" href="/get-involved/membership.html">Become a Member</a>
+        <a class="btn btn-text" href="/programs/wolf-conservation.html">Explore Programs →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision / pullquote style -->
+  <section class="story-section story-vision">
+    <div class="container">
+      <h2>Our Vision</h2>
+      <p>
+        We envision a world where wolves roam freely through thriving ecosystems, women lead with
+        courage and compassion, and communities coexist with nature rather than control it.
+      </p>
+      <p class="vision-quote">
+        Through storytelling, science, art, and activism, Women for Wolves is <em>rewilding the human spirit</em> —
+        reminding us that healing the planet and healing ourselves are one and the same.
+      </p>
+      <p class="vision-tag">Together, we are the voice for the voiceless. Together, we are Women for Wolves.</p>
+    </div>
+  </section>
+
+  <!-- Optional: FAQ on this page too (re-usable/accessible accordion) -->
+  <section class="story-section story-faq">
+    <div class="container">
+      <h2>Frequently asked questions</h2>
+
+      <div class="accordion" data-accordion>
+        <details class="accordion-item">
+          <summary>Why are Wolves at Risk?</summary>
+          <div class="ac-body">
+            <p>Wolves are essential for ecosystem balance yet are often hunted due to fear and misunderstanding.
+            Education and science-based policy protect wolves while supporting ranchers, wildlife, and communities.</p>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>What is a Wolf-Dog and Why Do They Need Protection?</summary>
+          <div class="ac-body">
+            <p>A wolf-dog is a mix between a wolf and a domestic dog. They’re frequently abandoned due to specialized
+            needs and are often euthanized in traditional shelters. Sanctuaries provide safe, enriched homes while
+            educating the public about responsible ownership and wild wolf conservation.</p>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>What Can be Done to Help Protect Wolves and Wolf-Dogs?</summary>
+          <div class="ac-body">
+            <p>Support stronger laws, advocacy, ethical education, adoption over purchasing, and specialized sanctuaries.
+            Shifting how people view wolves creates lasting change.</p>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>How Can I Get Involved?</summary>
+          <div class="ac-body">
+            <ul>
+              <li>Donate</li>
+              <li>Volunteer</li>
+              <li>Become a Member</li>
+              <li>Virtually Adopt a Wolf-Dog</li>
+              <li>Spread the Word</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>How is Women For Wolves Helping?</summary>
+          <div class="ac-body">
+            <ul>
+              <li><strong>Advocacy & Lobbying:</strong> research, contacting representatives, mobilization</li>
+              <li><strong>Rescue & Sanctuary:</strong> lifetime care for wolf-dogs in need</li>
+              <li><strong>Education & Empowerment:</strong> youth programs, workshops, scholarships</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- auto-close other accordions on open -->
+<script>
+  document.addEventListener('click', (e) => {
+    const sum = e.target.closest('summary');
+    if (!sum) return;
+    const details = sum.parentElement;
+    const acc = details.closest('[data-accordion]');
+    if (!acc) return;
+    acc.querySelectorAll('details[open]').forEach(d => {
+      if (d !== details) d.removeAttribute('open');
+    });
+  });
+</script>
 
 <!-- JS copied from homepage -->
 <script>

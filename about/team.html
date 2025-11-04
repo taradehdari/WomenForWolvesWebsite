@@ -14,11 +14,13 @@
 <!-- ===== HEADER ===== -->
 <header class="site-header">
   <div class="header-inner">
-    <a href="../index.html" class="brand">
-      <img src="../images/logo.png" alt="Women for Wolves" class="logo">
+    <!-- Left: Brand -->
+    <a href="/" class="brand" aria-label="Women for Wolves home">
+      <img src="../images/logo.png" alt="Women for Wolves" class="logo" />
       <span class="brand-text">WOMEN FOR WOLVES</span>
     </a>
 
+    <!-- Center: Primary Nav (tabs are centered by CSS) -->
     <nav class="site-nav" aria-label="Primary">
       <div class="menu">
         <button class="menu-button" type="button" aria-haspopup="true" aria-expanded="false">About Us</button>
@@ -28,70 +30,86 @@
         </div>
       </div>
 
-      <a href="../impact.html">Our Impact</a>
+      <a href="impact.html">Our Impact</a>
 
       <div class="menu">
         <button class="menu-button" type="button" aria-haspopup="true" aria-expanded="false">Programs</button>
         <div class="submenu" role="menu">
-          <a href="../programs/sanctuary-rescue.html" role="menuitem">Sanctuary & Rescue</a>
-          <a href="../programs/wolf-conservation.html" role="menuitem">Wolf Conservation</a>
-          <a href="../programs/community-empowerment.html" role="menuitem">Community Empowerment</a>
-          <a href="../programs/wildlife-education.html" role="menuitem">Wildlife Education</a>
+          <a href="programs/sanctuary-rescue.html" role="menuitem">Sanctuary &amp; Rescue</a>
+          <a href="programs/wolf-conservation.html" role="menuitem">Wolf Conservation</a>
+          <a href="programs/community-empowerment.html" role="menuitem">Community Empowerment</a>
+          <a href="programs/wildlife-education.html" role="menuitem">Wildlife Education</a>
         </div>
       </div>
 
       <div class="menu">
         <button class="menu-button" type="button" aria-haspopup="true" aria-expanded="false">Get Involved</button>
         <div class="submenu" role="menu">
-          <a href="../get-involved/events.html" role="menuitem">Events</a>
-          <a href="../get-involved/volunteer.html" role="menuitem">Volunteer / Intern</a>
-          <a href="../get-involved/donate.html" role="menuitem">Donate</a>
-          <a href="../get-involved/membership.html" role="menuitem">Become a Member</a>
+          <a href="get-involved/events.html" role="menuitem">Events</a>
+          <a href="get-involved/volunteer.html" role="menuitem">Volunteer / Intern</a>
+          <a href="get-involved/donate.html" role="menuitem">Donate</a>
+          <a href="get-involved/membership.html" role="menuitem">Become a Member</a>
         </div>
       </div>
 
-      <a href="../contact.html">Contact Us</a>
+      <a href="contact.html">Contact Us</a>
     </nav>
 
+    <!-- Right: Actions -->
+    <div class="header-actions">
+      <a class="icon-btn" href="https://instagram.com/womenforwolves" target="_blank" aria-label="Instagram">
+        <!-- inline SVG so no extra request -->
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zM18 6.25a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 18 6.25z"/>
+        </svg>
+      </a>
+      <a class="login-btn" href="auth/login.html">Login</a>
+    </div>
+
+    <!-- Mobile hamburger (hidden on desktop by CSS) -->
     <button class="nav-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 
+  <!-- ===== Mobile Nav (shows under header on small screens) ===== -->
   <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile">
     <details>
       <summary>About Us</summary>
       <div class="details-content">
-        <a href="team.html">Team</a>
-        <a href="our-story.html">Our Story</a>
+        <a href="about/team.html">Team</a>
+        <a href="about/our-story.html">Our Story</a>
       </div>
     </details>
 
-    <a href="../impact.html">Our Impact</a>
+    <a href="impact.html">Our Impact</a>
 
     <details>
       <summary>Programs</summary>
       <div class="details-content">
-        <a href="../programs/sanctuary-rescue.html">Sanctuary & Rescue</a>
-        <a href="../programs/wolf-conservation.html">Wolf Conservation</a>
-        <a href="../programs/community-empowerment.html">Community Empowerment</a>
-        <a href="../programs/wildlife-education.html">Wildlife Education</a>
+        <a href="programs/sanctuary-rescue.html">Sanctuary &amp; Rescue</a>
+        <a href="programs/wolf-conservation.html">Wolf Conservation</a>
+        <a href="programs/community-empowerment.html">Community Empowerment</a>
+        <a href="programs/wildlife-education.html">Wildlife Education</a>
       </div>
     </details>
 
     <details>
       <summary>Get Involved</summary>
       <div class="details-content">
-        <a href="../get-involved/events.html">Events</a>
-        <a href="../get-involved/volunteer.html">Volunteer / Intern</a>
-        <a href="../get-involved/donate.html">Donate</a>
-        <a href="../get-involved/membership.html">Become a Member</a>
+        <a href="get-involved/events.html">Events</a>
+        <a href="get-involved/volunteer.html">Volunteer / Intern</a>
+        <a href="get-involved/donate.html">Donate</a>
+        <a href="get-involved/membership.html">Become a Member</a>
       </div>
     </details>
 
-    <a href="../contact.html">Contact Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="auth/login.html">Login</a>
+    <a href="https://instagram.com/womenforwolves" target="_blank">Instagram</a>
   </nav>
 </header>
+
 
 <!-- ===== PAGE INTRO ===== -->
 <section class="team-intro-wrap">
