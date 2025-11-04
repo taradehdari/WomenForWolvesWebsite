@@ -230,7 +230,7 @@
     </details>
   </section>
 
-  <!-- (Optional) newsletter strip reuse -->
+  <!-- newsletter strip reuse -->
   <section class="signup reuse-signup">
     <div class="container signup__inner">
       <h2 class="signup__title">Join our pack.</h2>
@@ -298,6 +298,21 @@
       mq.addEventListener?.('change', handleResize);
       window.addEventListener('resize', handleResize);
     });
+  </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const faqs = document.querySelectorAll(".faq details");
+
+    faqs.forEach(detail => {
+      detail.addEventListener("toggle", () => {
+        if (detail.open) {
+          faqs.forEach(other => {
+            if (other !== detail) other.removeAttribute("open");
+          });
+        }
+      });
+    });
+  });
   </script>
 </body>
 </html>
