@@ -623,8 +623,8 @@ body.has-banner .site-header { margin-top: 65px; }
 .mission-aka {
   background: var(--black);
   color: var(--white);
-  padding: clamp(72px, 9vw, 140px) 0;
-  padding-bottom: clamp(80px, 10vw, 160px);
+  padding: clamp(72px, 9vw, 120px) 0;
+  padding-bottom: clamp(80px, 10vw, 120px);
   border-top: 4px solid var(--lime);
   position: relative;
   overflow: visible;
@@ -1028,168 +1028,186 @@ body.has-banner .site-header { margin-top: 65px; }
 }
 
 
-/* ===== VALUES SECTION FULL-WIDTH ROW (PHOTO CARD + NOTE CARD) ===== */
-/* SECTION WRAPPER */
-.values-section2 {
-  background: var(--black);
-  padding: clamp(120px, 14vw, 250px) 0;
-  color: var(--white);
-  font-family: 'Big Shoulders Display', sans-serif;
-  position: relative;
+/* ===== RESCUE / ADVOCACY / EMPOWERMENT ===== */
+/* ===== section wrapper ===== */
+.values-section2{
+  position:relative;
+  width:100%;
+  background:var(--black);
+  padding-top: 120px;
+  overflow:hidden;
+  font-family:'Big Shoulders Display', system-ui, sans-serif;
 }
-.values-section2::after {
+
+/*black space under the pics*/
+/* .values-section2::after {
   content: "";
   position: absolute;
-  left: 0; right: 0; bottom: -1px;
-  height: clamp(60px, 10vw, 140px);
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,1) 0%,
-    rgba(0,0,0,0.85) 40%,
-    rgba(0,0,0,0) 100%
-  );
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 140px;
+  background: var(--black);
   z-index: 1;
+  pointer-events: none;
+} */
+
+/* three full-height panels */
+.values-grid2{
+  display:flex;
+  flex-direction:row;
+  gap:0;
+  height:72vh;           
+  min-height:520px;
 }
 
-/* THE ROW OF 3 CARDS */
-.values-grid2 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  max-width: 3000px;
-  width: 100%;
-  margin: 0 auto;
-  gap: 10px;
-  padding: 0 10px;
-  align-items: start;
+.values-item{
+  flex:1;
+  position:relative;
+  display:flex;
+  align-items:flex-end;    /* puts the pill near the bottom */
+  justify-content:center;
+  overflow:hidden;
 }
 
-/* EACH CARD CONTAINER */
-.values-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 100%;
-}
-
-/* PHOTO CARD */
-.values-photo {
-  width: 100%;
-  min-height: 700px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: 4px solid var(--lime);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 24px 16px;
-}
-
-.values-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+/* full-bleed photo with overlay + inner lime border */
+.values-photo{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  transform:scale(1.02);
+  filter:brightness(0.85);
+  transition:transform .9s ease, filter .5s ease;
   z-index: 0;
 }
 
-.values-headline {
-  position: relative;
-  z-index: 3;
-  color: var(--lime);
-  text-transform: uppercase;
-  font-weight: 800;
-  font-size: clamp(32px, 1.4vw, 40px);
-  line-height: 1.15;
-  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
-  margin-bottom: 100px;
-  align-self: center;
-  text-align: center;
+.values-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom, rgba(0,0,0,.15) 0%, rgba(0,0,0,.35) 60%, rgba(0,0,0,.55) 100%);
+  z-index:1;
+}
+.values-item:hover .values-photo{
+  transform:scale(1.06);
+  filter:brightness(1);
 }
 
-/* NOTE CARD */
-.values-note {
-  position: relative;
-  background: #0d0d0d;
-  border-radius: 12px;
-  border: 3px solid var(--magenta);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9);
-  margin-top: -100px;
-  padding: 16px 14px;
-  width: 250px;
-  height: 240px;
-  box-sizing: border-box;
-  max-width: 88%;
-  min-height: 92px;
-  text-align: center;
-  z-index: 3;
-  bottom: 20px;
-  color: var(--white);
-  font-family: 'Big Shoulders Display', sans-serif;
-}
-.values-note p {
-  margin: 0;
-  font-size: clamp(20px, 0.9vw, 21px);
-  font-weight: 600;
-  line-height: 1.4;
-  color: var(--white);
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
-  letter-spacing: 0.4px;
+/* big stacked headline (two rows + colored dot) */
+.values-headline{
+  position:absolute;
+  left: clamp(16px, 4vw, 48px);
+  bottom: clamp(210px, 27vh, 300px);
+  margin:0;
+  line-height:.84;
+  font-weight:800;
+  font-size: clamp(44px, 6.8vw, 100px);
+  text-transform:uppercase;
+  color:#f2f2f2;                 /* brighter */
+  z-index:3;                     /* ABOVE pills/overlays */
+  letter-spacing:.5px;
+
+  /* subtle outline + shadow so text pops on bright photos */
+  -webkit-text-stroke: 1.5px rgba(0,0,0,.35);
+  text-shadow:
+    0 4px 24px rgba(0,0,0,.55),
+    0 2px  8px rgba(0,0,0,.60),
+    0 0   1px rgba(0,0,0,.75);
 }
 
-/* TABLET: go 2 across so it doesn't squish */
-@media (max-width: 1000px) {
-  .values-grid2 {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 1000px;
-    gap: 32px;
-    padding: 0 10px;
+.values-headline .w1{ display:inline-block; }
+.values-headline .w2{ display:inline-block; }
+.values-headline .dot{ color: var(--magenta); }  /* dot color */
+
+/* pill card with thick magenta outline & dark body */
+.values-note{
+  position:relative;
+  z-index:2;
+  margin-bottom: clamp(18px, 3vh, 28px);
+  width:min(82%, 440px);
+  border-radius:28px;
+  padding:10px;                            /* gap to create the fat border */
+}
+.values-note::before{
+  content:"";
+  position:absolute; inset:0;
+  border-radius:28px;
+  border:6px solid var(--lime);         /* outer rim color */
+  pointer-events:none;
+}
+.values-note p{
+  margin:0;
+  background: rgba(17,17,17,.94);
+  color:#e6e6e6;
+  border-radius:20px;
+  padding:26px 28px;
+  font-size: clamp(16px, 2.1vw, 22px);
+  line-height:1.35;
+  text-align:center;
+  font-weight:700;
+  letter-spacing:.3px;
+}
+
+
+/* optional: slight per-column nudges for composition */
+.values-grid2 .values-item:nth-child(2) .values-headline{ left: clamp(24px, 6vw, 72px); }
+.values-grid2 .values-item:nth-child(3) .values-headline{ left: clamp(28px, 7vw, 90px); }
+
+/* ====== TABLET: keep 3 columns but scale things down ====== */
+@media (max-width: 980px){
+  .values-grid2{
+    flex-direction: row;    /* stay side-by-side */
+    height: 58vh;           /* a bit shorter so it fits */
+    min-height: 420px;
+  }
+  .values-item{ align-items: flex-end; }
+
+  /* headline smaller + a touch higher */
+  .values-headline{
+    font-size: clamp(42px, 6.2vw, 84px);  /* a touch smaller */
+    bottom: clamp(210px, 27vh, 320px);    /* lift so pills don't overlap */
+    left: clamp(14px, 3.6vw, 36px);
+  }
+
+  /* pill a bit narrower and tighter */
+  .values-note{
+    width: min(86%, 380px);
+    margin-bottom: clamp(12px, 2.2vh, 20px);
+    padding: 8px;                 /* keeps thick border look */
+  }
+  .values-note p{
+    font-size: clamp(15px, 1.9vw, 18px);
+    padding: 22px 22px;
   }
 }
 
-/* PHONE: stack all 3 vertically and keep boxes compact (proportionally scaled) */
-@media (max-width: 650px) {
-  .values-grid2 {
-    grid-template-columns: 1fr;
-    max-width: 480px;
-    padding: 0 12px;
+/* ====== PHONE: stack vertically like the screenshot ====== */
+@media (max-width: 768px){
+  .values-grid2{
+    flex-direction: column;  /* stack */
+    height: auto;
+    gap: 0;
+  }
+  .values-item{
+    height: 64vh;            /* tall, immersive blocks */
+    min-height: 420px;
   }
 
-  .values-photo {
-    min-height: 340px;
-    justify-content: center;
-    align-items: flex-end;
+  .values-headline{
+    font-size: clamp(42px, 9vw, 72px);  /* smaller on phones */
+    top: clamp(28px, 8vh, 64px);        /* put headline near top */
+    bottom: auto;                       /* override desktop bottom */
+    left: clamp(16px, 5vw, 28px);
   }
 
-  .values-headline {
-    text-align: center;
-    margin-bottom: 24px;
+  .values-note{
+    width: min(90%, 520px);
+    margin: 0 auto clamp(18px, 3vh, 28px);
   }
-
-  .values-note {
-    position: relative;
-    left: auto;
-    right: auto;
-    bottom: auto;
-    transform: none;
-    margin: -70px auto 16px;
-    width: 70%;
-    max-width: 225px;
-    height: 170px;
-    padding: 12px 10px;
-    border-radius: 10px;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.9);
-  }
-
-  .values-note p {
-    font-size: 17px;
-    line-height: 1.3;
+  .values-note p{
+    font-size: clamp(16px, 4vw, 18px);
+    line-height: 1.35;
+    padding: 22px 22px;
   }
 }
 
@@ -1200,7 +1218,6 @@ body.has-banner .site-header { margin-top: 65px; }
   color: var(--white);
   padding-top: 100px;
 }
-
 
 /* ===== PULL-QUOTE SECTION WITH PHOTO ===== */
 .pullquote {
@@ -1218,6 +1235,7 @@ body.has-banner .site-header { margin-top: 65px; }
   text-align: center;
 
   /* Seamless flow: pull image up under the previous section */
+  /* margin-top: calc(-1 * var(--pq-overlap) + 160px); */
   margin-top: calc(-1 * var(--pq-overlap));
   padding-top: calc(clamp(100px, 18vw, 220px) + var(--pq-overlap));
   padding-bottom: clamp(100px, 18vw, 220px);
