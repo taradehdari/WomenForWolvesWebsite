@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login · Women for Wolves</title>
+
+  <!-- Reuse your global styles + font -->
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Page-specific styles -->
+  <link rel="stylesheet" href="./login.css" />
+</head>
+<body class="login-body">
+
+  <main class="login-wrap">
+    <!-- Left: brand / hero -->
+    <aside class="login-hero" aria-hidden="true">
+      <div class="login-hero__overlay"></div>
+      <div class="login-hero__brand">
+        <img src="../images/logo.png" alt="" class="login-hero__logo">
+        <div class="login-hero__name">WOMEN FOR WOLVES</div>
+      </div>
+      <h1 class="login-hero__headline">Join the pack.</h1>
+      <p class="login-hero__sub">Members get access to exclusive updates and resources.</p>
+    </aside>
+
+    <!-- Right: form card -->
+    <section class="login-card" aria-labelledby="loginTitle">
+      <!-- Role toggle -->
+      <div class="role-tabs" role="tablist" aria-label="Choose role">
+        <button class="role-tab is-active" id="tab-member" role="tab" aria-selected="true" aria-controls="panel-member">Member</button>
+        <button class="role-tab" id="tab-admin" role="tab" aria-selected="false" aria-controls="panel-admin">Admin</button>
+      </div>
+
+      <!-- Member panel (visible by default) -->
+      <div id="panel-member" class="role-panel is-active" role="tabpanel" aria-labelledby="tab-member">
+        <h2 id="loginTitle" class="login-title">Member Login</h2>
+        <form class="login-form" id="memberForm" novalidate>
+          <label for="m-email" class="visually-hidden">Email</label>
+          <input id="m-email" type="email" placeholder="Email" autocomplete="email" required>
+
+          <div class="pw-wrap">
+            <label for="m-pass" class="visually-hidden">Password</label>
+            <input id="m-pass" type="password" placeholder="Password" autocomplete="current-password" required>
+            <button class="pw-toggle" type="button" aria-label="Show password">👁</button>
+          </div>
+
+          <div class="login-row">
+            <label class="check">
+              <input type="checkbox" id="m-remember"> <span>Remember me</span>
+            </label>
+            <a class="login-link" href="./reset.html">Forgot password?</a>
+          </div>
+
+          <button class="login-btn" type="submit">Log In</button>
+
+          <div class="login-msg" id="memberMsg" role="status" aria-live="polite"></div>
+
+          <p class="login-muted">No account yet? <a class="login-link" href="./signup.html">Create one</a>.</p>
+        </form>
+      </div>
+
+      <!-- Admin panel -->
+      <div id="panel-admin" class="role-panel" role="tabpanel" aria-labelledby="tab-admin" hidden>
+        <h2 class="login-title">Admin Login</h2>
+        <form class="login-form" id="adminForm" novalidate>
+          <label for="a-email" class="visually-hidden">Email</label>
+          <input id="a-email" type="email" placeholder="Admin Email" autocomplete="email" required>
+
+          <div class="pw-wrap">
+            <label for="a-pass" class="visually-hidden">Password</label>
+            <input id="a-pass" type="password" placeholder="Password" autocomplete="current-password" required>
+            <button class="pw-toggle" type="button" aria-label="Show password">👁</button>
+          </div>
+
+          <div class="login-row">
+            <label class="check">
+              <input type="checkbox" id="a-remember"> <span>Remember me</span>
+            </label>
+            <a class="login-link" href="./reset.html">Forgot password?</a>
+          </div>
+
+          <button class="login-btn login-btn--admin" type="submit">Log In as Admin</button>
+
+          <div class="login-msg" id="adminMsg" role="status" aria-live="polite"></div>
+
+          <p class="login-muted">Need access? <a class="login-link" href="../contact.html">Contact the team</a>.</p>
+        </form>
+      </div>
+
+      <!-- Placeholder “Continue with …” row (purely visual) -->
+      <div class="social-row" aria-hidden="true">
+        <div class="social-line"></div>
+        <div class="social-label">or</div>
+        <div class="social-line"></div>
+      </div>
+      <div class="providers" aria-hidden="true">
+        <button class="provider-btn" type="button" disabled>Continue with Google</button>
+        <button class="provider-btn" type="button" disabled>Continue with Apple</button>
+      </div>
+
+      <a class="back-home" href="../index.html">← Back to Home</a>
+    </section>
+  </main>
+
+  <!-- Tiny UI-only JS (no auth) -->
+  <script>
+    // Tabs (Member/Admin)
+    const tabs = document.querySelectorAll('.role-tab');
+    const panels = document.querySelectorAll('.role-panel');
+
+    function activate(which) {
+      tabs.forEach(t => {
+        const active = t.id === 'tab-' + which;
+        t.classList.toggle('is-active', active);
+        t.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      panels.forEach(p => {
+        const show = p.id === 'panel-' + which;
+        p.classList.toggle('is-active', show);
+        p.hidden = !show;
+      });
+      // put selection in hash so refresh keeps the state
+      history.replaceState(null, "", '#' + which);
+    }
+
+    tabs.forEach(t => t.addEventListener('click', () => activate(t.id.replace('tab-',''))));
+    // set initial tab from hash (#admin or #member)
+    activate(location.hash === '#admin' ? 'admin' : 'member');
+
+    // PW show/hide
+    document.querySelectorAll('.pw-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const input = btn.previousElementSibling;
+        const isPw = input.type === 'password';
+        input.type = isPw ? 'text' : 'password';
+        btn.setAttribute('aria-label', isPw ? 'Hide password' : 'Show password');
+      });
+    });
+
+    // Fake “visual-only” handlers
+    function fakeSubmit(formId, msgId){
+      const form = document.getElementById(formId);
+      const msg  = document.getElementById(msgId);
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        msg.textContent = 'This is a front-end preview. Backend auth coming soon.';
+        setTimeout(()=> msg.textContent = '', 3000);
+      });
+    }
+    fakeSubmit('memberForm','memberMsg');
+    fakeSubmit('adminForm','adminMsg');
+  </script>
+</body>
+</html>
