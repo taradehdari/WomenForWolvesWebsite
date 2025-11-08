@@ -1029,186 +1029,151 @@ body.has-banner .site-header { margin-top: 65px; }
 
 
 /* ===== RESCUE / ADVOCACY / EMPOWERMENT ===== */
-/* ===== section wrapper ===== */
-.values-section2{
-  position:relative;
-  width:100%;
-  background:var(--black);
+.section_overview {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  overflow: hidden;
+  font-family: 'Big Shoulders Display', sans-serif;
+  background: var(--black);
   padding-top: 120px;
-  overflow:hidden;
-  font-family:'Big Shoulders Display', system-ui, sans-serif;
 }
 
-/*black space under the pics*/
-.values-section2::after {
+/* Add a black bottom fade / cutoff */
+.section_overview::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 120px;
+  height: clamp(120px, 14vh, 200px); /* adjusts based on screen size */
   background: var(--black);
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
 }
 
-
-/* three full-height panels */
-.values-grid2{
-  display:flex;
-  flex-direction:row;
-  gap:0;
-  height:72vh;           
-  min-height:520px;
+/* Keep the photo always above the black base */
+.overview_block {
+  position: relative;
+  z-index: 1;
 }
 
-.values-item{
-  flex:1;
-  position:relative;
-  display:flex;
-  align-items:flex-end;    /* puts the pill near the bottom */
-  justify-content:center;
-  overflow:hidden;
+/* Make the grid stop above the black cutoff */
+.overview_grid {
+  height: calc(70vh - 60px); /* trims the photo length */
+  min-height: 520px;
+  position: relative;
+  z-index: 1;
 }
 
-/* full-bleed photo with overlay + inner lime border */
-.values-photo{
-  position:absolute;
-  inset:0;
-  background-size:cover;
-  background-position:center;
-  transform:scale(1.02);
-  filter:brightness(0.85);
-  transition:transform .9s ease, filter .5s ease;
+.overview_grid {
+  display: flex;
+  flex-direction: row;
+  height: 70vh;
+  min-height: 620px;
+}
+
+.overview_block {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.overview_background {
+  position: absolute;
+  inset: 0;
   z-index: 0;
 }
 
-.values-overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to bottom, rgba(0,0,0,.15) 0%, rgba(0,0,0,.35) 60%, rgba(0,0,0,.55) 100%);
-  z-index:1;
-}
-.values-item:hover .values-photo{
-  transform:scale(1.06);
-  filter:brightness(1);
-}
-
-/* big stacked headline (two rows + colored dot) */
-.values-headline{
-  position:absolute;
-  left: clamp(16px, 4vw, 48px);
-  bottom: clamp(210px, 27vh, 300px);
-  margin:0;
-  line-height:.84;
-  font-weight:800;
-  font-size: clamp(44px, 6.8vw, 100px);
-  text-transform:uppercase;
-  color:#f2f2f2;                 /* brighter */
-  z-index:3;                     /* ABOVE pills/overlays */
-  letter-spacing:.5px;
-
-  /* subtle outline + shadow so text pops on bright photos */
-  -webkit-text-stroke: 1.5px rgba(0,0,0,.35);
-  text-shadow:
-    0 4px 24px rgba(0,0,0,.55),
-    0 2px  8px rgba(0,0,0,.60),
-    0 0   1px rgba(0,0,0,.75);
+.overview_image-wrapper,
+.overview_image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s ease, filter .6s ease;
 }
 
-.values-headline .w1{ display:inline-block; }
-.values-headline .w2{ display:inline-block; }
-.values-headline .dot{ color: var(--magenta); }  /* dot color */
-
-/* pill card with thick magenta outline & dark body */
-.values-note{
-  position:relative;
-  z-index:2;
-  margin-bottom: clamp(18px, 3vh, 28px);
-  width:min(82%, 440px);
-  border-radius:28px;
-  padding:10px;                            /* gap to create the fat border */
-}
-.values-note::before{
-  content:"";
-  position:absolute; inset:0;
-  border-radius:28px;
-  border:6px solid var(--lime);         /* outer rim color */
-  pointer-events:none;
-}
-.values-note p{
-  margin:0;
-  background: rgba(17,17,17,.94);
-  color:#e6e6e6;
-  border-radius:20px;
-  padding:26px 28px;
-  font-size: clamp(16px, 2.1vw, 22px);
-  line-height:1.35;
-  text-align:center;
-  font-weight:700;
-  letter-spacing:.3px;
+.overview_block:hover .overview_image {
+  transform: scale(1.05);
+  filter: brightness(1.1);
 }
 
+/* ===== CONTENT ===== */
+.overview_content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--white);
+  margin-bottom: 8%;
+  width: 80%;
+  max-width: 440px;
+}
 
-/* optional: slight per-column nudges for composition */
-.values-grid2 .values-item:nth-child(2) .values-headline{ left: clamp(24px, 6vw, 72px); }
-.values-grid2 .values-item:nth-child(3) .values-headline{ left: clamp(28px, 7vw, 90px); }
+.overview_title {
+  font-size: clamp(48px, 6vw, 92px);
+  text-transform: uppercase;
+  line-height: .9;
+  font-weight: 900;
+  margin: 0 0 28px;
+  color: var(--white);
+}
+.overview_title .dot {
+  color: var(--magenta);
+}
 
-/* ====== TABLET: keep 3 columns but scale things down ====== */
-@media (max-width: 980px){
-  .values-grid2{
-    flex-direction: row;    /* stay side-by-side */
-    height: 58vh;           /* a bit shorter so it fits */
-    min-height: 420px;
+.overview_description p {
+  background: rgba(0, 0, 0, 0.8);
+  border: 6px solid var(--lime);
+  border-radius: 28px;
+  padding: 24px 30px;
+  font-weight: 700;
+  font-size: clamp(16px, 1.7vw, 22px);
+  line-height: 1.35;
+  letter-spacing: .3px;
+  box-shadow: 0 0 18px rgba(202,252,0,0.3);
+}
+
+/* ===== TABLET ===== */
+@media (max-width: 980px) {
+  .overview_grid {
+    height: 65vh;
+    min-height: 460px;
   }
-  .values-item{ align-items: flex-end; }
-
-  /* headline smaller + a touch higher */
-  .values-headline{
-    font-size: clamp(42px, 6.2vw, 84px);  /* a touch smaller */
-    bottom: clamp(210px, 27vh, 320px);    /* lift so pills don't overlap */
-    left: clamp(14px, 3.6vw, 36px);
+  .overview_title {
+    font-size: clamp(36px, 5vw, 68px);
   }
-
-  /* pill a bit narrower and tighter */
-  .values-note{
-    width: min(86%, 380px);
-    margin-bottom: clamp(12px, 2.2vh, 20px);
-    padding: 8px;                 /* keeps thick border look */
-  }
-  .values-note p{
-    font-size: clamp(15px, 1.9vw, 18px);
-    padding: 22px 22px;
+  .overview_description p {
+    font-size: clamp(14px, 1.6vw, 18px);
+    padding: 20px 24px;
+    border-width: 5px;
   }
 }
 
-/* ====== PHONE: stack vertically like the screenshot ====== */
-@media (max-width: 768px){
-  .values-grid2{
-    flex-direction: column;  /* stack */
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .overview_grid {
+    flex-direction: column;
     height: auto;
-    gap: 0;
   }
-  .values-item{
-    height: 64vh;            /* tall, immersive blocks */
-    min-height: 420px;
+  .overview_block {
+    height: 65vh;
   }
-
-  .values-headline{
-    font-size: clamp(42px, 9vw, 72px);  /* smaller on phones */
-    top: clamp(28px, 8vh, 64px);        /* put headline near top */
-    bottom: auto;                       /* override desktop bottom */
-    left: clamp(16px, 5vw, 28px);
+  .overview_content {
+    margin-bottom: 10%;
+    width: 88%;
+    top: 4vh; /* move both title + pill down */
   }
-
-  .values-note{
-    width: min(90%, 520px);
-    margin: 0 auto clamp(18px, 3vh, 28px);
+  .overview_title {
+    font-size: clamp(32px, 8vw, 56px);
   }
-  .values-note p{
-    font-size: clamp(16px, 4vw, 18px);
-    line-height: 1.35;
-    padding: 22px 22px;
+  .overview_description p {
+    font-size: clamp(15px, 4vw, 18px);
   }
 }
 
@@ -1229,7 +1194,7 @@ body.has-banner .site-header { margin-top: 65px; }
   background: var(--black);
   background-image: var(--bg);
   background-size: cover;
-  background-position: center 1%;
+  background-position: center 10%;
   background-repeat: no-repeat;
   
 
