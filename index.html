@@ -311,61 +311,59 @@
   <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
 
   <!-- ===== RESCUE / ADVOCACY / EMPOWERMENT ===== -->
-<section class="section_overview">
-  <div class="overview_grid">
+  <section class="section_overview">
+    <div class="overview_grid">
 
-    <!-- RESCUE -->
-    <div class="overview_block">
-      <div class="overview_content">
-        <h2 class="overview_title">RES<br>CUE<span class="dot">.</span></h2>
-        <div class="overview_spacer"></div>
-        <div class="overview_description">
-          <p>Through compassionate sanctuary care and rehabilitation programs that give wolves and wolf-dogs a second chance at life.</p>
+      <!-- RESCUE -->
+      <div class="overview_block">
+        <div class="overview_content">
+          <h2 class="overview_title">RES<br>CUE<span class="dot">.</span></h2>
+          <div class="overview_spacer"></div>
+          <div class="overview_description">
+            <p>Through compassionate sanctuary care and rehabilitation programs that give wolves and wolf-dogs a second chance at life.</p>
+          </div>
+        </div>
+        <div class="overview_background">
+          <div class="overview_image-wrapper">
+            <img src="images/lilbro.jpg" alt="Rescue wolf" class="overview_image">
+          </div>
         </div>
       </div>
-      <div class="overview_background">
-        <div class="overview_image-wrapper">
-          <img src="images/lilbro.jpg" alt="Rescue wolf" class="overview_image">
+
+      <!-- ADVOCACY -->
+      <div class="overview_block">
+        <div class="overview_content">
+          <h2 class="overview_title">ADVO<br>CACY<span class="dot">.</span></h2>
+          <div class="overview_spacer"></div>
+          <div class="overview_description">
+            <p>Through bold policy action, storytelling, and education, we challenge outdated management systems and protect wolves, wildlife, and wild places.</p>
+          </div>
+        </div>
+        <div class="overview_background">
+          <div class="overview_image-wrapper">
+            <img src="images/aspen.jpg" alt="Advocacy wolf" class="overview_image">
+          </div>
         </div>
       </div>
+
+      <!-- EMPOWERMENT -->
+      <div class="overview_block">
+        <div class="overview_content">
+          <h2 class="overview_title">EMPOW<br>ERMENT<span class="dot">.</span></h2>
+          <div class="overview_spacer"></div>
+          <div class="overview_description">
+            <p>Through women-led initiatives, Indigenous partnerships, and youth programs, we awaken purpose, leadership, and coexistence for future generations.</p>
+          </div>
+        </div>
+        <div class="overview_background">
+          <div class="overview_image-wrapper">
+            <img src="images/nakoalilbro.jpg" alt="Empowerment wolf" class="overview_image" style="object-position: center 85%;">
+          </div>
+        </div>
+      </div>
+
     </div>
-
-    <!-- ADVOCACY -->
-    <div class="overview_block">
-      <div class="overview_content">
-        <h2 class="overview_title">ADVO<br>CACY<span class="dot">.</span></h2>
-        <div class="overview_spacer"></div>
-        <div class="overview_description">
-          <p>Through bold policy action, storytelling, and education, we challenge outdated management systems and protect wolves, wildlife, and wild places.</p>
-        </div>
-      </div>
-      <div class="overview_background">
-        <div class="overview_image-wrapper">
-          <img src="images/aspen.jpg" alt="Advocacy wolf" class="overview_image">
-        </div>
-      </div>
-    </div>
-
-    <!-- EMPOWERMENT -->
-    <div class="overview_block">
-      <div class="overview_content">
-        <h2 class="overview_title">EMPOW<br>ERMENT<span class="dot">.</span></h2>
-        <div class="overview_spacer"></div>
-        <div class="overview_description">
-          <p>Through women-led initiatives, Indigenous partnerships, and youth programs, we awaken purpose, leadership, and coexistence for future generations.</p>
-        </div>
-      </div>
-      <div class="overview_background">
-        <div class="overview_image-wrapper">
-          <img src="images/nakoalilbro.jpg" alt="Empowerment wolf" class="overview_image" style="object-position: center 85%;">
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-  
+  </section>
 
 
   <!-- ===== JANE GOODALL PULL-QUOTE ===== -->
@@ -782,21 +780,47 @@
     });
   })();
   </script>
+<!--  if i want it to move only with refresh of page 
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          // optional: unobserve once shown (so it doesn’t repeat)
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 }); // triggers when 30% visible
+
+    document.querySelectorAll('.overview_content').forEach(el => {
+      observer.observe(el);
+    });
+  });
+  </script> -->
 
   <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll(".values-item");
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add("in-view");
-          io.unobserve(e.target);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          // when it scrolls out of view, reset to trigger again later
+          entry.target.classList.remove('show');
         }
       });
-    }, { threshold: 0.3 });
-    cards.forEach(card => io.observe(card));
+    }, { threshold: 0.3 }); // 30% visible before triggering
+
+    document.querySelectorAll('.overview_content').forEach(el => {
+      observer.observe(el);
+    });
   });
   </script>
+
+
+
+
 
 
 </body>

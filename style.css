@@ -1037,6 +1037,7 @@ body.has-banner .site-header { margin-top: 65px; }
   font-family: 'Big Shoulders Display', sans-serif;
   background: var(--black);
   padding-top: 120px;
+  padding-bottom: 120px;
 }
 
 /* Add a black bottom fade / cutoff */
@@ -1177,6 +1178,33 @@ body.has-banner .site-header { margin-top: 65px; }
   }
 }
 
+/* ===== Scroll-in animation setup ===== */
+
+/* start hidden and lowered */
+.overview_content {
+  opacity: 0;
+  transform: translateY(80px);
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+
+/* when active (scrolled into view) */
+.overview_content.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* add small stagger for each block */
+.overview_block:nth-child(1) .overview_content {
+  transition-delay: 0.1s;
+}
+.overview_block:nth-child(2) .overview_content {
+  transition-delay: 0.3s;
+}
+.overview_block:nth-child(3) .overview_content {
+  transition-delay: 0.5s;
+}
+
+
 
 /* ===== NEWS SECTION ===== */
 .news.container {
@@ -1203,7 +1231,6 @@ body.has-banner .site-header { margin-top: 65px; }
 
   /* Seamless flow: pull image up under the previous section */
   margin-top: calc(-1 * var(--pq-overlap) + 120px);
-  /* margin-top: calc(-1 * var(--pq-overlap) ); */
   padding-top: calc(clamp(100px, 18vw, 220px) + var(--pq-overlap));
   padding-bottom: clamp(100px, 18vw, 220px);
 }
