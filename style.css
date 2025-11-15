@@ -536,7 +536,7 @@ body.has-banner .site-header { margin-top: 65px; }
   background: var(--magenta);
   color: var(--white);
   transform: scale(1.1);
-  box-shadow: 0 0 45px rgba(203, 107, 230, 0.6);
+  /* box-shadow: 0 0 45px rgba(203, 107, 230, 0.6); */
 }
 
 /* Moving marquee text under hero */
@@ -561,7 +561,7 @@ body.has-banner .site-header { margin-top: 65px; }
   display: inline-block;
   padding-left: 100%;
   will-change: transform;
-  animation: marqueeSlide 18s linear infinite;
+  animation: marqueeSlide 30s linear infinite;
   white-space: nowrap;
   color: var(--white);
 }
@@ -574,6 +574,13 @@ body.has-banner .site-header { margin-top: 65px; }
   to { transform: translateX(-100%); }
 }
 
+/* REMOVE HERO TEXT SHADOWS */
+.hero-content p,
+.hero-content .pill,
+.marquee {
+  text-shadow: none !important;
+  font-weight: 800 !important;
+}
 
 /* ===== GREEN (LIME) BAR UNDER HERO ===== */
 .hero-divider {
@@ -1589,6 +1596,38 @@ body.has-banner .site-header { margin-top: 65px; }
   font-size: clamp(16px, 1.6vw, 20px);
   opacity: 0.85;
 }
+
+/* DESKTOP: 4 across */
+.tribal-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+/* TABLET + MOBILE: 2 across */
+@media (max-width: 900px) {
+  .tribal-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* EXTRA SMALL (tiny phones): 1 across if needed */
+@media (max-width: 500px) {
+  .tribal-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* LOGO STYLE */
+.tribal-logo {
+  width: 90px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 12px;
+  display: block;
+  filter: drop-shadow(0 0 6px rgba(203, 107, 230, 0.4));
+}
+
 
 
 /* ===== TRUST & RECOGNITION ===== */
