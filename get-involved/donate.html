@@ -149,28 +149,10 @@
     </div>
   </footer>
 
-  <!-- ===== JS (menus + Stripe placeholders) ===== -->
+  <script src="/js/load-layout.js"></script>
+  <script src="/js/mobile-nav.js"></script>
+
   <script>
-    document.querySelectorAll('.menu-button').forEach(btn => {
-      btn.addEventListener('click', () => btn.blur());
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const toggle = document.querySelector('.nav-toggle');
-      const mobile = document.getElementById('mobile-nav');
-      if (!toggle || !mobile) return;
-
-      const closeDetails = () => {
-        mobile.querySelectorAll('details[open]').forEach(d => { d.open = false; });
-      };
-      toggle.addEventListener('click', () => {
-        const opening = !mobile.classList.contains('show');
-        mobile.classList.toggle('show');
-        toggle.setAttribute('aria-expanded', String(opening));
-        if (!opening) closeDetails();
-      });
-    });
-
     // Stripe placeholder
     document.getElementById('oneTimeBtn').addEventListener('click', () => {
       alert('This will open Stripe checkout for a one-time donation.');
