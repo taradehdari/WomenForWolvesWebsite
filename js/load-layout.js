@@ -1,19 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   // detect how deep the current file is:
-  // root = 0 levels → ""
-  // /about/team.html = 1 level → "../"
-  // /programs/education/details.html = 2 levels → "../../"
 
   const depth = window.location.pathname.split("/").length - 2;
 
   let base = "";
   for (let i = 0; i < depth; i++) base += "../";
 
-  // now base automatically becomes:
-  // "" for index.html
-  // "../" for /about/team.html
-  // "../../" for deeper pages (if you ever add them)
 
   // Load Header
   fetch(base + "partials/header.html")
