@@ -13,7 +13,7 @@
 
 <body>
 
-<!-- ===== HEADERl ===== -->
+<!-- ===== HEADER ===== -->
 <header class="site-header">
   <div class="header-inner">
 
@@ -68,7 +68,8 @@
     <button class="nav-toggle"><span></span><span></span><span></span></button>
 
   </div>
-
+  
+  <!-- ===== MOBILE NAV ===== -->
   <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile">
     <details>
       <summary>About Us</summary>
@@ -106,83 +107,124 @@
   </nav>
 </header>
 
-<!-- ===== HERO (MATCHES MEMBERSHIP EXACTLY) ===== -->
-<section class="member-hero" style="--bg:url('../images/wolf5.jpg')">
-  <div class="member-hero__overlay"></div>
+<!-- ===== HERO ===== -->
+<section class="events-hero" style="--bg:url('../images/wolf6.jpg')">
+  <div class="events-hero__overlay"></div>
 
-  <div class="member-hero__text" style="margin-left:auto; text-align:right;">
+  <div class="events-hero__text">
     <h1>EVENTS</h1>
-    <p>From wolf-dog hikes to healing circles — come connect with our pack.</p>
+    <p>Come connect with our pack. Join us in community, in nature, and in purpose.</p>
   </div>
 </section>
 
 <div class="hero-divider"></div>
 
-<!-- ===== UPCOMING EVENTS ===== -->
-<section class="upcoming container" style="padding: clamp(60px, 8vw, 110px) 0;">
-  <h2 class="section-title">Upcoming Events</h2>
-  <p class="section-sub">Join us in community, in nature, and in purpose.</p>
+<!-- ===== CALENDAR SECTION ===== -->
+<section class="events-calendar container">
+  <h2 class="events-title">Event Calendar</h2>
+  <p class="events-sub">See what's coming up and save the dates to join the pac</p>
 
   <div class="calendar-box">
-    <p>Calendar coming soon — admin editable.</p>
+    <div class="calendar-placeholder">
+      Calendar will appear here. Full interactive calendar coming soon.
+    </div>
   </div>
 </section>
 
+<!-- ===== UPCOMING EVENTS ===== -->
+<section class="events-upcoming container">
+  <h2 class="events-title-magenta">Upcoming Events</h2>
+
+  <div class="events-grid">
+
+    <!-- EVENT CARD EXAMPLE -->
+    <article class="event-card">
+      <h3>Wolf-Dog Hike</h3>
+      <p class="event-date">January 18, 2025 · Sacramento</p>
+      <p>Join us for our next community hike alongside our sanctuary wolf-dogs.</p>
+      <button class="btn btn--lime">Sign Up</button>
+    </article>
+
+    <article class="event-card">
+      <h3>Paint a Wolf with Jackie</h3>
+      <p class="event-date">February 8, 2025 · Local Park</p>
+      <p>Create wolf-inspired art with Sacramento artist Jackie in nature.</p>
+      <button class="btn btn--magenta">Learn More</button>
+    </article>
+
+  </div>
+</section>
 
 <!-- ===== PAST EVENTS ===== -->
-<section class="past container" style="padding-bottom: clamp(80px, 10vw, 140px);">
+<section class="events-past container">
+  <h2 class="events-title-magenta">Past Events</h2>
 
-  <h2 class="section-title">Past Events</h2>
+  <div class="past-grid">
 
-  <!-- Event 1 -->
-  <div class="past-event">
-    
-    <div class="event-img">
-      <img src="../images/events/twilight.jpg" alt="Twilight night group photo">
-    </div>
+    <!-- MOVIE NIGHT -->
+    <article class="past-card">
 
-    <div class="event-text">
-      <h3>Oct. 25th – Wolf Girls: Twilight Night</h3>
-      <p>On October 25th, our Wolf Girls came together in Sacramento for a cozy Twilight movie night under the evening sky! It was such a special time to connect with fellow members of our growing community, share stories, and welcome new faces. 
-        Everyone joined in on making Halloween crafts, enjoying treats, and learning more about the recent projects we’ve been working on to support wolves and conservation. 
-        We also talked about the different ways anyone can get involved. Nights like this remind us how strong our pack truly is when we come together with purpose and heart.</p>
-    </div>
+      <div class="past-content">
+        <h3>Wolf Girls Twilight Movie Night</h3>
+        <p class="event-date">October 25 · Sacramento</p>
+        <p>
+          On October 25th, our Wolf Girls came together in Sacramento for a cozy Twilight movie night under the evening sky! 
+          It was such a special time to connect with fellow members of our growing community, share stories, and welcome new faces. 
+          Everyone joined in on making Halloween crafts, enjoying treats, and learning more about the recent projects we’ve been 
+          working on to support wolves and conservation. We also talked about the different ways anyone can get involved. 
+          Nights like this remind us how strong our pack truly is when we come together with purpose and heart.
+        </p>
+      </div>
+
+      <div class="past-img-right" style="background-image:url('../images/events/twilight.jpg');"></div>
+
+    </article>
+
+
+
+    <!-- HIKE -->
+    <article class="past-card">
+
+      <div class="past-content">
+        <h3>Wolf-Dog Hike with Bella & Chaos</h3>
+        <p class="event-date">October 25 · Local Trail</p>
+        <p>
+          On October 25th, we hit the trails for our latest Wolf-Dog Hike! Our amazing wolf dogs, Bella and Chaos, joined us for 
+          a beautiful day out in nature alongside community members and hikers who came to walk, learn, and connect. The group enjoyed 
+          time on a local scenic trail, sharing stories and gaining a deeper appreciation for these incredible animals. 
+          It was a wonderful reminder of the bond between people, wolves, and the wild spaces we work to protect.
+        </p>
+      </div>
+
+      <div class="past-img-right" style="background-image:url('../images/events/hike.jpg');"></div>
+
+    </article>
+
+
+
+    <!-- PAINT A WOLF -->
+    <article class="past-card">
+
+      <div class="past-content">
+        <h3>Paint a Wolf with Jackie</h3>
+        <p class="event-date">October 18 · Sacramento</p>
+        <p>
+          On October 18th, we hosted Paint a Wolf with Jackie, a creative community event led by local Sacramento artist Jackie. 
+          Surrounded by nature, our pack gathered to paint, unwind, and express our love for wolves through art. It was such a peaceful 
+          and inspiring afternoon filled with laughter, connection, and creativity. Everyone brought their own unique touch to their 
+          wolf painting, celebrating both individuality and unity within our growing community. 
+          Events like these remind us that protecting wolves is not just about advocacy but also about celebrating their beauty and the 
+          spirit they represent.
+        </p>
+      </div>
+
+      <div class="past-img-right" style="background-image:url('../images/events/paintawolf.jpg');"></div>
+
+    </article>
+
   </div>
-
-  <!-- Event 2 -->
-  <div class="past-event reverse">
-
-    <div class="event-text">
-      <h3>Oct. 25th – Hike with Wolf-Dogs</h3>
-      <p>On October 25th, we hit the trails for our latest Wolf-Dog Hike! Our amazing wolf dogs, Bella and Chaos, joined us for a beautiful day out in nature alongside community members and hikers who came to walk, learn, and connect. 
-        The group enjoyed time on a local scenic trail, sharing stories and gaining a deeper appreciation for these incredible animals. It was a wonderful reminder of the bond between people, wolves, and the wild spaces we work to protect. 
-        <br>Sign up for our next hike and come be part of the adventure!</br>
-      </p>
-    </div>
-
-    <div class="event-img">
-      <img src="../images/events/hike.jpg" alt="Wolf-dog hike">
-    </div>
-
-  </div>
-
-  <!-- Event 3 -->
-  <div class="past-event">
-
-    <div class="event-img">
-      <img src="../images/events/paintawolf.jpg" alt="Paint a Wolf event">
-    </div>
-
-    <div class="event-text">
-      <h3>Oct. 18th – Paint a Wolf with Jackie Wada</h3>
-      <p>On October 18th, we hosted Paint a Wolf with Jackie, a creative community event led by local Sacramento artist Jackie. Surrounded by nature, our pack gathered to paint, unwind, and express our love for wolves through art. 
-        It was such a peaceful and inspiring afternoon. It was filled with laughter, connection, and creativity. Each person brought their own unique touch to their wolf painting, celebrating both individuality and unity within our growing community. 
-        Events like these remind us that protecting wolves is not just about advocacy but also about celebrating their beauty and the spirit they represent.</p>
-    </div>
-
-  </div>
-
 </section>
+
 
 
 <!-- ===== FOOTER ===== -->
@@ -191,6 +233,29 @@
     Women For Wolves · ©2025 · 501(c)3 · EIN: 46-5594240
   </div>
 </footer>
+
+<!-- ===== JS (menu) ===== -->
+  <script>
+    document.querySelectorAll('.menu-button').forEach(btn => {
+      btn.addEventListener('click', () => btn.blur());
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.querySelector('.nav-toggle');
+      const mobile = document.getElementById('mobile-nav');
+      if (!toggle || !mobile) return;
+
+      const closeDetails = () => {
+        mobile.querySelectorAll('details[open]').forEach(d => { d.open = false; });
+      };
+      toggle.addEventListener('click', () => {
+        const opening = !mobile.classList.contains('show');
+        mobile.classList.toggle('show');
+        toggle.setAttribute('aria-expanded', String(opening));
+        if (!opening) closeDetails();
+      });
+    });
+  </script>
 
 </body>
 </html>
