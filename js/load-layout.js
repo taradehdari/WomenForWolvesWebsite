@@ -1,11 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // detect how deep the current file is:
-  const depth = window.location.pathname.split("/").length - 2;
+  // Detect depth correctly for GitHub Pages
+  const path = window.location.pathname;
 
+  // EXAMPLE:
+  // /WomenForWolvesWebsite/index.html → ["", "WomenForWolvesWebsite", "index.html"]
+  // /WomenForWolvesWebsite/get-involved/events.html → ["", "WomenForWolvesWebsite", "get-involved", "events.html"]
+
+  const parts = path.split("/").filter(p => p.length > 0);
+
+  // Ignore the repo name (WomenForWolvesWebsite)
+  const depth = parts.length - 1;
+
+  // Build the correct prefix
   let base = "";
   for (let i = 0; i < depth; i++) base += "../";
-
 
   // Load Header
   fetch(base + "partials/header.html")
@@ -13,33 +22,26 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(html => {
       document.querySelector("header.site-header").innerHTML = html;
 
-      // ⭐ FIX ALL NAV LINKS (make them dynamic)
+      // Fix dynamic links
       document.querySelectorAll("[data-href]").forEach(link => {
         link.href = base + link.dataset.href;
       });
 
-      // ⭐ FIX LOGO
+      // Fix dynamic logo
       document.querySelectorAll("[data-logo]").forEach(img => {
         img.src = base + img.dataset.logo;
       });
 
-      // Load mobile nav script AFTER header loads
+      // Load mobile nav script
       const navScript = document.createElement("script");
       navScript.src = base + "js/mobile-nav.js";
       document.body.appendChild(navScript);
     });
-
 
   // Load Footer
   fetch(base + "partials/footer.html")
     .then(res => res.text())
     .then(html => {
       document.querySelector("footer.site-footer").innerHTML = html;
-
-      // Fix any footer navigation too (if needed)
-      document.querySelectorAll("[data-href]").forEach(link => {
-        link.href = base + link.dataset.href;
-      });
     });
-
 });
