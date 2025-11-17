@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const parts = path.split("/").filter(p => p.length > 0);
 
   // Ignore the repo name (WomenForWolvesWebsite)
-  const depth = parts.length - 1;
+  const depth = parts.length - 2;
 
   // Build the correct prefix
   let base = "";
