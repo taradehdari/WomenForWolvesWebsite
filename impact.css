@@ -1,0 +1,37 @@
+/* ===== HERO ===== */
+.impact-hero {
+  position: relative;
+  height: 60vh;
+  background-image: var(--bg);
+  background-size: cover;
+  background-position: center 60%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: clamp(40px, 8vw, 80px);
+  text-align: right;
+  color: var(--white);
+}
+.impact-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+}
+.impact-hero__text {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+.impact-hero__text h1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-xxl);
+  font-weight: var(--fw-bold);
+  color: var(--lime);
+}
+.impact-hero__text p {
+  font-family: var(--font-accent);
+  font-size: var(--fs-md);
+  line-height: 1.5;
+  color: white; 
+  font-weight: var(--fw-semi);
+}
