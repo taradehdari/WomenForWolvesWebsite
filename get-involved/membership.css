@@ -23,11 +23,17 @@
   max-width: 600px;
 }
 .member-hero__text h1 {
-  font-size: clamp(50px, 8vw, 90px);
+  font-family: var(--font-display);
+  font-size: var(--fs-xxl);
+  font-weight: var(--fw-bold);
   color: var(--lime);
 }
 .member-hero__text p {
-  font-size: clamp(20px, 2vw, 28px);
+  font-family: var(--font-accent);
+  font-size: var(--fs-md);
+  line-height: 1.5;
+  color: white; 
+  font-weight: var(--fw-semi);
 }
 
 
@@ -58,11 +64,14 @@
 
 .perk-text h3 {
   color: var(--lime);
-  font-size: clamp(32px, 3vw, 48px);
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
   margin-bottom: 12px;
 }
 .perk-text p {
-  font-size: clamp(20px, 2vw, 26px);
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
   line-height: 1.6;
   opacity: 0.95;
 }
@@ -94,14 +103,21 @@
 }
 .donate-card h3 {
   color: var(--lime);
-  font-size: clamp(26px, 3vw, 36px);
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
   margin-bottom: 12px;
 }
 .donate-card p {
-  font-size: clamp(18px, 2vw, 22px);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
   line-height: 1.6;
   opacity: 0.95;
   margin-bottom: 24px;
+}
+.donate-card label{
+  font-family: var(--font-body) !important;
+  font-size: var(--fs-sm) !important;
 }
 
 /* Form inside recurring donation */
@@ -111,8 +127,9 @@
   gap: 14px;
 }
 .membership-form label {
-  font-weight: 700;
-  font-size: clamp(16px, 2vw, 18px);
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
 }
 .membership-form select {
   height: 50px;
@@ -121,8 +138,8 @@
   border: 2px solid rgba(255,255,255,0.18);
   border-radius: 10px;
   padding: 0 12px;
-  font-family: 'Big Shoulders Display', sans-serif;
-  font-size: 20px;
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
 }
 .membership-form select:focus {
   border-color: var(--magenta);
@@ -133,15 +150,17 @@
 .btn--magenta {
   background: var(--magenta);
   color: var(--white);
-  border-radius: 999px;
-  font-weight: 900;
   letter-spacing: 1px;
   padding: 12px 22px;
   transition: .3s;
-  font-size: 18px;
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
 }
 .btn--lime {
-    font-size: 18px;
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
 }
 .btn--magenta:hover {
   background: var(--lime);
@@ -164,16 +183,20 @@
 }
 .pack-count-title {
   color: var(--magenta);
-  font-size: clamp(34px, 5vw, 56px);
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
 }
 .pack-count-number {
-  font-size: clamp(60px, 8vw, 110px);
+  font-family: var(--font-accent);
+  font-size: var(--fs-xxl);
+  font-weight: var(--fw-bold);
   color: var(--lime);
-  font-weight: 900;
   margin: 10px 0 20px;
 }
 .pack-count-sub {
-  font-size: clamp(20px, 2vw, 26px);
+  font-family: var(--font-accent);
+  font-size: var(--fs-md);
   opacity: 0.85;
 }
 
@@ -192,8 +215,6 @@
 
 /* GRADIENT NUMBER */
 .pack-count-number {
-  font-size: clamp(60px, 8vw, 110px);
-  font-weight: 900;
   color: var(--lime);  
   opacity: 0;           /* Start hidden */
   transform: translateY(20px); /* slide-in effect */

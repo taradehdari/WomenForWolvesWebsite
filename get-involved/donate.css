@@ -24,14 +24,18 @@
   max-width: 600px;
 }
 .donate-hero__text h1 {
-  font-size: clamp(50px, 8vw, 90px);
+  font-family: var(--font-display);
+  font-size: var(--fs-xxl);
+  font-weight: var(--fw-bold);
   color: var(--lime);
   margin-bottom: 10px;
 }
 .donate-hero__text p {
-  font-size: clamp(20px, 2vw, 28px);
+  font-family: var(--font-accent);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semi);
   line-height: 1.5;
-  color: rgba(255,255,255,0.9);
+  color: white;
 }
 
 /* ===== DONATION OPTIONS ===== */
@@ -40,7 +44,9 @@
   text-align: center;
 }
 .donation-title {
-  font-size: clamp(34px, 5vw, 56px);
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
   color: var(--magenta);
   text-transform: uppercase;
   margin-bottom: 16px;
@@ -48,7 +54,8 @@
 .donation-sub {
   max-width: 800px;
   margin: 0 auto 60px;
-  font-size: clamp(20px, 2vw, 26px);
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
   opacity: 0.9;
   line-height: 1.6;
 }
@@ -76,11 +83,14 @@
 }
 .donate-card h3 {
   color: var(--lime);
-  font-size: clamp(26px, 3vw, 36px);
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
   margin-bottom: 12px;
 }
 .donate-card p {
-  font-size: clamp(18px, 2vw, 22px);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
   line-height: 1.6;
   opacity: 0.95;
   margin-bottom: 24px;
@@ -93,8 +103,9 @@
   gap: 14px;
 }
 .membership-form label {
-  font-weight: 700;
-  font-size: clamp(16px, 2vw, 18px);
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
 }
 .membership-form select {
   height: 50px;
@@ -103,8 +114,8 @@
   border: 2px solid rgba(255,255,255,0.18);
   border-radius: 10px;
   padding: 0 12px;
-  font-family: 'Big Shoulders Display', sans-serif;
-  font-size: 20px;
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
 }
 .membership-form select:focus {
   border-color: var(--magenta);
@@ -116,14 +127,15 @@
   background: var(--magenta);
   color: var(--white);
   border-radius: 999px;
-  font-weight: 900;
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
   letter-spacing: 1px;
   padding: 12px 22px;
   transition: .3s;
-  font-size: 18px;
 }
 .btn--lime {
-    font-size: 18px;
+    font-size: var(--fs-sm);
 }
 .btn--magenta:hover {
   background: var(--lime);

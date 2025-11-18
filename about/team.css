@@ -1,27 +1,17 @@
 /* ===== WOMEN FOR WOLVES TEAM PAGE THEME ===== */
-
-:root {
-  --lime: #CAFC00;     /* neon lime */
-  --magenta: #CB6BE6;  /* magenta */
-  --black: #000000;
-  --white: #ffffff;
-  --card-bg: #0d0d0d;  /* dark charcoal for cards */
-}
-
 /* ===== BASE ===== */
 body {
   background-color: var(--black);
   color: var(--white);
-  font-family: "Big Shoulders Display", sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.03em;
+  font-family: var(--font-body);
+  font-weight: var(--fw-regular);
+  letter-spacing: 0.3em;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-align: center;
 }
 
 /* ===== INTRO SECTION ===== */
-/* ===== (matches Donation/Membership) ===== */
 .page-hero {
   position: relative;
   width: 100%;
@@ -54,8 +44,9 @@ body {
 }
 
 .page-hero__title {
-  font-size: clamp(48px, 7vw, 96px);
-  font-weight: 900;
+  font-size: var(--fs-xxl);
+  font-weight: var(--fw-bold);
+  font-family: var(font-display);
   color: var(--lime);
   letter-spacing: 3px;
   margin: 0 0 10px;
@@ -63,10 +54,11 @@ body {
 }
 
 .page-hero__quote {
-  font-size: clamp(20px, 2.2vw, 30px);
-  font-weight: 600;
-  color: var(--white);
-  opacity: 0.9;
+  font-family: var(--font-accent);
+  font-weight: var(--fs-semi);
+  font-size: var(--fs-md);
+  color: white;
+  line-height: 1.5;
 }
 
 
@@ -88,7 +80,7 @@ body {
 .bio-col {
   display: flex;
   flex-direction: column;
-  background-color: var(--card-bg);
+  background-color: #0d0d0d;
   border-radius: 1rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
   padding: 2rem 2rem 3rem;
@@ -127,8 +119,9 @@ body {
 
 /* ===== TEXT INSIDE CARD ===== */
 .bio-name {
-  font-size: clamp(1.8rem, 2.5vw, 2.5rem);  /* larger name */
-  font-weight: 900;
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
   color: var(--lime);
   text-transform: uppercase;
   margin: 0 0 0.4rem;
@@ -137,8 +130,9 @@ body {
 }
 
 .bio-role {
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
   color: var(--magenta);
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -147,8 +141,9 @@ body {
 }
 
 .bio-text {
-  font-size: 1.2rem;
-  font-weight: 500;
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-regular);
   color: var(--white);
   line-height: 1.7;
   margin: 0;
@@ -159,7 +154,7 @@ body {
 a {
   color: var(--lime);
   text-decoration: none;
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   transition: color .2s ease, text-shadow .2s ease;
 }
 
@@ -183,7 +178,7 @@ a:hover {
   }
 }
 
-/* ===== BUTTON (OPTIONAL if you have any links/buttons) ===== */
+/* ===== BUTTON (OPTIONAL if have any links/buttons) ===== */
 .button {
   display: inline-block;
   background: var(--lime);

@@ -23,11 +23,17 @@
   max-width: 600px;
 }
 .contact-hero__text h1 {
-  font-size: clamp(50px, 8vw, 90px);
+  font-family: var(--font-display);
+  font-size: var(--fs-xxl);
+  font-weight: var(--fw-bold);
   color: var(--lime);
 }
 .contact-hero__text p {
-  font-size: clamp(20px, 2vw, 28px);
+  font-family: var(--font-accent);
+  font-size: var(--fs-md);
+  line-height: 1.5;
+  color: white; 
+  font-weight: var(--fw-semi);
 }
 /* ===== CONTACT SECTION ===== */
 .contact-section {
@@ -45,14 +51,16 @@
 
 .contact__title {
   color: var(--magenta);
-  font-size: clamp(38px, 5vw, 62px);
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
   margin-bottom: 10px;
   text-transform: uppercase;
-  font-weight: 800;
 }
 
 .contact__sub {
-  font-size: clamp(20px, 2vw, 26px);
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
   opacity: 0.85;
   max-width: 650px;
   margin: 0 auto 40px;
@@ -105,8 +113,9 @@
   color: var(--white);
   border: none;
   border-radius: 12px;
-  font-size: clamp(20px, 2.2vw, 26px);
-  font-weight: 900;
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
   text-transform: uppercase;
   letter-spacing: 2px;
   cursor: pointer;
@@ -128,8 +137,9 @@
 .contact__msg {
   grid-column: span 2;
   margin-top: 10px;
-  font-weight: 700;
-  font-size: 20px;
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
   color: var(--lime);
 }
 
