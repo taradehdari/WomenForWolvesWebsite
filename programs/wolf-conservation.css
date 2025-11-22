@@ -376,9 +376,7 @@
   transform: translateY(-2px);
 }
 
-/* ============================
-   EDUCATION GRID
-   ============================ */
+/* ==== EDUCATION GRID ==== */
 .wolf-edu {
   background: var(--black);
   padding: clamp(72px, 9vw, 120px) 0;
@@ -440,9 +438,7 @@
   }
 }
 
-/* ============================
-   SCHOOL CTA
-   ============================ */
+/* === SCHOOL CTA === */
 .school-cta {
   background: var(--black);
   padding: clamp(72px, 9vw, 120px) 0;
@@ -488,9 +484,7 @@
   transform: translateY(-2px);
 }
 
-/* ============================
-   JOIN COMMUNITY — IMAGE HERO
-   ============================ */
+/* ==== JOIN COMMUNITY ==== */
 .join-community {
   position: relative;
   background-image: var(--bg);
