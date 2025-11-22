@@ -766,25 +766,6 @@ body.has-banner .site-header { margin-top: 65px; }
 .txt-lime { color: var(--lime); }
 .txt-magenta { color: var(--magenta); }
 
-/* >>> Fade bridge so Mission flows into Impact (no blocky cut) */
-.mission-aka::after {
-  content: none;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: clamp(90px, 12vw, 180px);
-  pointer-events: none;
-  z-index: 1;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 0.85) 30%,
-    rgba(0, 0, 0, 0.55) 60%,
-    rgba(0, 0, 0, 0) 100%
-  );
-}
-
 /* small-screen polish */
 @media (max-width: 700px) {
   .mission-aka__wrap { width: min(680px, 92vw); }
@@ -797,18 +778,24 @@ body.has-banner .site-header { margin-top: 65px; }
 .stats-hero {
   position: relative;
   overflow: hidden;
-  background-image:
-    linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 1) 0%,
-      rgba(0, 0, 0, 0.85) 28%,
-      rgba(0, 0, 0, 0.55) 55%,
-      rgba(0, 0, 0, 0) 100%
-    ),
-    var(--bg);
-  background-repeat: no-repeat, no-repeat;
-  background-size: 100% 220px, cover;
-  background-position: top, center 60%;
+
+  /* parallax image */
+  background-image: var(--bg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  /* remove gradient fade */
+  background-repeat: no-repeat;
+}
+
+/* optional: darken image slightly for readability */
+.stats-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45); /* adjust darkness here */
+  z-index: 1;
 }
 
 /* gentle dark overlay for legibility */
@@ -832,44 +819,6 @@ body.has-banner .site-header { margin-top: 65px; }
   padding-top: clamp(110px, 18vw, 230px);
   padding-bottom: clamp(110px, 12vw, 210px);
   transform: translateY(-10px);
-}
-
-/* subtle brand-colored glow at the very top (not a hard line) */
-.stats-hero::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -140px;
-  height: 180px;
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 0.85) 35%,
-    rgba(0, 0, 0, 0.55) 65%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  z-index: 0;
-}
-
-/* bottom fade that matches the top fade */
-.stats-hero::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 220px;
-  pointer-events: none;
-  z-index: 1;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.5) 40%,
-    rgba(0, 0, 0, 0.85) 75%,
-    rgba(0, 0, 0, 1) 100%
-  );
 }
 
 .stats-hero__title {
@@ -1077,20 +1026,7 @@ body.has-banner .site-header { margin-top: 65px; }
   font-family: var(--font-display);
   background: var(--black);
   padding-top: 120px;
-  padding-bottom: 120px;
-}
-
-/* Add a black bottom fade / cutoff */
-.section_overview::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: clamp(120px, 14vh, 200px); /* adjusts based on screen size */
   background: var(--black);
-  z-index: 0;
-  pointer-events: none;
 }
 
 /* Keep the photo always above the black base */
@@ -1264,36 +1200,15 @@ body.has-banner .site-header { margin-top: 65px; }
   background: var(--black);
   background-image: var(--bg);
   background-size: cover;
-  background-position: center 10%;
+  background-position: center 25%;
   background-repeat: no-repeat;
   
 
   color: var(--white);
   text-align: center;
 
-  /* Seamless flow: pull image up under the previous section */
-  margin-top: calc(-1 * var(--pq-overlap) + 120px);
   padding-top: calc(clamp(100px, 18vw, 220px) + var(--pq-overlap));
   padding-bottom: clamp(100px, 18vw, 220px);
-}
-
-/* dark gradient at the top of the wolf image to blend upward into black */
-.pullquote::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: clamp(120px, 15vw, 240px); /* fade size responsive */
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,1) 0%,      /* full black at the top */
-    rgba(0,0,0,0.85) 40%,
-    rgba(0,0,0,0.5) 70%,
-    rgba(0,0,0,0) 100%     /* transparent fades into photo */
-  );
-  z-index: 2;
-  pointer-events: none;
 }
 
 /* content above overlay */
@@ -1318,54 +1233,18 @@ body.has-banner .site-header { margin-top: 65px; }
   font-family: var(--font-accent);
 }
 
-/* single magenta opening quote mark */
-/* .pullquote blockquote::before {
+/* Dark overlay (same as stats-hero::before) */
+.pullquote::before {
+  content: "";
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: clamp(42px, 6vw, 80px);
-  line-height: 1;
-  color: var(--magenta);
-  text-shadow: 0 0 18px rgba(203, 107, 230, 0.28);
-  pointer-events: none;
-  content: "“";
-  left: clamp(10px, 1.5vw, 18px);
-}
-.pullquote blockquote::after {
-  content: "”";
-  position: absolute;
-  top: 50%;
-  right: clamp(14px, 1.5vw, 22px);   
-  transform: translateY(-50%);
-  font-size: clamp(42px, 6vw, 80px);
-  line-height: 1;
-  color: var(--magenta);
-  text-shadow: 0 0 18px rgba(203,107,230,.28);
-  pointer-events: none;
+  inset: 0;
+  background: rgba(0,0,0,0.45); /* same darkness */
   z-index: 1;
-} */
-
-
-/* Slight zoom pulse */
-@media (prefers-reduced-motion: no-preference) {
-  .pullquote {
-    animation: pq-zoom 18s ease-in-out infinite alternate;
-  }
-  @keyframes pq-zoom {
-    from { transform: scale(1); }
-    to   { transform: scale(1.06); }
-  }
 }
-
-/* Parallax feel (background sticks a bit while scrolling) */
-   .pullquote { background-attachment: fixed; }
-   @supports (-webkit-touch-callout: none) { .pullquote { background-attachment: scroll; } }
-
 
 /* Mobile tweaks */
 @media (max-width: 700px) {
   .pullquote {
-    margin-top: calc(-1 * (var(--pq-overlap) * 0.6));
     padding-top: calc(clamp(80px, 24vw, 160px) + (var(--pq-overlap) * 0.6));
     padding-bottom: clamp(80px, 24vw, 160px);
   }
