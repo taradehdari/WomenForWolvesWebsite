@@ -180,7 +180,7 @@
 /* body */
 .faq .faq-body {
   padding: 10px 0 18px;
-  font-size: var(--fs-md);
+  font-size: var(--fs-sm);
   line-height: 1.7;
   color: rgba(255,255,255,.9);
 }

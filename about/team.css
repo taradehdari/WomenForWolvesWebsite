@@ -142,7 +142,7 @@ body {
 
 .bio-text {
   font-family: var(--font-body);
-  font-size: var(--fs-md);
+  font-size: var(--fs-xs);
   font-weight: var(--fw-regular);
   color: var(--white);
   line-height: 1.7;

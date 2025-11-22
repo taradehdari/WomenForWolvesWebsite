@@ -35,3 +35,522 @@
   color: white; 
   font-weight: var(--fw-semi);
 }
+
+/* ===== OVERVIEW SECTION ===== */
+.wolf-overview__intro {
+  grid-column: 1 / -1;   /* spans the whole grid */
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.wolf-overview {
+  background: var(--black);
+  padding: clamp(72px, 9vw, 120px) 0;
+  border-top: 4px solid var(--lime);
+}
+
+.wolf-overview__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr; /* image right, text left */
+  gap: clamp(40px, 4vw, 70px);
+  align-items: center;
+}
+
+
+.wolf-overview__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  color: var(--magenta);
+  font-weight: var(--fw-bold);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.wolf-overview__lede {
+  font-family: var(--font-accent);
+  font-size: var(--fs-md);
+  line-height: 1.65;
+  opacity: 0.92;
+  margin-bottom: clamp(24px, 3vw, 32px);
+  text-align: center;
+}
+
+.wolf-overview__text {
+  text-align: left;
+}
+
+.wolf-overview__subhead {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  color: var(--lime);
+  margin-bottom: 16px;
+  font-weight: var(--fw-bold);
+}
+
+.wolf-overview__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.wolf-overview__list li {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  line-height: 1.65;
+  margin-bottom: 14px;
+  padding-left: 26px;
+  opacity: 0.9;
+  position: relative;
+}
+.wolf-overview__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 10px;
+  height: 10px;
+  background: var(--magenta);
+  border-radius: 50%;
+}
+
+.wolf-overview__photo img {
+  width: 100%;
+  display: block;
+  border: 3px solid var(--lime);
+  border-radius: 18px;
+  box-shadow: 0 0 32px rgba(202,252,0,0.2);
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .wolf-overview__inner {
+    grid-template-columns: 1fr;
+  }
+  .wolf-overview__photo {
+    order: 1;
+  }
+  .wolf-overview__text {
+    order: 2;
+    text-align: left;
+  }
+}
+
+/* ==== QUOTE + MISSION SPLIT SECTION ==== */
+
+.wolf-mission__intro {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.wolf-mission {
+  background: var(--black);
+  padding: clamp(72px, 9vw, 120px) 0;
+  border-top: 1px solid rgba(202,252,0,0.25);
+}
+
+.wolf-mission__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  /* Grid stays the same */
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr; /* right image, left text */
+  gap: clamp(40px, 4vw, 70px);
+  align-items: center;
+}
+
+/* === NEW FIX: make the left column a vertical stack === */
+.wolf-mission__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* centers quote + title */
+  text-align: center;    /* centers only the quote/title */
+}
+
+/* Quote */
+.wolf-mission__quote {
+  font-family: var(--font-accent) !important;
+  font-size: var(--fs-lg) !important;
+  color: var(--white);
+  opacity: 0.9;
+  margin-bottom: clamp(24px, 3vw, 32px);
+}
+
+.wolf-mission__quote-name {
+  display: block;
+  font-family: var(--font-accent);
+  font-size: var(--fs-lg);
+  color: var(--lime);
+  margin-top: 6px;
+}
+
+/* Title */
+.wolf-mission__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  color: var(--magenta);
+  font-weight: var(--fw-bold);
+  margin-bottom: 18px;
+}
+
+.wolf-mission__text p {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  line-height: 1.65;
+  opacity: 0.92;
+  margin-bottom: 20px;
+  text-align: left;      
+}
+
+/* Photo */
+.wolf-mission__photo img {
+  width: 90%;
+  border: 3px solid var(--lime);
+  border-radius: 18px;
+  box-shadow: 0 0 32px rgba(202,252,0,0.2);
+  object-fit: cover;
+}
+
+/* Mobile stack */
+@media (max-width: 900px) {
+  .wolf-mission__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .wolf-mission__photo {
+    order: 1;
+    text-align: center;
+  }
+
+  .wolf-mission__text {
+    order: 2;
+    text-align: center;
+  }
+}
+
+
+/* === ACCORDION — WILD WOLVES / WOLF DOGS / DOGS === */
+
+/* caret */
+.issue__summary::after {
+  content: "▾";
+  font-size: var(--fs-md);
+  color: var(--white);
+  transition: transform .25s ease, color .2s ease;
+}
+
+.issue[open] > .issue__summary::after {
+  transform: rotate(180deg);
+  color: var(--lime);
+}
+
+.wolf-issues {
+  background: var(--black);
+  padding: clamp(72px, 9vw, 120px) 0;
+  border-top: 1px solid rgba(202,252,0,0.25);
+}
+
+.wolf-issues__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.wolf-issues__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  color: var(--magenta);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.wolf-issues__subtitle {
+  font-family: var(--font-accent);
+  font-size: var(--fs-md);
+  color: var(--lime);
+  text-align: center;
+  margin-bottom: clamp(32px, 5vw, 50px);
+}
+
+.issue {
+  margin-bottom: 22px;
+  border: 2px solid var(--magenta);
+  border-radius: 12px;
+  background: #0d0d0d;
+  overflow: hidden;
+}
+
+.issue__summary {
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  padding: 16px 20px;
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.issue__body {
+  padding: 20px 20px 28px;
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  line-height: 1.65;
+}
+
+.issue__body h3 {
+  font-family: var(--font-display);
+  color: var(--lime);
+  font-size: var(--fs-md);
+  margin: 14px 0 6px;
+}
+
+.issue__body p {
+  opacity: 0.92;
+  margin-bottom: 14px;
+}
+
+/* ==== CONSERVATION BLOCK ===== */
+.wolf-conservation-block {
+  background: var(--black);
+  padding: clamp(72px, 9vw, 120px) 0;
+  border-top: 1px solid rgba(202,252,0,0.25);
+}
+
+.wolf-conservation__inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.wolf-conservation__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  color: var(--magenta);
+  margin-bottom: 16px;
+}
+
+.wolf-conservation__inner p {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  line-height: 1.65;
+  opacity: 0.92;
+  margin-bottom: 20px;
+}
+
+.wolf-conservation__cta {
+  font-family: var(--font-accent);
+  color: var(--lime);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  margin-top: 12px;
+}
+
+.wolf-conservation__btn {
+  display: inline-block;
+  margin-top: 18px;
+  font-family: var(--font-display);
+  padding: 14px 32px;
+  background: var(--magenta);
+  color: var(--white);
+  border-radius: 12px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow:
+    -2px -2px 0 #000,
+     2px -2px 0 #000,
+    -2px  2px 0 #000,
+     2px  2px 0 #000;
+  transition: 0.25s ease;
+}
+.wolf-conservation__btn:hover {
+  background: var(--lime);
+  color: var(--black);
+  transform: translateY(-2px);
+}
+
+/* ============================
+   EDUCATION GRID
+   ============================ */
+.wolf-edu {
+  background: var(--black);
+  padding: clamp(72px, 9vw, 120px) 0;
+}
+
+.wolf-edu__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.wolf-edu__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  color: var(--magenta);
+  margin-bottom: 16px;
+}
+
+.wolf-edu__lede {
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  opacity: 0.92;
+  line-height: 1.65;
+  margin-bottom: clamp(32px, 4vw, 50px);
+}
+
+.wolf-edu__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(24px, 3vw, 40px);
+}
+
+.wolf-edu__card {
+  background: #0d0d0d;
+  border: 3px solid var(--magenta);
+  border-radius: 18px;
+  padding: clamp(24px, 3vw, 32px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.6);
+}
+
+.wolf-edu__card h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  color: var(--lime);
+  margin-bottom: 10px;
+}
+
+.wolf-edu__card p {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  opacity: 0.92;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 800px) {
+  .wolf-edu__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================
+   SCHOOL CTA
+   ============================ */
+.school-cta {
+  background: var(--black);
+  padding: clamp(72px, 9vw, 120px) 0;
+  text-align: center;
+  border-top: 1px solid rgba(202,252,0,0.25);
+}
+
+.school-cta__inner h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  color: var(--magenta);
+  margin-bottom: 10px;
+}
+
+.school-cta__inner p {
+  font-family: var(--font-accent);
+  color: var(--white);
+  opacity: 0.92;
+  font-size: var(--fs-md);
+  margin-bottom: 22px;
+}
+
+.school-cta__btn {
+  display: inline-block;
+  font-family: var(--font-display);
+  padding: 14px 32px;
+  background: var(--magenta);
+  color: var(--white);
+  border-radius: 12px;
+  font-weight: 900;
+  box-shadow:
+    -2px -2px 0 #000,
+     2px -2px 0 #000,
+    -2px  2px 0 #000,
+     2px  2px 0 #000;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.25s;
+}
+.school-cta__btn:hover {
+  background: var(--lime);
+  color: var(--black);
+  transform: translateY(-2px);
+}
+
+/* ============================
+   JOIN COMMUNITY — IMAGE HERO
+   ============================ */
+.join-community {
+  position: relative;
+  background-image: var(--bg);
+  background-size: cover;
+  background-position: center -85%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: clamp(120px, 18vw, 260px) 0;
+  text-align: center;
+}
+
+.join-community__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+}
+
+.join-community__inner {
+  position: relative;
+  z-index: 2;
+}
+
+.join-community__inner h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  color: var(--lime);
+  margin-bottom: 24px;
+  text-shadow:
+    -2px -2px 0 #000,
+     2px -2px 0 #000,
+    -2px  2px 0 #000,
+     2px  2px 0 #000;
+}
+
+.join-community__btn {
+  display: inline-block;
+  padding: 18px 40px;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  background: var(--magenta);
+  color: var(--white);
+  border-radius: 999px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  box-shadow:
+     -2px -2px 0 #000,
+      2px -2px 0 #000,
+     -2px  2px 0 #000,
+      2px  2px 0 #000;
+  transition: 0.25s;
+}
+.join-community__btn:hover {
+  background: var(--lime);
+  color: var(--black);
+  transform: scale(1.05);
+}
+
+@media (max-width: 2000px) {
+  .join-community {
+    background-attachment: local !important;
+    background-position: center 15% !important;
+  }
+}

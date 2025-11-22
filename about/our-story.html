@@ -163,5 +163,20 @@
   
   <script src="../js/load-layout.js"></script>
   <script src="../js/mobile-nav.js"></script>
+
+  <script>
+  // Allow only one <details> open at a time
+  document.querySelectorAll('details').forEach(details => {
+    details.addEventListener('toggle', () => {
+      if (details.open) {
+        document.querySelectorAll('details').forEach(other => {
+          if (other !== details) {
+            other.open = false;
+          }
+        });
+      }
+    });
+  });
+</script>
 </body>
 </html>
