@@ -11,6 +11,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     clearInterval(waitForHeader); // Header found — stop checking
 
+    // --- CLOSE OTHER DROPDOWNS WHEN A NEW ONE OPENS ---
+    mobileNav.querySelectorAll('details').forEach(d => {
+      d.addEventListener('toggle', () => {
+        if (d.open) {
+          mobileNav.querySelectorAll('details[open]').forEach(other => {
+            if (other !== d) other.removeAttribute('open');
+          });
+        }
+      });
+    });
+
     // Helper: close all <details> elements inside mobile nav
     const closeDetails = () => {
       mobileNav.querySelectorAll('details[open]')
