@@ -899,6 +899,14 @@ body.has-banner .site-header { margin-top: 65px; }
 @media (max-width: 640px) {
   .stats-hero__grid { grid-template-columns: repeat(2, 1fr); }
 }
+@media (max-width: 1000px) {
+  .stats-hero {
+    background-attachment: scroll !important; /* mobile can't parallax */
+    background-size: cover !important;       /* always fill the full width */
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+}
 
 
 /* ===== MAP (BEFORE vs AFTER) ===== */
