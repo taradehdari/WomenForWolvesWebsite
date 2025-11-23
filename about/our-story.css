@@ -32,59 +32,6 @@
   font-weight:var(--fw-regular);
 }
 
-/* ===== OUR STORY HERO ===== */
-.story-hero {
-  position: relative;
-  height: 60vh;
-  background-image: var(--bg);
-  background-size: cover;
-  background-position: center 40%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  padding: clamp(40px, 8vw, 80px);
-  color: var(--white);
-  text-align: right;
-}
-
-.story-hero__overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  z-index: 1;
-}
-
-.story-hero__content {
-  position: relative;
-  z-index: 2;
-  max-width: 620px;
-}
-
-.story-hero__content h1 {
-  font-size: var(--fs-xxl);
-  font-family: var(--font-display);
-  color: var(--lime);
-  margin-bottom: 10px;
-  line-height: 1;
-  letter-spacing: 2px;
-}
-
-.story-hero__content p {
-  font-size: var(--fs-md);
-  color: white;
-  font-weight: var(--fw-semi);
-  line-height: 1.5;
-  font-family: var(--font-accent);
-}
-
-/* divider same as site style */
-.hero-divider {
-  height: 4px;
-  width: 100%;
-  background: var(--lime);
-}
-
-
 /* Evolution list (numbers pop in lime) */
 .evolution { background: #0b0b0b; border-top: 4px solid var(--lime); }
 .evolution .container { padding: clamp(56px, 7vw, 90px) 16px; }

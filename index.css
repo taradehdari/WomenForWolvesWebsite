@@ -223,14 +223,6 @@ body.has-banner .site-header { margin-top: 65px; }
   font-weight: 800 !important;
 }
 
-/* ===== GREEN (LIME) BAR UNDER HERO ===== */
-.hero-divider {
-  height: 4px;
-  background: var(--lime);
-  width: 100%;
-}
-
-
 /* ========= PARTNERS ========== */
 /* .partners {
   border-top: none;

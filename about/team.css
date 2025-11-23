@@ -10,58 +10,6 @@ body {
   -webkit-font-smoothing: antialiased;
   text-align: center;
 }
-
-/* ===== INTRO SECTION ===== */
-.page-hero {
-  position: relative;
-  width: 100%;
-  min-height: 70vh;
-  background-image: var(--bg);
-  background-size: cover;
-  background-position: center 60%;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: flex-end; /* bottom alignment */
-  justify-content: flex-end;
-  padding: clamp(60px, 10vw, 120px);
-  color: var(--white);
-  text-align: right;
-  overflow: hidden;
-}
-
-/* dark overlay for legibility */
-.page-hero__overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  z-index: 0;
-}
-
-.page-hero__content {
-  position: relative;
-  z-index: 2;
-  max-width: 700px;
-}
-
-.page-hero__title {
-  font-size: var(--fs-xxl);
-  font-weight: var(--fw-bold);
-  font-family: var(font-display);
-  color: var(--lime);
-  letter-spacing: 3px;
-  margin: 0 0 10px;
-  text-shadow: 0 2px 14px rgba(0,0,0,0.6);
-}
-
-.page-hero__quote {
-  font-family: var(--font-accent);
-  font-weight: var(--fs-semi);
-  font-size: var(--fs-md);
-  color: white;
-  line-height: 1.5;
-}
-
-
 /* ===== BIOS GRID SECTION ===== */
 .team-bios-wrap {
   background-color: var(--black);
