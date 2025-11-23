@@ -1,33 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  // =======================================================
+  // DEPTH CALCULATION FOR ALL HOSTS (GitHub Pages safe)
+  // =======================================================
+  const repo = "WomenForWolvesWebsite";
+  let parts = window.location.pathname.split("/").filter(p => p.length > 0);
 
-  // DEPTH CALCULATION (GitHub Pages compatible)
-  const repo = "WomenForWolvesWebsite";   // your repo name
-  const partsRaw = window.location.pathname.split("/").filter(Boolean);
+  // Remove the repo folder if present
+  if (parts[0] === repo) {
+    parts.shift();
+  }
 
-  // Remove repo folder if present (GitHub Pages always includes it)
-  if (partsRaw[0] === repo) partsRaw.shift();
+  // Remaining path: folders + file
+  const depth = parts.length - 1;
 
-  // Remaining path parts (folders + file)
-  const depth = partsRaw.length - 1;
-
-  // Build correct "../" path
+  // Build "../" prefix
   let base = "";
-  for (let i = 0; i < depth; i++) base += "../";
+  for (let i = 0; i < depth; i++) {
+    base += "../";
+  }
 
-
-  // =======================================================
   // LOAD HEADER
-  // =======================================================
   fetch(base + "partials/header.html")
     .then(res => res.text())
     .then(html => {
       document.querySelector("header.site-header").innerHTML = html;
 
-      // Fix dynamic links + logos
+      // Fix dynamic links
       document.querySelectorAll("[data-href]").forEach(link => {
         link.href = base + link.dataset.href;
       });
+
+      // Fix dynamic logos
       document.querySelectorAll("[data-logo]").forEach(img => {
         img.src = base + img.dataset.logo;
       });
@@ -38,18 +42,16 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.appendChild(navScript);
     });
 
-  // =======================================================
+
   // LOAD FOOTER
-  // =======================================================
   fetch(base + "partials/footer.html")
     .then(res => res.text())
     .then(html => {
       document.querySelector("footer.site-footer").innerHTML = html;
     });
 
-  // =======================================================
-  // LOAD HERO (GLOBAL TITLE BANNER)
-  // =======================================================
+
+  // LOAD HERO (GLOBAL PAGE TITLE SECTION)
   const hero = document.getElementById("hero-target");
   if (hero) {
     fetch(base + "partials/page-hero.html")
@@ -64,4 +66,5 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch(err => console.error("Hero load error:", err));
   }
+
 });
