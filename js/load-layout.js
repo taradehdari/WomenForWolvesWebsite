@@ -1,33 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Detect depth correctly for GitHub Pages
-  const path = window.location.pathname;
 
-  // EXAMPLE:
-  // /WomenForWolvesWebsite/index.html → ["", "WomenForWolvesWebsite", "index.html"]
-  // /WomenForWolvesWebsite/get-involved/events.html → ["", "WomenForWolvesWebsite", "get-involved", "events.html"]
+  // DEPTH CALCULATION (GitHub Pages compatible)
+  const repo = "WomenForWolvesWebsite";   // your repo name
+  const partsRaw = window.location.pathname.split("/").filter(Boolean);
 
-  const parts = path.split("/").filter(p => p.length > 0);
+  // Remove repo folder if present (GitHub Pages always includes it)
+  if (partsRaw[0] === repo) partsRaw.shift();
 
-  // Ignore the repo name (WomenForWolvesWebsite)
-  const depth = parts.length - 2;
+  // Remaining path parts (folders + file)
+  const depth = partsRaw.length - 1;
 
-  // Build the correct prefix
+  // Build correct "../" path
   let base = "";
   for (let i = 0; i < depth; i++) base += "../";
 
-  // Load Header
+
+  // =======================================================
+  // LOAD HEADER
+  // =======================================================
   fetch(base + "partials/header.html")
     .then(res => res.text())
     .then(html => {
       document.querySelector("header.site-header").innerHTML = html;
 
-      // Fix dynamic links
+      // Fix dynamic links + logos
       document.querySelectorAll("[data-href]").forEach(link => {
         link.href = base + link.dataset.href;
       });
-
-      // Fix dynamic logo
       document.querySelectorAll("[data-logo]").forEach(img => {
         img.src = base + img.dataset.logo;
       });
@@ -38,37 +38,30 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.appendChild(navScript);
     });
 
-  // Load Footer
+  // =======================================================
+  // LOAD FOOTER
+  // =======================================================
   fetch(base + "partials/footer.html")
     .then(res => res.text())
     .then(html => {
       document.querySelector("footer.site-footer").innerHTML = html;
     });
-});
 
-
-//add hero to each page
-document.addEventListener("DOMContentLoaded", () => {
+  // =======================================================
+  // LOAD HERO (GLOBAL TITLE BANNER)
+  // =======================================================
   const hero = document.getElementById("hero-target");
-  if (!hero) return;
+  if (hero) {
+    fetch(base + "partials/page-hero.html")
+      .then(res => res.text())
+      .then(html => {
+        html = html
+          .replace("{{BG}}", hero.dataset.bg)
+          .replace("{{TITLE}}", hero.dataset.title)
+          .replace("{{SUBTITLE}}", hero.dataset.sub || "");
 
-  // Build correct base path depending on folder depth
-  const depth = window.location.pathname.split("/").length - 2;
-  let base = "";
-  for (let i = 0; i < depth; i++) base += "../";
-
-  fetch(base + "partials/page-hero.html")
-    .then(res => res.text())
-    .then(html => {
-      // Replace template tags
-      html = html
-        .replace("{{BG}}", hero.dataset.bg)
-        .replace("{{TITLE}}", hero.dataset.title)
-        .replace("{{SUBTITLE}}", hero.dataset.sub || "");
-
-      // Render hero + divider
-      hero.outerHTML = html;
-    })
-    .catch(err => console.error("Hero load error:", err));
+        hero.outerHTML = html;
+      })
+      .catch(err => console.error("Hero load error:", err));
+  }
 });
-
