@@ -15,17 +15,12 @@
   <!-- HEADER -->
   <header class="site-header"></header>
 
-  <!-- ===== HERO ===== -->
-  <section class="wolf-hero" style="--bg:url('../images/wolf13.jpg')">
-    <div class="wolf__overlay"></div>
-    <div class="wolf-hero__text">
-      <h1>Wolf Conservation</h1>
-      <p>Protecting wolves, ending cruel practices, and building a future where
-        people and predators coexist.</p>
-    </div>
+  <!-- ===== WOLF CONSERVATION HERO ===== -->
+   <section id="hero-target"
+      data-bg="../images/wolf13.jpg"
+      data-title="WOLF CONSERVATION"
+      data-sub="Protecting wolves, ending cruel practices, and building a future where people and predators coexist">  
   </section>
-
-  <div class="hero-divider"></div>
 
   <!-- ===== OVERVIEW + EXAMPLE PROGRAMS ===== -->
   <section class="wolf-overview">
@@ -314,27 +309,30 @@
     </div>
   </section>
 
-<!-- ===== GLOBAL SCRIPTS ===== -->
-<script src="../js/load-layout.js"></script>
-<script src="../js/mobile-nav.js"></script>
-<script>
-  // CLOSE OTHER ACCORDIONS WHEN ONE OPENS
-  document.querySelectorAll('.issue').forEach(details => {
-    details.addEventListener('toggle', e => {
+  <!-- FOOTER -->
+  <footer class="site-footer"></footer>
 
-      // If this one was just opened...
-      if (details.open) {
-        // ...close all the others
-        document.querySelectorAll('.issue').forEach(other => {
-          if (other !== details) {
-            other.open = false;
-          }
-        });
-      }
+  <!-- ===== GLOBAL SCRIPTS ===== -->
+  <script src="../js/load-layout.js"></script>
+  <script src="../js/mobile-nav.js"></script>
+  <script>
+    // CLOSE OTHER ACCORDIONS WHEN ONE OPENS
+    document.querySelectorAll('.issue').forEach(details => {
+      details.addEventListener('toggle', e => {
 
-    });
-  })
-</script>
+        // If this one was just opened...
+        if (details.open) {
+          // ...close all the others
+          document.querySelectorAll('.issue').forEach(other => {
+            if (other !== details) {
+              other.open = false;
+            }
+          });
+        }
+
+      });
+    })
+  </script>
 
 </body>
 </html>

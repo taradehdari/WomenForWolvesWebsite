@@ -45,3 +45,30 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector("footer.site-footer").innerHTML = html;
     });
 });
+
+
+//add hero to each page
+document.addEventListener("DOMContentLoaded", () => {
+  const hero = document.getElementById("hero-target");
+  if (!hero) return;
+
+  // Build correct base path depending on folder depth
+  const depth = window.location.pathname.split("/").length - 2;
+  let base = "";
+  for (let i = 0; i < depth; i++) base += "../";
+
+  fetch(base + "partials/page-hero.html")
+    .then(res => res.text())
+    .then(html => {
+      // Replace template tags
+      html = html
+        .replace("{{BG}}", hero.dataset.bg)
+        .replace("{{TITLE}}", hero.dataset.title)
+        .replace("{{SUBTITLE}}", hero.dataset.sub || "");
+
+      // Render hero + divider
+      hero.outerHTML = html;
+    })
+    .catch(err => console.error("Hero load error:", err));
+});
+

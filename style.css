@@ -108,6 +108,53 @@ p,
   font-size: var(--fs-sm);
 }
 
+/* ===== GLOBAL PAGE HERO ===== */
+.page-hero {
+  position: relative;
+  height: 65vh;
+  background-image: var(--hero-bg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 60px;
+  color: var(--white);
+  text-transform: uppercase;
+}
+
+.page-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+.page-hero__content {
+  position: relative;
+  text-align: right;
+  max-width: 600px;
+}
+
+.page-hero__content h1 {
+  font-size: clamp(50px, 6vw, 90px);
+  margin: 0;
+  color: var(--lime);
+  text-shadow: 0 0 20px #000;
+}
+
+.page-hero__content p {
+  font-size: clamp(20px, 2vw, 30px);
+  margin: 10px 0 0;
+  color: var(--white);
+  opacity: 0.9;
+}
+
+.hero-divider {
+  height: 4px;
+  background: var(--lime);
+  width: 100%;
+}
+
 /* ======= HEADER & NAVIGATION ======= */
 .site-header{
   position: sticky;

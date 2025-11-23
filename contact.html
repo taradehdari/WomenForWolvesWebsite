@@ -15,66 +15,65 @@
   <!-- HEADER -->
   <header class="site-header"></header>
 
-  <!-- ===== HERO ===== -->
-  <section class="contact-hero" style="--bg:url('../images/wolf9.jpg')">
-    <div class="contact-hero__overlay"></div>
-    <div class="contact-hero__text">
-      <h1>CONTACT US</h1>
-      <p>Reach out to our pack. Whether you have questions, want to get involved, or need support, we’re here to help!</p>
+  <!-- ===== CONTACT HERO ===== -->
+  <section id="hero-target"
+      data-bg="../images/wolf9.jpg"
+      data-title="CONTACT US"
+      data-sub="Reach out to our pack. Whether you have questions, want to get involved, or need support, we’re here to help!">  
+  </section>
+
+  <!-- ===== CONTACT FORM SECTION ===== -->
+  <section class="contact-section">
+    <div class="container contact__wrap">
+
+      <h2 class="contact__title">Send Us a Message</h2>
+      <p class="contact__sub">
+        Select your inquiry type so we can direct your message to the right team.
+      </p>
+
+      <form class="contact__form" id="contactForm">
+
+          <input type="text" name="first_name" placeholder="First Name" required>
+
+          <input type="text" name="last_name" placeholder="Last Name" required>
+
+          <input type="email" name="email" placeholder="Email Address" required>
+
+          <select name="category" required>
+              <option value="">I'm contacting about...</option>
+
+              <option value="wolf-girls">Wolf Girls</option>
+              <option value="general">General Questions</option>
+              <option value="pack-partner">Partnerships / Pack Partner</option>
+              <option value="volunteer">Volunteer / Intern Opportunities</option>
+              <option value="member">Membership Questions</option>
+              <option value="events">Events & Meetups</option>
+              <option value="donations">Donations & Sponsorships</option>
+              <option value="media">Media / Press Inquiries</option>
+              <option value="sanctuary">Wolf-Dog Sanctuary / Rescue Questions</option>
+              <option value="support">Website / Login Support</option>
+
+              <option value="other">Other</option>
+          </select>
+
+          <input type="text" name="subject" placeholder="Subject" required>
+
+          <textarea name="message" rows="6" placeholder="Your message..." required></textarea>
+
+          <button type="submit" class="contact__btn">Send Message</button>
+
+          <div class="contact__msg" hidden></div>
+
+      </form>
+
     </div>
   </section>
 
-  <div class="hero-divider"></div>
+  <!-- FOOTER -->
+  <footer class="site-footer"></footer>
 
-  <!-- ===== CONTACT FORM SECTION ===== -->
-<section class="contact-section">
-  <div class="container contact__wrap">
-
-    <h2 class="contact__title">Send Us a Message</h2>
-    <p class="contact__sub">
-      Select your inquiry type so we can direct your message to the right team.
-    </p>
-
-    <form class="contact__form" id="contactForm">
-
-        <input type="text" name="first_name" placeholder="First Name" required>
-
-        <input type="text" name="last_name" placeholder="Last Name" required>
-
-        <input type="email" name="email" placeholder="Email Address" required>
-
-        <select name="category" required>
-            <option value="">I'm contacting about...</option>
-
-            <option value="wolf-girls">Wolf Girls</option>
-            <option value="general">General Questions</option>
-            <option value="pack-partner">Partnerships / Pack Partner</option>
-            <option value="volunteer">Volunteer / Intern Opportunities</option>
-            <option value="member">Membership Questions</option>
-            <option value="events">Events & Meetups</option>
-            <option value="donations">Donations & Sponsorships</option>
-            <option value="media">Media / Press Inquiries</option>
-            <option value="sanctuary">Wolf-Dog Sanctuary / Rescue Questions</option>
-            <option value="support">Website / Login Support</option>
-
-            <option value="other">Other</option>
-        </select>
-
-        <input type="text" name="subject" placeholder="Subject" required>
-
-        <textarea name="message" rows="6" placeholder="Your message..." required></textarea>
-
-        <button type="submit" class="contact__btn">Send Message</button>
-
-        <div class="contact__msg" hidden></div>
-
-    </form>
-
-  </div>
-</section>
-
-<script src="js/load-layout.js"></script>
-<script src="js/mobile-nav.js"></script>
+  <script src="js/load-layout.js"></script>
+  <script src="js/mobile-nav.js"></script>
 
 </body>
 </html>
