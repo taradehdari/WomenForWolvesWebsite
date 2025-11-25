@@ -4,21 +4,23 @@ document.addEventListener("DOMContentLoaded", () => {
   // DEPTH CALCULATION FOR ALL HOSTS (GitHub Pages safe)
   // =======================================================
   const repo = "WomenForWolvesWebsite";
-  let parts = window.location.pathname.split("/").filter(p => p.length > 0);
-
-  // Remove the repo folder if present
-  if (parts[0] === repo) {
-    parts.shift();
-  }
-
-  // Remaining path: folders + file
-  const depth = parts.length - 1;
-
-  // Build "../" prefix
   let base = "";
-  for (let i = 0; i < depth; i++) {
-    base += "../";
+
+  const isGitHub = window.location.hostname.includes("github.io");
+
+  if (isGitHub) {
+    // GitHub Pages always serves from /repo/
+    base = `/${repo}/`;
+  } else {
+    // Local: calculate depth normally
+    let parts = window.location.pathname.split("/").filter(p => p.length > 0);
+    const depth = parts.length - 1;
+
+    for (let i = 0; i < depth; i++) {
+      base += "../";
+    }
   }
+
 
   // LOAD HEADER
   fetch(base + "partials/header.html")
@@ -58,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(res => res.text())
       .then(html => {
         html = html
-          .replace("{{BG}}", `'${base + hero.dataset.bg.replace(/^(\.\.\/)+/, "")}'`)
+          .replace("{{BG}}", base + hero.dataset.bg.replace(/^(\.\.\/)+/, ""))
           .replace("{{TITLE}}", hero.dataset.title)
           .replace("{{SUBTITLE}}", hero.dataset.sub || "");
 
