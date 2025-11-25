@@ -11,8 +11,10 @@
 
   /* ===== TYPOGRAPHY FONTS ===== */
   --font-display: 'Big Shoulders Display', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-accent: 'Marcellus', serif;
+  /* --font-body: 'Inter', system-ui, sans-serif;
+  --font-accent: 'Marcellus', serif; */
+  --font-body: 'Instrument Sans', system-ui, sans-serif;
+  --font-accent: 'Instrument Sans', sans-serif;
 
   /* ===== FONT SCALE ===== */
   --fs-xxl: clamp(56px, 8vw, 100px);   /* Huge hero */
@@ -78,8 +80,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--white);
 }
 
-p,
-.hero-sub {
+p {
   font-family: var(--font-display);
   font-weight: var(--fw-regular);
   text-transform: none;
@@ -87,15 +88,6 @@ p,
   letter-spacing: 0.3px;
   color: var(--white);
   font-size: var(--fs-sm);
-}
-
-.hero-content p {
-  font-family: var(--font-body);
-  font-size: var(--fs-md);       
-  letter-spacing: 0.5px;
-  opacity: 0.95;
-  font-weight: var(--fw-semi);   
-  color: var(--white);
 }
 
 /* ===== GLOBAL PAGE HERO ===== */

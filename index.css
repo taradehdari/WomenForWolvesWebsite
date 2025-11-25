@@ -147,7 +147,6 @@ body.has-banner .site-header { margin-top: 65px; }
   margin-bottom: 40px;
   color: var(--white);
   text-align: center;
-  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
  }
 
 /* Donate pill */

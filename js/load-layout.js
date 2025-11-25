@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(res => res.text())
       .then(html => {
         html = html
-          .replace("{{BG}}", base + hero.dataset.bg.replace(/^(\.\.\/)+/, ""))
+          .replace("{{BG}}", `'${base + hero.dataset.bg.replace(/^(\.\.\/)+/, "")}'`)
           .replace("{{TITLE}}", hero.dataset.title)
           .replace("{{SUBTITLE}}", hero.dataset.sub || "");
 
