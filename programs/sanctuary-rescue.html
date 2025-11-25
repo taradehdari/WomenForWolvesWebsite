@@ -22,11 +22,123 @@
     data-sub="sanctuary rescue">  
   </section>
 
+  <!-- ===== SANCTUARY & RESCUE MAIN SECTION ===== -->
+  <section class="sanctuary-intro">
+    <div class="container">
+
+      <h2 class="sr-title">Meet Our Pack</h2>
+      <p class="sr-sub">
+        We are home to <strong>21 wolves and wolf-dogs</strong>.  
+        Learn more about our resident sanctuary ambassadors.
+      </p>
+
+      <!-- ===== WOLF CAROUSEL (placeholder) ===== -->
+      <div class="wolf-carousel">
+        <button class="wolf-arrow left">‹</button>
+
+        <div class="wolf-track">
+          <!-- Example wolf card (DONT FORGET add all 21 later) -->
+          <div class="wolf-card">
+            <img src="../images/aspen.jpg" alt="Wolf Ambassador" />
+            <h3 class="wolf-name">Aspen</h3>
+            <p class="wolf-desc">Rescued from neglect. Sweet, gentle, highly social.</p>
+          </div>
+
+          <div class="wolf-card">
+            <img src="../images/wolf15.jpg" alt="Wolf Ambassador" />
+            <h3 class="wolf-name">Groot</h3>
+            <p class="wolf-desc">50% wolf-dog. Intelligent, curious, bonded to handlers.</p>
+          </div>
+
+          <div class="wolf-card">
+            <img src="../images/wolf15.jpg" alt="Wolf Ambassador" />
+            <h3 class="wolf-name">Groot</h3>
+            <p class="wolf-desc">50% wolf-dog. Intelligent, curious, bonded to handlers.</p>
+          </div>
+
+          <div class="wolf-card">
+            <img src="../images/wolf15.jpg" alt="Wolf Ambassador" />
+            <h3 class="wolf-name">Groot</h3>
+            <p class="wolf-desc">50% wolf-dog. Intelligent, curious, bonded to handlers.</p>
+          </div>
+
+          <div class="wolf-card">
+            <img src="../images/wolf15.jpg" alt="Wolf Ambassador" />
+            <h3 class="wolf-name">Groot</h3>
+            <p class="wolf-desc">50% wolf-dog. Intelligent, curious, bonded to handlers.</p>
+          </div>
+
+          <div class="wolf-card">
+            <img src="../images/wolf15.jpg" alt="Wolf Ambassador" />
+            <h3 class="wolf-name">Groot</h3>
+            <p class="wolf-desc">50% wolf-dog. Intelligent, curious, bonded to handlers.</p>
+          </div>
+        </div>
+
+        <button class="wolf-arrow right">›</button>
+      </div>
+
+      <!-- ===== RESCUE TEXT SECTION ===== -->
+      <h2 class="sr-title rescue-title">Rescue</h2>
+
+      <p class="sr-body">
+        At Women for Wolves, we are dedicated to rescuing and providing a safe haven for wolf-dogs  
+        who are at risk of being euthanized due to displacement or neglect.  
+        We place them at our sanctuary and also work closely with other trusted sanctuaries,  
+        offering a second chance for these misunderstood animals.
+      </p>
+
+      <p class="sr-body">
+        If you know of a wolf, wolf-dog, or dog in distress or in need of rescue, transport,  
+        or placement, please reach out to us — we are here to help and can provide the care they need.
+      </p>
+
+      <div class="sr-cta">
+        <a href="../contact.html" class="btn btn--lime">Contact Us</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== RESCUE PHOTO GRID ===== -->
+  <section class="rescue-gallery">
+    <div class="rescue-grid">
+
+      <img src="../images/wolf1.jpg" alt="Rescue Photo 1">
+      <img src="../images/wolf2.jpg" alt="Rescue Photo 2">
+      <img src="../images/wolf3.jpg" alt="Rescue Photo 3">
+      <img src="../images/wolf4.jpg" alt="Rescue Photo 4">
+      <img src="../images/wolf5.jpg" alt="Rescue Photo 5">
+      <img src="../images/wolf6.jpg" alt="Rescue Photo 6">
+
+    </div>
+  </section>
+
+
   <!-- FOOTER -->
   <footer class="site-footer"></footer>
 
   <script src="../js/load-layout.js"></script>
   <script src="../js/mobile-nav.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const track = document.querySelector('.wolf-track');
+      const leftBtn = document.querySelector('.wolf-arrow.left');
+      const rightBtn = document.querySelector('.wolf-arrow.right');
+
+      // Amount to scroll per click
+      const SCROLL_AMOUNT = 300;
+
+      leftBtn.addEventListener('click', () => {
+        track.scrollBy({ left: -SCROLL_AMOUNT, behavior: 'smooth' });
+      });
+
+      rightBtn.addEventListener('click', () => {
+        track.scrollBy({ left: SCROLL_AMOUNT, behavior: 'smooth' });
+      });
+    });
+  </script>
+
 
 </body>
 </html>
