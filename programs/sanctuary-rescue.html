@@ -358,6 +358,56 @@
     </div>
   </section>
 
+  <!-- ===== IN LOVING MEMORY ===== -->
+  <section class="memory-section">
+    <h2 class="memory-title">IN LOVING MEMORY</h2>
+
+    <div class="memory-carousel">
+      <button class="memory-arrow left">←</button>
+
+      <div class="memory-track">
+
+        <div class="memory-card">
+          <img src="../images/lovingmemory/leika.png" alt="Leika">
+          <h3 class="memory-name">LEIKA</h3>
+        </div>
+
+        <div class="memory-card">
+          <img src="../images/lovingmemory/zazu.png" alt="Zazu">
+          <h3 class="memory-name">ZAZU</h3>
+        </div>
+
+        <div class="memory-card">
+          <img src="../images/lovingmemory/diamond.png" alt="Diamond">
+          <h3 class="memory-name">DIAMOND</h3>
+        </div>
+
+        <div class="memory-card">
+          <img src="../images/lovingmemory/draco.png" alt="Diamond">
+          <h3 class="memory-name">DRACO</h3>
+        </div>
+
+        <div class="memory-card">
+          <img src="../images/lovingmemory/sasha.png" alt="Diamond">
+          <h3 class="memory-name">SASHA</h3>
+        </div>
+
+        <div class="memory-card">
+          <img src="../images/lovingmemory/nickel.png" alt="Diamond">
+          <h3 class="memory-name">NICKEL</h3>
+        </div>
+
+        <div class="memory-card">
+          <img src="../images/lovingmemory/princess.png" alt="Diamond">
+          <h3 class="memory-name">PRINCESS</h3>
+        </div>
+      </div>
+
+      <button class="memory-arrow right">→</button>
+    </div>
+  </section>
+
+
 
   <!-- FOOTER -->
   <footer class="site-footer"></footer>
@@ -405,5 +455,24 @@
       });
     });
   </script>
+  <script>
+    //for arrows on loving memory
+  document.addEventListener("DOMContentLoaded", () => {
+    const track = document.querySelector(".memory-track");
+    const leftBtn = document.querySelector(".memory-arrow.left");
+    const rightBtn = document.querySelector(".memory-arrow.right");
+
+    const SCROLL_BY = 350;
+
+    leftBtn.addEventListener("click", () => {
+      track.scrollBy({ left: -SCROLL_BY, behavior: "smooth" });
+    });
+
+    rightBtn.addEventListener("click", () => {
+      track.scrollBy({ left: SCROLL_BY, behavior: "smooth" });
+    });
+  });
+  </script>
+
 </body>
 </html>
