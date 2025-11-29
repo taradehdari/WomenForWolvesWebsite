@@ -204,6 +204,63 @@
     </div>
   </section>
 
+  <!-- ===== ADOPT SECTION WITH FLIP CARDS ===== -->
+  <section class="adopt-section">
+    <div class="container">
+
+      <h2 class="sr-title">Adopt</h2>
+      <p class="adopt-sub">Click to read about me and get the adoption application.</p>
+
+      <div class="adopt-grid">
+
+        <!-- Card 1 -->
+        <div class="adopt-card">
+          <div class="adopt-card-inner">
+
+            <!-- FRONT -->
+            <div class="adopt-card-front">
+              <img src="../images/phantom.png" alt="Phantom">
+              <h3>PHANTOM</h3>
+            </div>
+
+            <!-- BACK -->
+            <div class="adopt-card-back">
+              <h3>PHANTOM</h3>
+              <p>Phantom is gentle, playful, and loves exploring.</p>
+              <a href="../get-involved/adoption-application.html" class="btn btn--magenta btn--small">
+                Adoption Application
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="adopt-card">
+          <div class="adopt-card-inner">
+
+            <div class="adopt-card-front">
+              <img src="../images/king.png" alt="King">
+              <h3>KING</h3>
+            </div>
+
+            <div class="adopt-card-back">
+              <h3>KING</h3>
+              <p>King is confident, loyal, and bonds deeply with caregivers.</p>
+              <a href="../get-involved/adoption-application.html" class="btn btn--magenta btn--small">
+                Adoption Application
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
   <!-- ===== RESCUE PHOTO GRID ===== -->
   <section class="rescue-gallery">
     <div class="rescue-grid">
@@ -243,6 +300,12 @@
     });
   </script>
 
-
+  <script>
+  document.querySelectorAll('.adopt-card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+    });
+  });
+  </script>
 </body>
 </html>
