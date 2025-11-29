@@ -152,7 +152,15 @@
 .adopt-card-front,
 .adopt-card-back {
   height: 100%;
+}
+
+.adopt-card-front {
   border: 3px solid var(--magenta);  
+  border-radius: 16px;
+}
+
+.adopt-card-back {
+  border: 3px solid var(--lime);  
   border-radius: 16px;
 }
 
