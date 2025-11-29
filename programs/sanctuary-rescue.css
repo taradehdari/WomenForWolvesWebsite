@@ -230,12 +230,68 @@
   margin-bottom: 20px;
 }
 
+/* ===== IMPACT SECTION (Nearly 500 Rescued) =====*/
+.impact-rescue {
+  background: var(--black);
+  padding: clamp(80px, 10vw, 140px) 0;
+}
+
+.impact-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  padding: 0 32px;
+}
+
+.impact-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  text-transform: uppercase;
+  color: var(--magenta);
+  margin-bottom: 26px;
+  line-height: 1.1;
+}
+
+.impact-text p {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: var(--white);
+  opacity: 0.85;
+  margin-bottom: 18px;
+  max-width: 550px;
+}
+
+.impact-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 3px solid var(--magenta);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .impact-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .impact-text p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .impact-image img {
+    width: 80%;
+  }
+}
 
 /* ===== PHOTO GRID ===== */
 .rescue-gallery {
   background: var(--black);
   padding: clamp(60px, 8vw, 110px) 0;
-  border-bottom: 1px solid rgba(202,252,0,0.25);
 }
 
 .rescue-grid {
@@ -253,3 +309,54 @@
   border-radius: 14px;
   border: 3px solid var(--magenta);
 }
+
+/* ===== FAQ styles (details/summary) ===== */
+.faq__title { margin-bottom: clamp(12px, 2vw, 18px); }
+
+.faq .faq-item {
+  border-top: 2px solid rgba(255,255,255,.25);
+  padding: 10px 0;
+}
+.faq .faq-item:last-child { border-bottom: 2px solid rgba(255,255,255,.25); }
+
+.faq summary {
+  list-style: none;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: var(--fs-md);
+  color: var(--white);
+  text-transform: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.faq summary::-webkit-details-marker { display: none; }
+
+/* caret */
+.faq summary::after{
+  content: "▾";
+  font-size: var(--fs-md);
+  color: var(--white);
+  transition: transform .25s ease, color .2s ease;
+}
+.faq details[open] > summary::after{
+  transform: rotate(180deg);
+  color: var(--lime);
+}
+
+/* body */
+.faq .faq-body {
+  padding: 10px 0 18px;
+  font-size: var(--fs-sm);
+  line-height: 1.7;
+  color: rgba(255,255,255,.9);
+}
+.faq-body p{
+  font-size: var(--fs-sm) !important;
+  font-family: var(--font-body) !important;
+}
+.faq-item summary{
+  font-family: var(--font-accent) !important;
+}
+

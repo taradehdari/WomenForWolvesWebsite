@@ -260,7 +260,90 @@
     </div>
   </section>
 
+  <!-- ===== IMPACT SECTION: 500+ RESCUED ===== -->
+  <section class="impact-rescue">
+    <div class="impact-inner">
 
+      <!-- LEFT TEXT -->
+      <div class="impact-text">
+        <h2 class="impact-title">Nearly 500 wolf-dogs<br>and animals rescued.</h2>
+
+        <p>
+          Wolf-dogs live at the intersection of wild instinct and domestic life, 
+          making them one of the most misunderstood animals in our system.
+        </p>
+
+        <p>
+          We're committed to raising awareness about their needs, supporting their rescue 
+          and rehabilitation, and using their stories to educate the public on broader
+          issues facing wild wolves and native predators.
+        </p>
+      </div>
+
+      <!-- RIGHT IMAGE -->
+      <div class="impact-image">
+        <img src="../images/rescuesection.png" alt="Rescued Wolves">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== FAQ (accessible accordions) ===== -->
+  <section class="faq container" id="faq">
+    <h2 class="faq__title">Frequently asked questions</h2>
+
+    <details class="faq-item">
+      <summary>WHAT IS A WOLF-DOG?</summary>
+      <div class="faq-body">
+        <p>A wolf-dog, also known as a wolf-dog hybrid, is an animal resulting from the breeding of a domestic dog (*Canis lupus familiaris*) with a wolf (*Canis lupus*). Wolf-dogs can result from combinations of a pure wolf with a domestic dog, a wolf bred with a wolf-dog, or two wolf-dogs bred together</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>WHERE DO YOUR RESCUED WOLF-DOGS COME FROM?</summary>
+      <div class="faq-body">
+        <p>Our rescued wolf-dogs come from a variety of sources, including shelters, owner surrenders, other rescue organizations, and animal control facilities. More than 50% of our rescues originate from shelters throughout California and across the United States.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>DO YOU ALLOW BREEDING?</summary>
+      <div class="faq-body">
+        <p>Absolutely not. We firmly believe that wolf-dog and dog breeding of any kind should be banned. Our organization exclusively promotes rescue efforts, and we do not engage in or support any breeding activities at our facility, as we operate solely as a sanctuary and rescue organization.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>DO YOU HAVE ADOPTABLE ANIMALS?</summary>
+      <div class="faq-body">
+        <p>Yes. We currently have four adoptable dogs: Phantom and Bash. These animals were surrendered to us under the mistaken belief that they were wolf-dogs. They are looking for suitable, loving, and qualified homes.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>HOW OFTEN DO WOLF-DOGS GET ABANDONED?</summary>
+      <div class="faq-body">
+        <p>Unfortunately, wolf-dogs experience abandonment at an alarmingly high rate. Estimates suggest there are currently between 250,000 and 500,000 wolf-dogs living in captivity across the U.S. Many are abandoned or euthanized due to the inability of their owners to manage their specialized needs.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>WHAT IS WOMEN FOR WOLVES DOING TO HELP THE SHELTER CRISIS?</summary>
+      <div class="faq-body">
+        <p>We actively work through our extensive network to place abandoned wolves, wolf-dogs, and dogs into sanctuaries, rescue organizations, or suitable and qualified homes. Each month, we successfully find homes for at least 2-5 animals, making a meaningful contribution toward alleviating the shelter crisis.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>WHY ISN'T WOMEN FOR WOLVES RETURNING CAPTIVE WOLF-DOGS TO THE WILD?</summary>
+      <div class="faq-body">
+        <p>Captive wolves and wolf-dogs are not suitable candidates for release into the wild. Animals raised in captivity lack the essential survival skills, fear of humans, and behaviors necessary to thrive independently. Additionally, releasing wolf-dogs, who carry domestic dog genetics, into wild ecosystems can disrupt natural wildlife populations and compromise conservation efforts. At WFW, our goal is to provide lifelong sanctuary, proper care, and responsible placement into suitable homes or sanctuaries rather than releasing these animals into environments where they cannot succeed.</p>
+      </div>
+    </details>
+    
+  </section>
+  
+  
   <!-- ===== RESCUE PHOTO GRID ===== -->
   <section class="rescue-gallery">
     <div class="rescue-grid">
@@ -306,6 +389,21 @@
       card.classList.toggle('flipped');
     });
   });
+  </script>
+
+   <script>
+    // Allow only one <details> open at a time
+    document.querySelectorAll('details').forEach(details => {
+      details.addEventListener('toggle', () => {
+        if (details.open) {
+          document.querySelectorAll('details').forEach(other => {
+            if (other !== details) {
+              other.open = false;
+            }
+          });
+        }
+      });
+    });
   </script>
 </body>
 </html>
