@@ -76,7 +76,7 @@
 .wolf-desc {
   color: var(--white);
   opacity: 0.85;
-  font-size: var(--fs-sm);
+  font-size: var(--fs-xs) !important;
   font: var(--font-body);
 }
 
@@ -101,6 +101,16 @@
 }
 .wolf-arrow.left { left: 0; }
 .wolf-arrow.right { right: 0; }
+
+/* smaller sponsor button inside wolf cards */
+.wolf-sponsor-btn {
+  display: inline-block !important;   /* prevents full width */
+  width: auto !important;             /* removes stretching */
+  padding: 8px 18px !important;
+  font-size: var(--fs-xs) !important;
+  border-radius: 20px !important;
+  margin-top: 12px;
+}
 
 /* ===== RESCUE SECTION ===== */
 .rescue-title {
